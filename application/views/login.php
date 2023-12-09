@@ -46,9 +46,8 @@
         .container-card {
             padding: 20px;
             border-radius: 10px;
-            max-width: 350px;
-            width: 100%;
-            margin: 0 auto;
+            min-width: 350px;
+            margin: 10px ;
         }
 
         .btn-login {
@@ -90,13 +89,13 @@
                         class="text-left">
                         <div class="mb-3">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" name="username" placeholder="Username">
+                            <input type="text" class="form-control" name="username" placeholder="Username" Required>
                         </div>
                         <div class="mb-3">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password">
+                            <input type="password" class="form-control" name="password" placeholder="Password" Required>
                         </div>
-                        <button type="submit" class="btn text-white btn-login">Login</button>
+                        <button type="submit" class="btn text-white btn-login">L O G I N</button>
                         <p class="text-center mt-3">Belum memiliki akun? <a
                                 href="<?php echo base_url('chalaman/daftar'); ?>">Daftar disini</a></p>
                     </form>

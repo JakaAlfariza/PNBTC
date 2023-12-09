@@ -32,7 +32,7 @@
 
       <ul class="navbar-nav font-weight-bold">
         <li class="nav-item active">
-          <a class="nav-link" href="<?= base_url('chalaman/kategori');?>"><i class="fa-solid fa-layer-group"></i> 
+          <a class="nav-link" href="<?= base_url('#');?>"><i class="fa-solid fa-layer-group"></i> 
 		  Kategori</a>
         </li>
         <li class="nav-item">

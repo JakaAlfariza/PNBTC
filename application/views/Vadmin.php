@@ -16,7 +16,7 @@
       <ul class="navbar-nav font-weight-bold">
     
         <li class="nav-item">
-          <a class="nav-link" style="margin-left: 20px;" href="<?= base_url('chalaman/index');?>"> <i class="fa fa-sign-out"></i> 
+          <a class="nav-link" style="margin-left: 20px;" href="<?= base_url('cadmin/logout');?>"> <i class="fa fa-sign-out"></i> 
 		  log out</a>
         </li>
       </ul>

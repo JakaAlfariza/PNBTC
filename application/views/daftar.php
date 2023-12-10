@@ -11,20 +11,15 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Login</title>
+    <title>Register</title>
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
 
         .centered-form {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            min-height: 100vh;
+            min-height: 110vh;
             background-color: #004789;
         }
 
@@ -89,11 +84,16 @@
                         class="text-left">
                         <div class="mb-3">
                             <label for="email">Email:</label>
-                            <input type="text" class="form-control" name="email" placeholder="Email" Required>
-                        </div>
-                        <div class="mb-3">
+                            <input type="email" class="form-control <?php if (!empty($email_error)) echo 'is-invalid'; ?>" name="email" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                <?php echo $email_error; ?>
+                            </div>
+                        <div class="mb-3" style="margin-top: 15px;">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" name="username" placeholder="Username" Required>
+                            <input type="text" class="form-control <?php if (!empty($username_error)) echo 'is-invalid'; ?>" name="username" placeholder="Username" required>
+                            <div class="invalid-feedback">
+                                <?php echo $username_error; ?>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="password">Password:</label>

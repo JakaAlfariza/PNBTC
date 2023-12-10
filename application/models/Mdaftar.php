@@ -5,15 +5,15 @@
 		
 		function simpandaftar()
 		{
-			$Username=$this->input->post('Username');
-            $Email=$this->input->post('Email');
-			$Password=$this->input->post('Password');
+			$username=$this->input->post('username');
+            $email=$this->input->post('email');
+			$password=$this->input->post('password');
 			
 			
 			$data=array(
-				'Username'=>$Username,
-                'Email'=>$Email,
-				'Password'=>$Password
+				'username'=>$username,
+                'email'=>$email,
+				'password'=>$password
 				
 			);
 			

@@ -13,7 +13,6 @@
 			$this->load->view('Vadmin');	
 		}	
 		
-		
 		function logout()
 		{
 			$this->session->sess_destroy();

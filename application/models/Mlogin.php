@@ -12,7 +12,8 @@
 			{
 				$data=$query->row();
 				$array=array(
-					
+					 'id' => $data->id,
+    				 'username' => $data->username,
 				);	
 				$this->session->set_userdata($array);	
 				redirect('cadmin/vadmin','refresh');	

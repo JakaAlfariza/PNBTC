@@ -14,6 +14,7 @@
 				$array=array(
 					 'id' => $data->id,
     				 'username' => $data->username,
+					 'email' => $data->username
 				);	
 				$this->session->set_userdata($array);	
 				redirect('cadmin/vadmin','refresh');	

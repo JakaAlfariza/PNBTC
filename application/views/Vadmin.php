@@ -16,61 +16,136 @@
       <ul class="navbar-nav font-weight-bold">
     
         <li class="nav-item">
-          <a class="nav-link" style="margin-left: 20px;" href="<?= base_url('cadmin/logout');?>"> <i class="fa fa-sign-out"></i> 
+          <a class="nav-link" style="margin-left: 20px;" href="<?= base_url('cadmin/logout');?>"> <i class="fa-solid fa-sign-out"></i> 
 		  log out</a>
         </li>
       </ul>
     </nav>
 
-    <h3>Tambahkan Event</h3>
-    <form class="forms-sample" method="POST" enctype="multipart/form-data">
+    
+    <div class="container-fluid page-body-wrapper">
+			
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="page-header">
+					
+					</div>
+					<div class="row">
+						<div class="col-lg-5 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Tambah data Event/lomba</h4>
+            <form class="forms-sample" method="POST" action="<?php echo base_url('cadmin/simpandataevent'); ?>">
 										<div class="form-group">
 											<label for="exampleInputName1">Nama event:</label>
-											<input type="text" name="nama_event" class="form-control"  placeholder="nama_event" required>
+											<input type="text" name="nama_event" class="form-control"   required>
 										</div>
 										<div class="form-group">
 											<label for="exampleInputName1">Gambar :</label>
-											<input type="file" name="gambar" class="form-control" placeholder="gambar" required>
+											<input type="file" name="gambar" class="form-control"  required>
 										</div>
 										<div class="form-group">
                                             <label for="exampleInputName1">Penyelenggara :</label>
-											<input type="text" name="penyelenggara" class="form-control"  placeholder="penyelenggara" required>
+											<input type="text" name="penyelenggara" class="form-control"   required>
 										</div>
 										<div class="form-group">
                                         <label for="exampleInputName1">tanggal Awal :</label>
-											<input type="date" name="tgl_awal" class="form-control"  placeholder="tgl_awal" required>
+											<input type="date" name="tgl_awal" class="form-control"   required>
 										</div>
                                         <div class="form-group">
                                         <label for="exampleInputName1">tanggal Akhir :</label>
-											<input type="date" name="tgl_akhir" class="form-control"  placeholder="tgl_akhir" required>
+											<input type="date" name="tgl_akhir" class="form-control"  required>
 										</div>
                                         <div class="form-group">
                                         <label for="exampleInputName1">tanggal Event :</label>
-											<input type="date" name="tgl_event" class="form-control"  placeholder="tgl_event" required>
+											<input type="date" name="tgl_event" class="form-control"   required>
 										</div>
                                         <div class="form-group">
                                         <label for="exampleInputName1">Harga :</label>
-											<input type="text" name="harga" class="form-control"  placeholder="harga" required>
+											<input type="text" name="harga" class="form-control"   required>
 										</div>
                                         <div class="form-group">
                                         <label for="exampleInputName1">Lokasi :</label>
-											<input type="text" name="lokasi" class="form-control"  placeholder="lokasi" required>
+											<input type="text" name="lokasi" class="form-control"   required>
 										</div>
-                                        <div class="form-group">
-                                        <label for="exampleInputName1">Deskripsi :</label>
-											<input type="text" name="deskripsi" class="form-control"  placeholder="deskripsi" required>
-										</div>
+                    <div class="form-group">
+						<label>Deskripsi :</label>
+						<textarea class="form-control" name="deskripsi" required></textarea>
+					</div>
                                         <div class="form-group">
                                         <label for="exampleInputName1">Kategori :</label>
-											<input type="text" name="kategori" class="form-control"  placeholder="kategori" required>
+											<input type="text" name="kategori" class="form-control"   required>
 										</div>
                                         <div class="form-group">
                                         <label for="exampleInputName1">Link Pendaftaran :</label>
-											<input type="text" name="link_pendaftaran" class="form-control"  placeholder="link_pendaftaran" required>
+											<input type="text" name="link_pendaftaran" class="form-control"   required>
 										</div>
 									<button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
 									<button type="reset" class="btn btn-dark">Cancel</button>
 								</form>
+                </div>
+						</div>
+					</div>
+					<div class="col-lg-7 grid-margin stretch-card">
+						<div class="card">
+							<div class="card-body" >
+								<h4 class="card-title">Tabel data</h4>
+								</p>
+								<div class="table-responsive" >
+									<table class="table table-hover" id="tabel-data">
+										<thead>
+											<tr>
+                        <th>No</th>
+												<th>Nama Event</th>
+												<th>Penyelenggara</th>
+												<th>Kategori</th>
+												<th>Aksi</th>
+											</tr>
+										</thead>
+
+                    <tbody>
+             <?php
+                 if(empty($hasil))
+                 {
+                     echo "Data Kosong";	
+                 }
+                 else
+                 {
+                     $no=1;
+                     foreach ($hasil as $data):
+             ?>
+               <tr>
+                 <td><?php echo $no; ?></td>
+                 <td><?php echo $data->nama_event ?></td>
+                 <td><?php echo $data->penyelenggara ?></td>
+                 <td><?php echo $data->kategori ?></td>
+              
+                 <td>
+                     
+                     <button type="button" onclick="hapusdata
+                     ('<?php echo $data->IdBarang ?>')" class="btn btn-sm btn-danger">Hapus</button>
+                 </td>
+               </tr>
+               
+              <?php
+                      $no++;
+                      endforeach;
+                 }
+              ?>
+         
+         
+               </tr>
+             </tbody>
+           </table>
+         
+           <script>
+               function hapusdata(IdBarang){
+                   if(confirm("Apakah yakin menghapus data ini?")){
+                     window.open("<?php echo base_url()?>cadmin/hapusdata/"+id_event,"_self");
+                   }
+               }
+           </script>
+                    
 	
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

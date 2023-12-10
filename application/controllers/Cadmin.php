@@ -12,6 +12,21 @@
 		{
 			$this->load->view('Vadmin');	
 		}	
+
+		function tampil(){
+			$data['hasil'] = $this->mdataevent->tampildata();
+			$this->load->view('vkasir',$data);
+		
+		}
+
+		function simpandataevent(){
+			$this->mdataevent->simpandata();
+		}
+
+		function hapusdata($id_event)
+		{
+			$this->mdataevent->hapusdata($id_event);	
+		}
 		
 		function logout()
 		{

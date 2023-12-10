@@ -99,7 +99,7 @@
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" name="password" placeholder="Password" Required>
                         </div>
-                        <button type="submit" class="btn text-white btn-login">L O G I N</button>
+                        <button type="submit" class="btn text-white btn-login">D A F T A R</button>
                         <p class="text-center mt-3">Sudah memiliki akun? <a
                                 href="<?php echo base_url('chalaman/login'); ?>">Login sekarang</a></p>
                     </form>

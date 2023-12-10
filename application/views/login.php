@@ -12,6 +12,8 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Login</title>
+
+    <!-- CSS -->
     <style>
         body, html {
             height: 100%;
@@ -83,6 +85,7 @@
             <p>Sign in to your account</p>
         </div>
         <div class="row justify-content-center align-items-center" style="height: 60vh;">
+            <!-- Card Login -->
             <div class="card container-card text-dark">
                 <div class="card-body">
                     <form name="formlogin" method="post" action="<?php echo base_url('chalaman/proseslogin'); ?>"
@@ -104,7 +107,7 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
+    <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -115,5 +118,4 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

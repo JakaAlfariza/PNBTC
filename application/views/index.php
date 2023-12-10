@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
         <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
@@ -33,18 +34,20 @@
       <ul class="navbar-nav font-weight-bold">
         <li class="nav-item active">
           <a class="nav-link" href="<?= base_url('#');?>"><i class="fa-solid fa-layer-group"></i> 
-		  Kategori</a>
+		      Kategori</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" style="margin-left: 20px;" href="<?= base_url('chalaman/login');?>"> <i class="fa-solid fa-user"></i> 
-		  Login</a>
+		      Login</a>
         </li>
       </ul>
     </nav>
-
-	<div class="container text-center mt-5">
+  
+    <!-- Container -->
+	  <div class="container text-center mt-5">
       <h1>ON PROGRESS</h1>
     </div>
+  
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

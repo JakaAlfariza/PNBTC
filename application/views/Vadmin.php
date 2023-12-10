@@ -4,6 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      body,html{
+        background-color: #004789;
+        height: 120%;
+      }
+    </style>
     <title>admin page</title>
 
 </head>
@@ -13,10 +19,10 @@
         <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
       </a>
 
-      <ul class="navbar-nav font-weight-bold">
+      <ul class="navbar-nav font-weight-bold ml-auto">
     
         <li class="nav-item">
-          <a class="nav-link" style="margin-left: 20px;" href="<?= base_url('cadmin/logout');?>"> <i class="fa-solid fa-sign-out"></i> 
+          <a class="nav-link" " href="<?= base_url('cadmin/logout');?>"> <i class="fa-solid fa-sign-out"></i> 
 		  log out</a>
         </li>
       </ul>
@@ -35,7 +41,7 @@
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">Tambah data Event/lomba</h4>
-            <form class="forms-sample" method="POST" action="<?php echo base_url('cadmin/simpandataevent'); ?>">
+            <form class="forms-sample" method="POST" action="<?php echo base_url('cadmin/simpandata'); ?>">
 										<div class="form-group">
 											<label for="exampleInputName1">Nama event:</label>
 											<input type="text" name="nama_event" class="form-control"   required>
@@ -78,7 +84,7 @@
 										</div>
                                         <div class="form-group">
                                         <label for="exampleInputName1">Link Pendaftaran :</label>
-											<input type="text" name="link_pendaftaran" class="form-control"   required>
+											<input type="text" name="link_daftar" class="form-control"   required>
 										</div>
 									<button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
 									<button type="reset" class="btn btn-dark">Cancel</button>
@@ -123,7 +129,7 @@
                  <td>
                      
                      <button type="button" onclick="hapusdata
-                     ('<?php echo $data->IdBarang ?>')" class="btn btn-sm btn-danger">Hapus</button>
+                     ('<?php echo $data->id_event ?>')" class="btn btn-sm btn-danger">Hapus</button>
                  </td>
                </tr>
                
@@ -139,7 +145,7 @@
            </table>
          
            <script>
-               function hapusdata(IdBarang){
+               function hapusdata(id_event){
                    if(confirm("Apakah yakin menghapus data ini?")){
                      window.open("<?php echo base_url()?>cadmin/hapusdata/"+id_event,"_self");
                    }

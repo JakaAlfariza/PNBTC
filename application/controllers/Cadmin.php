@@ -6,6 +6,7 @@
 			parent::__construct();
 			$this->load->model('mvalidasi');
 			$this->mvalidasi->validasi();
+			$this->load->model('mdataevent');
 		}
 		
 		function vadmin()
@@ -15,11 +16,11 @@
 
 		function tampil(){
 			$data['hasil'] = $this->mdataevent->tampildata();
-			$this->load->view('vkasir',$data);
+			$this->load->view('vadmin',$data);
 		
 		}
 
-		function simpandataevent(){
+		function simpandata(){
 			$this->mdataevent->simpandata();
 		}
 

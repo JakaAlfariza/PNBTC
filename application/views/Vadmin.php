@@ -29,7 +29,7 @@
     </nav>
 
     
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-fluid page-body-wrapper" style="margin-top: 30px;">
 			
 			<div class="main-panel">
 				<div class="content-wrapper">
@@ -39,7 +39,7 @@
 					<div class="row">
 						<div class="col-lg-5 grid-margin stretch-card">
 							<div class="card">
-								<div class="card-body">
+								<div class="card-body" >
 									<h4 class="card-title">Tambah data Event/lomba</h4>
             <form class="forms-sample" method="POST" action="<?php echo base_url('cadmin/simpandata'); ?>">
 										<div class="form-group">
@@ -94,7 +94,7 @@
 					</div>
 					<div class="col-lg-7 grid-margin stretch-card">
 						<div class="card">
-							<div class="card-body" >
+							<div class="card-body" style="margin-top: 20px;" >
 								<h4 class="card-title">Tabel data</h4>
 								</p>
 								<div class="table-responsive" >

@@ -24,7 +24,7 @@ class Mdaftar extends CI_Model
             $data_to_insert = array(
                 'username' => $username,
                 'email' => $email,
-                'password' => $hashed_password
+                'password' => $hashed_password,
                 'role' => 'user' // Default
             );
 

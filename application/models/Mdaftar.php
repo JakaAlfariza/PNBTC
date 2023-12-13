@@ -6,6 +6,7 @@ class Mdaftar extends CI_Model
         $username = $this->input->post('username');
         $email = $this->input->post('email');
         $password = $this->input->post('password');
+		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Cek email atau username apakah sudah ada
         $email_exists = $this->isEmailExists($email);
@@ -23,7 +24,8 @@ class Mdaftar extends CI_Model
             $data_to_insert = array(
                 'username' => $username,
                 'email' => $email,
-                'password' => $password
+                'password' => $hashed_password
+                'role' => 'user' // Default
             );
 
             $this->db->insert('user', $data_to_insert);

@@ -14,7 +14,7 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="<?= base_url('chalaman/index');?>">
         <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
       </a>
 
@@ -32,13 +32,22 @@
       </div>
 
       <ul class="navbar-nav font-weight-bold">
-        <li class="nav-item active">
-          <a class="nav-link" href="<?= base_url('#');?>"><i class="fa-solid fa-layer-group"></i> 
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fa-solid fa-layer-group"></i> 
 		      Kategori</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="margin-left: 20px;" href="<?= base_url('chalaman/login');?>"> <i class="fa-solid fa-user"></i> 
-		      Login</a>
+          <?php
+// Check if the user is logged in
+if ($this->session->userdata('id')) {
+    // User is logged in
+    echo '<a class="nav-link" href="' . base_url('chalaman/logout') . '">Sign Out</a>';
+} else {
+    // User is not logged in
+    echo '<a class="nav-link" href="' . base_url('chalaman/login') . '">Login</a>';
+}
+?>
+
         </li>
       </ul>
     </nav>
@@ -46,6 +55,11 @@
     <!-- Container -->
 	  <div class="container text-center mt-5">
       <h1>ON PROGRESS</h1>
+      <?php
+      echo '<pre>';
+print_r($this->session->all_userdata());
+echo '</pre>';
+?>
     </div>
   
     <!-- Bootstrap JS and dependencies -->

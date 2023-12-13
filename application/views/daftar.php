@@ -55,7 +55,7 @@
 <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand font-weight-bold" href="#">
+        <a class="navbar-brand font-weight-bold" href="<?= base_url('chalaman/index');?>">
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
             PNBCC
         </a>
@@ -97,7 +97,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password" Required>
+                            <div class="input-group">
+                                <input type="password" class="form-control" name="password" id="passwordInput" placeholder="Password" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="eyeIcon" onclick="togglePasswordVisibility()">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn text-white btn-login">D A F T A R</button>
                         <p class="text-center mt-3">Sudah memiliki akun? <a
@@ -109,6 +116,20 @@
     </div>
 
     <!-- Bootstrap JS and dependencies -->
+    <script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("passwordInput");
+        var eyeIcon = document.getElementById("eyeIcon");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+        }
+    }
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

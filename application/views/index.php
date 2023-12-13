@@ -23,7 +23,7 @@
           <div class="input-group">
             <input class="form-control mr-sm-2" type="search" placeholder="Cari Event" aria-label="Search">
             <div class="input-group-append">
-              <button class="btn btn-outline-success" type="submit">
+              <button class="btn btn-outline-primary" type="submit">
                 <i class="fas fa-search"></i>
               </button>
             </div>

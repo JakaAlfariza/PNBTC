@@ -127,7 +127,7 @@
                  <td><?php echo $data->kategori ?></td>
               
                  <td>
-                     
+                 <button type="button" class="btn btn-sm btn-primary">Edit</button>
                      <button type="button" onclick="hapusdata
                      ('<?php echo $data->id_event ?>')" class="btn btn-sm btn-danger">Hapus</button>
                  </td>

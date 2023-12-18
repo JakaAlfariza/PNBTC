@@ -56,7 +56,5 @@ class Mdataevent extends CI_Model{
             $this->db->query($sql);
             redirect('cevent/tampil','refresh');	
         }
-
     }
-
 ?>

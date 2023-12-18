@@ -53,7 +53,7 @@
             <!-- Sidebar -->
             <div class="col-sm-2 bg-light" style="height: 100vh;">
                 <ul class="list-group">
-                    <a href="<?php echo base_url('cadmin/vadmin'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                    <a href="<?php echo base_url('cdashboard/tampilevent'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-gauge"></i> Dashboard</a>
                     <a href="<?php echo base_url('cevent/tampil'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-calendar-plus"></i> Data Event</a>
                     <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user-tie"></i> Data Panitia</a>
                     <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user"></i> Data User</a>
@@ -64,7 +64,7 @@
                 <div class="container mt-3">
                 <?php
                 if (empty($konten)) {
-                    echo "<h2>Selamat Datang! ".$this->session->userdata('nama')."</h2>";
+                    echo "<h2>Selamat Datang! ".$this->session->userdata('username')."</h2>";
                 }else {
                     echo $konten;
                 }
@@ -85,5 +85,4 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
-
 </html>

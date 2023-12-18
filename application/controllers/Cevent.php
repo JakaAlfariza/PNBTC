@@ -10,7 +10,7 @@
 			if ($this->session->userdata('role')!='admin') {
 				redirect('chalaman/index');
 			}
-		}
+		}	
 
 		function tampil(){
 			$tampildata['hasil']=$this->mdataevent->tampildata();

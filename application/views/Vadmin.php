@@ -43,7 +43,7 @@
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt=""> PNBCC [ADMIN] </a>
         <ul class="navbar-nav font-weight-bold ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('cadmin/logout');?>"> <i class="fa-solid fa-sign-out"></i> log out</a>
+                <a class="nav-link text-danger" href="<?= base_url('cadmin/logout');?>"> <i class="fa-solid fa-right-from-bracket"></i> Log out</a>
             </li>
         </ul>
     </nav>
@@ -51,155 +51,32 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-sm-2 bg-light" style="padding-right: 0px;">
+            <div class="col-sm-2 bg-light" style="height: 100vh;">
                 <ul class="list-group">
-                    <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                    <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light">Data Event</a>
-                    <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light">Data Panitia</a>
-                    <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light">Data User</a>
+                    <a href="<?php echo base_url('cadmin/vadmin'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                    <a href="<?php echo base_url('cevent/tampil'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-calendar-plus"></i> Data Event</a>
+                    <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user-tie"></i> Data Panitia</a>
+                    <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user"></i> Data User</a>
                 </ul>
             </div>
             <!-- Main Content -->
             <div class="col-sm-10">
                 <div class="container mt-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title d-flex justify-content-center mb-4">Tambah Event</h2>
-                            <div class="row">
-                                <div class="col-6">
-                                    <form class="forms-sample" method="POST" action="<?php echo base_url('cadmin/simpandata'); ?>">
-                                        <div class="mb-3">
-                                            <div class="form-label">
-                                                <label for="exampleInputName1" class="form-label">Nama event:</label>
-                                                <input type="text" name="nama_event" class="form-control" style="font-size:17px" required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="form-group">
-                                                <label for="exampleInputName1" class="form-label">Gambar :</label>
-                                                <input type="file" name="gambar" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="form-group">
-                                                <label for="exampleInputName1" class="form-label">Penyelenggara :</label>
-                                                <input type="text" name="penyelenggara" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="form-group">
-                                                <label for="exampleInputName1" class="form-label">Lokasi :</label>
-                                                <input type="text" name="lokasi" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <div class="form-group">
-                                                    <label for="exampleInputName1" class="form-label">Kategori :</label>
-                                                    <input type="text" name="kategori" class="form-control" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="mb-3">
-                                        <div class="form-group">
-                                            <label for="exampleInputName1" class="form-label">Tanggal Awal :</label>
-                                            <input type="date" name="tgl_awal" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="form-group">
-                                            <label for="exampleInputName1" class="form-label">Tanggal Akhir :</label>
-                                            <input type="date" name="tgl_akhir" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="form-group">
-                                            <label for="exampleInputName1" class="form-label">Tanggal Event :</label>
-                                            <input type="date" name="tgl_event" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="form-group">
-                                            <label for="exampleInputName1" class="form-label">Harga :</label>
-                                            <input type="text" name="harga" class="form-control" style="font-size: 19px" required>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="form-group">
-                                            <label for="exampleInputName1" class="form-label">Link Pendaftaran :</label>
-                                            <input type="text" name="link_daftar" class="form-control" required>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-group">
-                                    <label class="form=label">Deskripsi :</label>
-                                    <textarea class="form-control" name="deskripsi" required></textarea>
-                                </div>
-                            </div>
-                            <button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
-                            <button type="reset" class="btn btn-danger">Cancel</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <div class="card">
-                        <div class="card-body" style="margin-top: 20px;">
-                            <h4 class="card-title">Tabel Data Event</h4>
-                            </p>
-                            <div class="table-responsive">
-                                <table class="table table-hover" id="tabel-data">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Event</th>
-                                            <th>Penyelenggara</th>
-                                            <th>Kategori</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody> 
-                                      <?php
-                                        if(empty($hasil))
-                                        {
-                                            echo "<td colspan='5'>Data Kosong</td>";	
-                                            echo "</tr>";	
-                                        }else {
-                                          $no=1;
-                                        foreach ($hasil as $data):
-                                      ?> 
-                                        <tr>
-                                            <td><?php echo $no; ?></td>
-                                            <td><?php echo $data->nama_event ?></td>
-                                            <td><?php echo $data->penyelenggara ?></td>
-                                            <td><?php echo $data->kategori ?></td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-primary">Edit</button>
-                                                <button type="button" onclick="hapusdata('<?php echo $data->id_event ?>')" class="btn btn-sm btn-danger">Hapus</button>
-                                            </td>
-                                        </tr> 
-                                      <?php
-                                          $no++;
-                                          endforeach;
-                                        }
-                                      ?> 
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <script>
-                    function hapusdata(id_event) {
-                        if (confirm("Apakah yakin menghapus data ini?")) {
-                            window.open("<?php echo base_url()?>cadmin/hapusdata/" + id_event, "_self");
-                        }
-                    }
-                </script>
+                <?php
+                if (empty($konten)) {
+                    echo "<h2>Selamat Datang! ".$this->session->userdata('nama')."</h2>";
+                }else {
+                    echo $konten;
+                }
+                ?>
+
+                <?php
+                if (empty($table)) {
+                    echo "";
+                }else {
+                    echo "$table";
+                }
+                ?>
             </div>
         </div>
     </div>

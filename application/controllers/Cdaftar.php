@@ -6,7 +6,5 @@
 			$this->load->model('mdaftar');
 			$this->mdaftar->simpandaftar();
 		}
-		
-		
 	}
 ?>

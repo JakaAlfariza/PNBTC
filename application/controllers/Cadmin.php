@@ -16,21 +16,6 @@
 		{
 			$this->load->view('Vadmin');	
 		}	
-
-		function tampil(){
-			$data['hasil'] = $this->mdataevent->tampildata();
-			$this->load->view('vadmin',$data);
-		
-		}
-
-		function simpandata(){
-			$this->mdataevent->simpandata();
-		}
-
-		function hapusdata($id_event)
-		{
-			$this->mdataevent->hapusdata($id_event);	
-		}
 		
 		function logout()
 		{

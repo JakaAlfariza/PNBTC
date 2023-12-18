@@ -12,7 +12,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Register</title>
-    
+
     <!-- CSS -->
     <style>
         .centered-form {
@@ -63,7 +63,7 @@
 
         <div class="ml-auto">
             <ul class="navbar-nav font-weight-bold">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('chalaman/index');?>">
                         <i class="fas fa-home"></i> Home
                     </a>
@@ -79,7 +79,7 @@
             <p>Create new account</p>
         </div>
         <div class="row justify-content-center align-items-center" style="height: 60vh;">
-            <div class="card container-card text-dark">
+            <div class="card container-card text-dark" style="padding-bottom: 0px; padding-top: 10px;">
                 <div class="card-body">
                     <form name="formlogin" method="post" action="<?php echo base_url('cdaftar/simpandaftar'); ?>"
                         class="text-left">

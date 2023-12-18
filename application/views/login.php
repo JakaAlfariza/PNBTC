@@ -69,7 +69,7 @@
 
         <div class="ml-auto">
             <ul class="navbar-nav font-weight-bold">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('chalaman/index');?>">
                         <i class="fas fa-home"></i> Home
                     </a>
@@ -86,7 +86,7 @@
         </div>
         <div class="row justify-content-center align-items-center" style="height: 60vh;">
             <!-- Card Login -->
-            <div class="card container-card text-dark">
+            <div class="card container-card text-dark"style="padding-bottom: 0px; padding-top: 10px;">
                 <div class="card-body">
                     <form name="formlogin" method="post" action="<?php echo base_url('chalaman/proseslogin'); ?>"
                         class="text-left">

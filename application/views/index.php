@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Home</title>
+    <style>
+  #iklan {
+    height: 300px;
+    overflow: hidden; /* Ensure the container doesn't overflow */
+  }
+
+  .carousel-inner img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  
+</style>
   </head>
 
   <body>
@@ -41,10 +54,10 @@
             // Check if the user is logged in
             if ($this->session->userdata('id')) {
             // User is logged in
-            echo '<a class="nav-link" href="' . base_url('chalaman/logout') . '">Sign Out</a>';
+            echo '<a class="nav-link text-danger" href="' . base_url('chalaman/logout') . '"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>';
             }else {
             // User is not logged in
-            echo '<a class="nav-link" href="' . base_url('chalaman/login') . '">Login</a>';
+            echo '<a class="nav-link" href="' . base_url('chalaman/login') . '"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
             }
           ?>
         </li>
@@ -52,8 +65,37 @@
     </nav>
   
     <!-- Container -->
-	  <div class="container text-center mt-5">
-      <h1>ON PROGRESS</h1>
+	  <div class="container-fluid p-0 text-center">
+      <!-- Carousell -->
+      <div id="iklan" class="carousel slide" data-ride="carousel" style="width: 100vw;">
+  <ol class="carousel-indicators">
+    <li data-target="#iklan" data-slide-to="0" class="active"></li>
+    <li data-target="#iklan" data-slide-to="1"></li>
+    <li data-target="#iklan" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="<?= base_url('images/pnb.png');?>" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="<?= base_url('images/caro1.jpg');?>" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="<?= base_url('images/wallhaven.png');?>" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#iklan" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#iklan" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
       <?php
       echo '<pre>';
       print_r($this->session->all_userdata());

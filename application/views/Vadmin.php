@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,14 +13,28 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+        }
+
+        .navbar {
+            z-index: 1000;
+            height: 10vh; /* Adjust the height as needed */
+        }
+
+        .container-fluid {
+            display: flex;
+            height: 90vh; /* Adjust the height as needed */
+            overflow: hidden;
         }
 
         .col-sm-2 {
             background-color: #ffffff;
-            /* Set the background color for the sidebar */
             padding: 15px;
             min-height: 100%;
-            /* Ensure the sidebar takes at least the full height of its parent container */
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            height: 100%;
         }
 
         .list-group {
@@ -32,7 +47,11 @@
             border: none;
             width: 100%;
         }
-        
+
+        .col-sm-10 {
+            flex: 1;
+            overflow-y: auto;
+        }
     </style>
     <title>Admin Dashboard</title>
 </head>
@@ -48,24 +67,23 @@
         </ul>
     </nav>
     <!-- GRID -->
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-sm-2 bg-light" style="height: 100vh;">
-                <ul class="list-group">
-                    <a href="<?php echo base_url('cdashboard/tampilevent'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-                    <a href="<?php echo base_url('cevent/tampil'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-calendar-plus"></i> Data Event</a>
-                    <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user-tie"></i> Data Panitia</a>
-                    <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user"></i> Data User</a>
-                </ul>
-            </div>
-            <!-- Main Content -->
-            <div class="col-sm-10">
-                <div class="container mt-3">
+    <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+        <!-- Sidebar -->
+        <div class="col-sm-2 bg-light" id="sidebar">
+            <ul class="list-group">
+                <a href="<?php echo base_url('cdashboard/tampildata'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="<?php echo base_url('cevent/tampilevent'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-calendar-plus"></i> Data Event</a>
+                <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user-tie"></i> Data Panitia</a>
+                <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user"></i> Data User</a>
+            </ul>
+        </div>
+        <!-- Main Content -->
+        <div class="col-sm-10">
+            <div class="container mt-3">
                 <?php
                 if (empty($konten)) {
-                    echo "<h2>Selamat Datang! ".$this->session->userdata('username')."</h2>";
-                }else {
+                    echo "";
+                } else {
                     echo $konten;
                 }
                 ?>
@@ -73,7 +91,7 @@
                 <?php
                 if (empty($table)) {
                     echo "";
-                }else {
+                } else {
                     echo "$table";
                 }
                 ?>
@@ -85,4 +103,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-<div class="card mt-3">
+<div class="card mt-3 mb-3">
     <div class="card-body">
         <h4 class="card-title">Data Event</h4>
         </p>

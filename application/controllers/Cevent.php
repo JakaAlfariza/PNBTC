@@ -12,7 +12,7 @@
 			}
 		}	
 
-		function tampil(){
+		function tampilevent(){
 			$tampildata['hasil']=$this->mdataevent->tampildata();
 			$data['konten']=$this->load->view('event','',TRUE);
 			$data['table']=$this->load->view('event_table',$tampildata,TRUE);

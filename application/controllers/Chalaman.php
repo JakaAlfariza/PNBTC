@@ -9,7 +9,7 @@
         function index()
 		{
 			if ($this->session->userdata('role')=='admin') {
-					redirect('cadmin/vadmin');
+					redirect('cdashboard/tampildata');
 			}
 			$this->load->view('index');	
 		}
@@ -18,7 +18,7 @@
 		{
 			if ($this->session->userdata('role')!=null) {
 				if ($this->session->userdata('role')=='admin') {
-					redirect('cadmin/vadmin');
+					redirect('cdashboard/tampildata');
 				}elseif ($this->session->userdata('role')!='admin') {
 					redirect('chalaman/index');
 				}
@@ -31,7 +31,7 @@
 		{
 			if ($this->session->userdata('role')!=null) {
 				if ($this->session->userdata('role')=='admin') {
-					redirect('cadmin/vadmin');
+					redirect('cdashboard/tampildata');
 				}elseif ($this->session->userdata('role')!='admin') {
 					redirect('chalaman/index');
 				}
@@ -51,10 +51,6 @@
 			$this->mlogin->proseslogin();	
 		}
 
-		public function logout()
-	    {
-    	    $this->session->sess_destroy();
-    	    redirect('chalaman/login', 'refresh');
-    	}
+		
 	}
 ?>

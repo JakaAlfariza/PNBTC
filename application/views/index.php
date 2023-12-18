@@ -38,16 +38,15 @@
         </li>
         <li class="nav-item">
           <?php
-// Check if the user is logged in
-if ($this->session->userdata('id')) {
-    // User is logged in
-    echo '<a class="nav-link" href="' . base_url('chalaman/logout') . '">Sign Out</a>';
-} else {
-    // User is not logged in
-    echo '<a class="nav-link" href="' . base_url('chalaman/login') . '">Login</a>';
-}
-?>
-
+            // Check if the user is logged in
+            if ($this->session->userdata('id')) {
+            // User is logged in
+            echo '<a class="nav-link" href="' . base_url('chalaman/logout') . '">Sign Out</a>';
+            }else {
+            // User is not logged in
+            echo '<a class="nav-link" href="' . base_url('chalaman/login') . '">Login</a>';
+            }
+          ?>
         </li>
       </ul>
     </nav>
@@ -57,9 +56,9 @@ if ($this->session->userdata('id')) {
       <h1>ON PROGRESS</h1>
       <?php
       echo '<pre>';
-print_r($this->session->all_userdata());
-echo '</pre>';
-?>
+      print_r($this->session->all_userdata());
+      echo '</pre>';
+      ?>
     </div>
   
     <!-- Bootstrap JS and dependencies -->

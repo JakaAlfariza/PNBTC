@@ -33,15 +33,15 @@
         .header h1 {
             text-align: center;
             font-weight: bold;
-            color: #ffc107; /* Yellow color */
-            font-size: 4em; /* Adjust the value as needed */
+            color: #ffc107;
+            font-size: 4em;
             padding-top: 30px;
         }
 
         .header p {
             text-align: center;
-            color: #fff; /* White color */
-            font-size: 1.2em; /* Adjust the value as needed */
+            color: #fff; 
+            font-size: 1.2em;
             margin-top: -10px;
         }
 
@@ -94,9 +94,12 @@
                             <label for="username">Username:</label>
                             <input type="text" class="form-control" name="username" placeholder="Username" Required>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password" Required>
+                            <input type="password" class="form-control" name="password" placeholder="Password" Required>                
+                        </div>
+                        <div class="mb-3">
+                        <a href="<?= base_url('chalaman/resetpass');?>">Lupa Password?</a>
                         </div>
                         <button type="submit" class="btn text-white btn-login">L O G I N</button>
                         <p class="text-center mt-3">Belum memiliki akun? <a

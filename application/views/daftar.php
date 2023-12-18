@@ -12,8 +12,9 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Register</title>
+    
+    <!-- CSS -->
     <style>
-
         .centered-form {
             display: flex;
             flex-direction: column;
@@ -26,8 +27,8 @@
         .header h1 {
             text-align: center;
             font-weight: bold;
-            color: #ffc107; /* Yellow color */
-            font-size: 4em; /* Adjust the value as needed */
+            color: #ffc107; 
+            font-size: 4em; 
             padding-top: 30px;
         }
 

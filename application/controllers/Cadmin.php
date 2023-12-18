@@ -7,6 +7,9 @@
 			$this->load->model('mvalidasi');
 			$this->mvalidasi->validasi();
 			$this->load->model('mdataevent');
+			if ($this->session->userdata('role')!='admin') {
+				redirect('chalaman/index');
+			}
 		}
 		
 		function vadmin()

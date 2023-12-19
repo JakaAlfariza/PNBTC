@@ -21,7 +21,7 @@
     }
 
     .card-body-1 i {
-        margin-right: 25px;
+        margin-right: 20px;
         font-size: 50px;
         background-color: #04bade;
         height: 80px; /* Adjust the height as needed */
@@ -29,12 +29,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 5px; /* Optional: Add border-radius for rounded corners */
         color: #fff;
     }
 
     .card-body-2 i {
-        margin-right: 25px;
+        margin-right: 20px;
         font-size: 50px;
         background-color: #0496c7;
         height: 80px; /* Adjust the height as needed */
@@ -42,12 +41,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 5px; /* Optional: Add border-radius for rounded corners */
         color: #fff;
+    }
+
+    .card-title{
+        margin-bottom: 0px;
     }
     
     .card-body-3 i {
-        margin-right: 25px;
+        margin-right: 20px;
         font-size: 50px;
         background-color: #009ca5;
         height: 80px; /* Adjust the height as needed */
@@ -55,12 +57,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 5px; /* Optional: Add border-radius for rounded corners */
         color: #fff;
     }
 
     .card-body p {
-        font-size: 18px;
+        margin-top: 0px;
+        font-size: 0px;
     }
 </style>
 

@@ -41,6 +41,11 @@
 			$this->load->view('login');	
 		}
 
+		function lupaPass()
+		{
+			$this->load->view('lupa_pass');
+		}
+
 		function proseslogin()
 		{
 			if ($this->session->userdata('role')!=null) {
@@ -49,6 +54,12 @@
 			}
 			$this->load->model('mlogin');
 			$this->mlogin->proseslogin();	
+		}
+
+		function prosesReset(){
+			$this->load->model('mlupapass');
+			$this->mlupapass->resetPass();
+			$this->mlupapass->updatePass();
 		}
 
 		

@@ -62,6 +62,11 @@
 			$this->mlupapass->updatePass();
 		}
 
+		function logout()
+		{
+			$this->session->sess_destroy();
+			redirect('chalaman/login','refresh');	
+		}
 		
 	}
 ?>

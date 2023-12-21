@@ -4,12 +4,7 @@
 		public function __construct()
 		{
 			parent::__construct();
-			$this->load->model('mvalidasi');
-			$this->mvalidasi->validasi();
 			$this->load->model('mdaftar');
-			if ($this->session->userdata('role')!='admin') {
-				redirect('chalaman/index');
-			}
 		}	
 
 		function simpandaftar()

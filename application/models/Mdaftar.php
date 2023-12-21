@@ -46,6 +46,7 @@
                 $this->db->insert('user', $data_to_insert);
 
                 // If the role is 'admin', redirect to 'cdaftar/tampilakun'
+                
                 if ($role === 'admin') {
                     redirect('cdaftar/tampilakun', 'refresh');
                 } else {

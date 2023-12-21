@@ -2,6 +2,7 @@
     .container {
         background-color: white;
         padding: 10px;
+        height: 95%;
     }
 
     .card-1 {
@@ -13,6 +14,11 @@
     .card-3 {
     }
 
+    .custom-btn {
+        background-color: #004789;
+        color: #fff;
+    }
+    
     .card-body-1,.card-body-2,.card-body-3 {
         display: flex;
         align-items: center;
@@ -103,7 +109,5 @@
                 </div>
             </div>
         </div>
-
-        <br>CRUD CAROUSEL, COMING SOON!
     </div>
 </div>

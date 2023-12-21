@@ -68,22 +68,24 @@
 	  <div class="container-fluid p-0 text-center">
       <!-- Carousell -->
       <div id="iklan" class="carousel slide" data-ride="carousel" style="width: 100vw;">
-  <ol class="carousel-indicators">
-    <li data-target="#iklan" data-slide-to="0" class="active"></li>
-    <li data-target="#iklan" data-slide-to="1"></li>
-    <li data-target="#iklan" data-slide-to="2"></li>
-  </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="<?= base_url('images/pnb.png');?>" alt="First slide">
+    <?php
+    $firstItem = true; // To set the first item as active
+    foreach ($karosel as $item):
+    ?>
+    <div class="carousel-item <?php echo $firstItem ? 'active' : ''; ?>">
+      <img class="d-block w-100" src="<?php echo base_url('images/' . $item->gambar_k); ?>" alt="<?php echo $item->nama_karosel; ?>">
+      <div class="carousel-caption d-none d-md-block">
+        <h5><?php echo $item->nama_karosel; ?></h5>
+        <p>Penyelenggara: <?php echo $item->penyelenggara; ?></p>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?= base_url('images/caro1.jpg');?>" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?= base_url('images/wallhaven.png');?>" alt="Third slide">
-    </div>
+    <?php
+    $firstItem = false; // Set firstItem to false after the first iteration
+    endforeach;
+    ?>
   </div>
+  <!-- Add controls if needed -->
   <a class="carousel-control-prev" href="#iklan" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -93,8 +95,6 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
-
 
       <?php
       echo '<pre>';

@@ -11,10 +11,8 @@
 
         .col-sm-2 {
             background-color: #ffffff;
-            /* Set the background color for the sidebar */
             padding: 15px;
             min-height: 100%;
-            /* Ensure the sidebar takes at least the full height of its parent container */
         }
 
         .list-group {
@@ -27,11 +25,16 @@
             border: none;
             width: 100%;
         }
+
+        .custom-btn {
+            background-color: #004789;
+            color: #fff;
+        }
         
     </style>
 
     <!-- Main Content -->
-                    <div class="card">
+                    <div class="card mt-3">
                         <div class="card-body">
                             <h2 class="card-title d-flex justify-content-center mb-4">Tambah Event</h2>
                             <div class="row">
@@ -121,6 +124,3 @@
             }
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

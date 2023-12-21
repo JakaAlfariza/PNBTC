@@ -52,6 +52,17 @@
             flex: 1;
             overflow-y: auto;
         }
+        
+        .custom-btn {
+        background-color: #004789;
+        color: #fff;
+        }
+
+        .custom-btn:hover,
+        .custom-btn:active {
+            background-color: #0066a2;
+            color: #fff;
+        }
     </style>
     <title>Admin Dashboard</title>
 </head>
@@ -60,22 +71,24 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand font-weight-bold" href="<?php echo base_url('cdashboard/tampildata'); ?>">
-            <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt=""> PNBCC [<?= strtoupper($this->session->userdata('role')); ?>]</h2>
+            <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt=""> PNBCC [<?= strtoupper($this->session->userdata('role')); ?>]
         </a>
         <ul class="navbar-nav font-weight-bold ml-auto">
             <li class="nav-item">
                 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Profile</a>
-    <a class="dropdown-item text-danger" href="<?= base_url('cadmin/logout');?>">Logout</a>
-  </div>
-</div>
+                    <button class="btn btn-secondary dropdown-toggle custom-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user"></i>
+                        <span class="ml-2"><?= $this->session->userdata('username'); ?></span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item text-danger" href="<?= base_url('cadmin/logout');?>">Logout</a>
+                    </div>
+                </div>
             </li>
         </ul>
     </nav>
+
     <!-- GRID -->
     <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
         <!-- Sidebar -->
@@ -83,8 +96,8 @@
             <ul class="list-group">
                 <a href="<?php echo base_url('cdashboard/tampildata'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-gauge"></i> Dashboard</a>
                 <a href="<?php echo base_url('cevent/tampilevent'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-calendar-plus"></i> Data Event</a>
-                <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user-tie"></i> Data Panitia</a>
-                <a href="<?php echo base_url('#'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user"></i> Data User</a>
+                <a href="<?php echo base_url('ckarosel/tampilkarosel'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-image"></i> Data Karosel</a>
+                <a href="<?php echo base_url('cdaftar/tampilakun'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user"></i> Data Akun</a>
             </ul>
         </div>
         <!-- Main Content -->
@@ -109,8 +122,8 @@
         </div>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha384-ZVPV9PZu1dDJZpYM9fOv4X27kTK+TO9hGlB6l7h6t9zOMqFwe6Kt1t9vbwAymABa" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-rs/b5IXU6bP9dQpX2rW6JvuyuUAKZibXCaG2sGzBkAt4Qpu9v/tAuh9zl5+laWfa" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-fz5cWVz6W59o3E5hBCb/T1A6QKs5pNzppLXFn7FISy9Vq2RljeRWXjgAIiGus0o" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@
 		public function __construct()
 		{
 			parent::__construct();
+			$this->load->model('mkarosel');
 		}
 
         function index()
@@ -11,7 +12,8 @@
 			if ($this->session->userdata('role')=='admin') {
 					redirect('cdashboard/tampildata');
 			}
-			$this->load->view('index');	
+			$data['karosel'] = $this->mkarosel->getCarouselImages();
+			$this->load->view('index', $data);
 		}
 
 		function daftar()

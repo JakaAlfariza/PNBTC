@@ -65,8 +65,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-group">
-                                        <label for="exampleInputName1" class="form-label">Role :</label>
+                                        <label for="exampleInputName1" class="form-label">Role:</label>
                                         <select name="role" class="form-control" required>
+                                            <option value="">Pilih Role</option>
                                             <option value="admin">Admin</option>
                                             <option value="panitia">Panitia</option>
                                             <option value="user">User</option>

@@ -7,9 +7,9 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama karosel</th>
+                        <th>Judul</th>
                         <th>Gambar</th>
-                        <th>Penyelenggara</th>
+                        <th>Nama Sponsor</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -27,7 +27,7 @@
                         <td><?php echo $data->nama_karosel ?></td>
                         <!-- Display small images -->
                         <td><img src="<?php echo base_url('images/' . $data->gambar_k); ?>" alt="Image" style="max-width: 50px; max-height: 50px;"></td>
-                        <td><?php echo $data->penyelenggara ?></td>
+                        <td><?php echo $data->nama_sponsor ?></td>
                         <td>
                             <button type="button" class="btn btn-sm btn-primary">Edit</button>
                             <button type="button" onclick="hapusdata('<?php echo $data->id_karosel ?>')" class="btn btn-sm btn-danger">Hapus</button>

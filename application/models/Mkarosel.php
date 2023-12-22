@@ -4,12 +4,12 @@ class Mkarosel extends CI_Model{
         {
             $nama_karosel=$this->input->post('nama_karosel');
             $gambar_k=$this->input->post('gambar_k');
-            $penyelenggara=$this->input->post('penyelenggara');
+            $nama_sponsor=$this->input->post('nama_sponsor');
         
             $data=array(
                 'nama_karosel'=>$nama_karosel,
                 'gambar_k'=>$gambar_k,
-                'penyelenggara'=>$penyelenggara,
+                'nama_sponsor'=>$nama_sponsor,
             );
         
             $this->db->insert('karosel',$data);

@@ -1,36 +1,36 @@
 <div class="card mt-3 mb-3">
     <div class="card-body">
-        <h4 class="card-title">Data Event</h4>
+        <h4 class="card-title">Data Karosel</h4>
         </p>
         <div class="table-responsive">
             <table class="table table-hover" id="tabel-data">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Event</th>
-                        <th>Penyelenggara</th>
-                        <th>Kategori</th>
+                        <th>Judul</th>
+                        <th>Gambar</th>
+                        <th>Nama Sponsor</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody> 
                     <?php
-                    if(empty($hasil))
-                    {
+                    if (empty($hasil)) {
                         echo "<td colspan='5'>Data Kosong</td>";	
                         echo "</tr>";	
-                    }else {
+                    } else {
                         $no=1;
-                    foreach ($hasil as $data):
+                        foreach ($hasil as $data):
                     ?> 
                     <tr>
                         <td><?php echo $no; ?></td>
-                        <td><?php echo $data->nama_event ?></td>
-                        <td><?php echo $data->penyelenggara ?></td>
-                        <td><?php echo $data->kategori ?></td>
+                        <td><?php echo $data->nama_karosel ?></td>
+                        <!-- Display small images -->
+                        <td><img src="<?php echo base_url('images/' . $data->gambar_k); ?>" alt="Image" style="max-width: 50px; max-height: 50px;"></td>
+                        <td><?php echo $data->nama_sponsor ?></td>
                         <td>
                             <button type="button" class="btn btn-sm btn-primary">Edit</button>
-                            <button type="button" onclick="hapusdata('<?php echo $data->id_event ?>')" class="btn btn-sm btn-danger">Hapus</button>
+                            <button type="button" onclick="hapusdata('<?php echo $data->id_karosel ?>')" class="btn btn-sm btn-danger">Hapus</button>
                         </td>
                     </tr> 
                     <?php

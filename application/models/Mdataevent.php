@@ -31,7 +31,7 @@ class Mdataevent extends CI_Model{
         
             $this->db->insert('event',$data);
             $this->session->set_flashdata('pesan','Data berhasil disimpan');
-            redirect('cevent/tampil','refresh');
+            redirect('cevent/tampilevent','refresh');
         }
 
         function tampildata()
@@ -54,9 +54,7 @@ class Mdataevent extends CI_Model{
         {
             $sql="delete from event where id_event='".$id_event."'";
             $this->db->query($sql);
-            redirect('cevent/tampil','refresh');	
+            redirect('cevent/tampilevent','refresh');	
         }
-
     }
-
 ?>

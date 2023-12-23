@@ -82,28 +82,29 @@
     <div class="container-fluid centered-form">
         <div class="header">
             <h1>PNBCC</h1>
-            <p>Sign in to your account</p>
+            <p>Recover your password</p>
         </div>
         <div class="row justify-content-center align-items-center" style="height: 60vh;">
             <!-- Card Login -->
             <div class="card container-card text-dark"style="padding-bottom: 0px; padding-top: 10px;">
                 <div class="card-body">
-                    <form name="formlogin" method="post" action="<?php echo base_url('chalaman/proseslogin'); ?>"
+                    <form name="formlogin" method="post" action="<?php echo base_url('chalaman/prosesreset'); ?>"
                         class="text-left">
+                        <div class="mb-3">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                <?php echo $email_error; ?>
+                            </div>
                         <div class="mb-3">
                             <label for="username">Username:</label>
                             <input type="text" class="form-control" name="username" placeholder="Username" Required>
                         </div>
                         <div class="mb-2">
-                            <label for="password">Password:</label>
+                            <label for="password">New Password:</label>
                             <input type="password" class="form-control" name="password" placeholder="Password" Required>                
                         </div>
-                        <div class="mb-3">
-                        <a href="<?= base_url('chalaman/lupaPass');?>">Lupa Password?</a>
-                        </div>
-                        <button type="submit" class="btn text-white btn-login">L O G I N</button>
-                        <p class="text-center mt-3">Belum memiliki akun? <a
-                                href="<?php echo base_url('chalaman/daftar'); ?>">Daftar disini</a></p>
+                        <button type="submit" class="btn text-white btn-login">R E S E T</button>
                     </form>
                 </div>
             </div>

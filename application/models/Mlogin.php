@@ -25,7 +25,7 @@
 
                 // Redirect based on user role
                 if ($data->role == 'admin') {
-                    redirect('cadmin/vadmin', 'refresh');
+                    redirect('cdashboard/tampildata', 'refresh');
                 } elseif ($data->role == 'user') {
                     redirect('chalaman/index', 'refresh');
                 } else {
@@ -34,12 +34,12 @@
                 }
             } else {
                 $this->session->set_flashdata('pesan', 'Login gagal...');
-                echo "<script>alert('Username/Password Salah');</script>";
+                echo "<script>alert('Password Salah');</script>";
                 redirect('chalaman/login', 'refresh');
             }
         } else {
             $this->session->set_flashdata('pesan', 'Login gagal...');
-            echo "<script>alert('Username/Password ga bener');</script>";
+            echo "<script>alert('Username tidak terdaftar');</script>";
             redirect('chalaman/login', 'refresh');
         }
     }

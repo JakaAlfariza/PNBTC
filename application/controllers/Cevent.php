@@ -19,7 +19,10 @@
 			$this->load->view('vadmin',$data);
 		
 		}
-
+		function updateEvent($id_event) {
+			$this->mdataevent->updateEvent($id_event);
+			
+		}
 		function simpandata(){
 			$this->mdataevent->simpandata();
 		}
@@ -27,6 +30,11 @@
 		function hapusdata($id_event)
 		{
 			$this->mdataevent->hapusdata($id_event);	
+		}
+
+		function getEvent($id_event) {
+			$this->mdataevent->getEvent($id_event);
+		
 		}
 	}
 ?>

@@ -56,5 +56,27 @@ class Mdataevent extends CI_Model{
             $this->db->query($sql);
             redirect('cevent/tampilevent','refresh');	
         }
+
+        function updateEvent($id_event)
+        {
+            $data = $_POST;
+
+            $condition = array('id_event' => $id_event);
+
+            $response = $this->db->update('event',$data, $condition);
+ 
+            
+            redirect('cevent/tampilevent','refresh');	
+        }
+
+
+        function getEvent($id_event) {
+
+            $this->db->select('*')->from('event')->where('id_event',$id_event);
+            $data = $this->db->get()->result();
+
+            echo json_encode($data);
+            
+        }
     }
 ?>

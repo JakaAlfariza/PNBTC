@@ -29,7 +29,7 @@
                         <td><img src="<?php echo base_url('images/' . $data->gambar_k); ?>" alt="Image" style="max-width: 50px; max-height: 50px;"></td>
                         <td><?php echo $data->nama_sponsor ?></td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-primary">Edit</button>
+                            <button type="button" id="edit-<?= $data->id_karosel ?>" class="btn btn-sm btn-primary">Edit</button>
                             <button type="button" onclick="hapusdata('<?php echo $data->id_karosel ?>')" class="btn btn-sm btn-danger">Hapus</button>
                         </td>
                     </tr> 
@@ -44,3 +44,29 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('[id^=edit]').on('click',function(){
+            const id = $(this).attr('id').split('-')[1]; 
+
+            $.ajax({
+                url : "<?=base_url('ckarosel/getkarosel/')?>"+id,
+                type : "GET",
+                dataType : "json",
+                success : function (response) {
+                    // console.log(response);
+                    $('#form').attr("action", "<?=base_url('ckarosel/updatekarosel/')?>"+id);
+
+                    $('#nama_karosel').val(response[0].nama_karosel);
+                    
+                    $('#nama_sponsor').val(response[0].nama_sponsor); 
+                  
+
+                },
+                error : function (xhr, status, error) {
+                 console.error(error);   
+                }
+            });
+        });
+    });
+</script>

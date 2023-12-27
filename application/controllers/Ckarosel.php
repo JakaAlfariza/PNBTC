@@ -28,5 +28,15 @@
 		{
 			$this->mkarosel->hapusdata($id_karosel);	
 		}
+
+		function updatekarosel($id_karosel) {
+			$this->mkarosel->updatekarosel($id_karosel);
+			
+		}
+
+		function getkarosel($id_karosel) {
+			$this->mkarosel->getkarosel($id_karosel);
+		
+		}
 	}
 ?>

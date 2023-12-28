@@ -25,5 +25,15 @@
 		{
 			$this->mdaftar->hapusakun($id);	
 		}
+		
+		function getAkun($id)
+		{
+			$this->mdaftar->getAkun($id);	
+		}
+
+		function updateAkun($id)
+		{
+			$this->mdaftar->updateAkun($id);	
+		}
 	}
 ?>

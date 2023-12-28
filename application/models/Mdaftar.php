@@ -80,6 +80,24 @@
             $this->db->query($sql);
             redirect('cdaftar/tampilakun','refresh');    
         }
+        function getAkun($id)
+        {
+            $sql="select * from user where id='".$id."'";
+            $data = $this->db->query($sql)->result();
+            echo json_encode($data);
+        } 
+
+        function updateAkun($id)
+        {
+            $data = $_POST;
+
+            $condition = array('id' => $id);
+
+            $response = $this->db->update('user',$data, $condition);
+ 
+            
+            redirect('Cdaftar/tampilakun','refresh');	 
+        }
 
         function tampilakun()
         {

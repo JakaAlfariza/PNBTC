@@ -40,14 +40,14 @@
                             <form class="forms-sample" method="POST" action="<?php echo base_url('cdaftar/simpandaftar'); ?>">
                                 <div class="mb-3">
                                     <label for="email">Email:</label>
-                                    <input type="email" class="form-control <?php if (!empty($email_error)) echo 'is-invalid'; ?>" name="email" placeholder="Email" required>
+                                    <input type="email" class="form-control <?php if (!empty($email_error)) echo 'is-invalid'; ?>" name="email" id="email"  placeholder="Email" required>
                                     <div class="invalid-feedback">
                                         <?php echo $email_error; ?>
                                     </div>
                                 </div>
                                 <div class="mb-3" style="margin-top: 15px;">
                                     <label for="username">Username:</label>
-                                    <input type="text" class="form-control <?php if (!empty($username_error)) echo 'is-invalid'; ?>" name="username" placeholder="Username" required>
+                                    <input type="text" class="form-control <?php if (!empty($username_error)) echo 'is-invalid'; ?>" name="username" id="username" placeholder="Username" required>
                                     <div class="invalid-feedback">
                                         <?php echo $username_error; ?>
                                     </div>
@@ -66,7 +66,7 @@
                                 <div class="mb-3">
                                     <div class="form-group">
                                         <label for="exampleInputName1" class="form-label">Role:</label>
-                                        <select name="role" class="form-control" required>
+                                        <select name="role" class="form-control" id="role" required>
                                             <option value="">Pilih Role</option>
                                             <option value="admin">Admin</option>
                                             <option value="panitia">Panitia</option>

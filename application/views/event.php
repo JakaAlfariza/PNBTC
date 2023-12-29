@@ -48,57 +48,68 @@
                             <h2 class="card-title d-flex justify-content-center mb-4">Tambah Event</h2>
                             <div class="row">
                                 <div class="col-6">
-                                    <form class="forms-sample" method="POST" action="<?php echo base_url('cevent/simpandata'); ?>">
+                                    <form class="forms-sample" method="POST" id="form" action="<?php echo base_url('cevent/simpandata'); ?>">
                                         <div class="mb-3">
                                             <div class="form-label">
                                                 <label for="exampleInputName1" class="form-label">Nama Event:</label>
-                                                <input type="text" name="nama_event" class="form-control" style="font-size:17px" placeholder="Nama Event" required>
+                                                <input type="text" id="nama_event" name="nama_event" class="form-control" style="font-size:17px" placeholder="Nama Event" required>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-group">
-                                                <label for="exampleInputName1" class="form-label">Gambar:</label>
-                                                <input type="file" name="gambar" class="form-control" required>
+                                                <label for="exampleInputName1"  class="form-label">Gambar:</label>
+                                                <input type="file" name="gambar" id="gambar" class="form-control" required>
                                                 <p>*Gunakan ukuran gambar 000px*000px</p>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-group">
                                                 <label for="exampleInputName1" class="form-label">Penyelenggara:</label>
-                                                <input type="text" name="penyelenggara" class="form-control" placeholder="Penyelenggara" required>
+                                                <input type="text" name="penyelenggara" id="penyelenggara" class="form-control" placeholder="Penyelenggara" required>
                                             </div>
                                         </div>
-                                        
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputName1" class="form-label">Lokasi Event:</label>
+                                                <input type="text" name="lokasi" class="form-control" placeholder="Lokasi Event" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="form-group">
+                                                    <label for="exampleInputName1" class="form-label">Kategori :</label>
+                                                    <input type="text" name="kategori" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
                                   </div>
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <div class="form-group">
                                             <label for="exampleInputName1" class="form-label">Tanggal Awal Pendaftaran:</label>
-                                            <input type="date" name="tgl_awal" class="form-control" required>
+                                            <input type="date" name="tgl_awal" id="tgl_awal" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-group">
                                             <label for="exampleInputName1" class="form-label">Tanggal Akhir Pendaftaran:</label>
-                                            <input type="date" name="tgl_akhir" class="form-control" required>
+                                            <input type="date" name="tgl_akhir" id="tgl_akhir" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-group">
                                             <label for="exampleInputName1" class="form-label">Tanggal Event:</label>
-                                            <input type="date" name="tgl_event" class="form-control" required>
+                                            <input type="date" name="tgl_event" id="tgl_event" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-group">
                                             <label for="exampleInputName1" class="form-label">Harga:</label>
-                                            <input type="text" name="harga" class="form-control" placeholder="Harga" required>
+                                            <input type="text" name="harga" id="harga" class="form-control" placeholder="Harga" required>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-group">
                                             <label for="exampleInputName1" class="form-label">Link Pendaftaran:</label>
-                                            <input type="text" name="link_daftar" class="form-control" placeholder="Link Pendaftaran" required>
+                                            <input type="text" name="link_daftar" id="link_daftar" class="form-control" placeholder="Link Pendaftaran" required>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +120,7 @@
                                     <textarea class="form-control" name="deskripsi" id="summernote" required></textarea>
                                 </div>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
                             <button type="reset" class="btn btn-danger">Cancel</button>
                             </form>
                         </div>

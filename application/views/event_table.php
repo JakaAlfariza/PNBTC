@@ -29,7 +29,7 @@
                         <td><?php echo $data->penyelenggara ?></td>
                         <td><?php echo $data->kategori ?></td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-primary">Edit</button>
+                            <button type="button" id="edit-<?= $data->id_event ?>" class="btn btn-sm btn-primary">Edit</button>
                             <button type="button" onclick="hapusdata('<?php echo $data->id_event ?>')" class="btn btn-sm btn-danger">Hapus</button>
                         </td>
                     </tr> 
@@ -44,3 +44,41 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+    
+        
+        $('[id^=edit]').on('click',function(){
+            const id = $(this).attr('id').split('-')[1];
+
+            $.ajax({
+                url : "<?=base_url('Cevent/getEvent/')?>"+id,
+                type : "GET",
+                dataType : "json",
+                success : function (response) {
+                    
+                    $('#form').attr("action", "<?=base_url('Cevent/updateEvent/')?>"+id);
+
+                    $('#nama_event').val(response[0].nama_event);
+                    
+                    $('#penyelenggara').val(response[0].penyelenggara); 
+                    $('#lokasi').val(response[0].lokasi);
+                    $('#kategori').val(response[0].kategori);
+                    $('#tgl_awal').val(response[0].tgl_awal);  
+                    $('#tgl_akhir').val(response[0].tgl_akhir);
+                    $('#tgl_event').val(response[0].tgl_event);
+                    $('#harga').val(response[0].harga);
+                    $('#link_daftar').val(response[0].link_daftar);
+                    $('#summernote').summernote('code',response[0].deskripsi);
+                    console.log(response[0].deskripsi);
+
+                },
+                error : function (xhr, status, error) {
+                 console.error(error);   
+                }
+            });
+        });
+    });
+</script>

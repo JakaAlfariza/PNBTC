@@ -45,5 +45,27 @@ class Mkarosel extends CI_Model{
             $query = $this->db->get('karosel');
             return $query->result();
         }
+
+        function updatekarosel($id_karosel)
+        {
+            $data = $_POST;
+
+            $condition = array('id_karosel' => $id_karosel);
+
+            $response = $this->db->update('karosel',$data, $condition);
+ 
+            
+            redirect('ckarosel/tampilkarosel','refresh');	
+        }
+
+
+        function getkarosel($id_karosel) {
+
+            $this->db->select('*')->from('karosel')->where('id_karosel',$id_karosel);
+            $data = $this->db->get()->result();
+
+            echo json_encode($data);
+            
+        }
     }
 ?>

@@ -68,26 +68,7 @@
                                                 <input type="text" name="penyelenggara" class="form-control" placeholder="Penyelenggara" required>
                                             </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <div class="form-group">
-                                                <label for="exampleInputName1" class="form-label">Lokasi Event:</label>
-                                                <input type="text" name="lokasi" class="form-control" placeholder="Lokasi Event" required>
-                                            </div>
-                                                <div class="mb-3">
-                                                <div class="form-group">
-                                                    <label for="exampleInputName1" class="form-label">Kategori :</label>
-                                                    <select name="kategori" class="form-control" required>
-                                                    <option value="">Pilih kategori</option>
-                                                    <option value="Tech & Science">Tech & Science</option>
-                                                    <option value="Culinary & hospitality">Culinary & hospitality</option>
-                                                    <option value="Bussiness & Innovation">Bussiness & Innovation</option>
-                                                    <option value="Civil & Enginering">Civil & Enginering</option>
-                                                    <option value="Art">Art</option>
-                                                    <option value="Sport">Sport</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                        </div>
+                                        
                                   </div>
                                 <div class="col-6">
                                     <div class="mb-3">

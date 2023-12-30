@@ -17,6 +17,7 @@
                     'id' => $data->id,
                     'username' => $data->username,
                     'email' => $data->email,
+                    'nama' => $data->nama,
                     'role' => $data->role // assuming role is a field in your user table
                 );
 

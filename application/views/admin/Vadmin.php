@@ -81,7 +81,7 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle custom-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user"></i>
-                        <span class="ml-2"><?= $this->session->userdata('username'); ?></span>
+                        <span class="ml-2"><?= $this->session->userdata('nama'); ?></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Profile</a>
@@ -98,9 +98,10 @@
         <div class="col-sm-2 bg-light" id="sidebar">
             <ul class="list-group">
                 <a href="<?php echo base_url('cdashboard/tampildata'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+                <a href="<?php echo base_url('cdaftar/tampilakun'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user"></i> Data Akun</a>
                 <a href="<?php echo base_url('cevent/tampilevent'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-calendar-plus"></i> Data Event</a>
                 <a href="<?php echo base_url('ckarosel/tampilkarosel'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-image"></i> Data Karosel</a>
-                <a href="<?php echo base_url('cdaftar/tampilakun'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-user"></i> Data Akun</a>
+                <a href="<?php echo base_url('ckategori/tampilkategori'); ?>" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-list"></i></i> Data Kategori</a>
             </ul>
         </div>
         <!-- Main Content -->

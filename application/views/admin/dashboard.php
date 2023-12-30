@@ -109,5 +109,7 @@
                 </div>
             </div>
         </div>
+
+        <br>dibawah ini rencananya statistik data event yang paling banyak diklik (kalau keburu dibuat :v)
     </div>
 </div>

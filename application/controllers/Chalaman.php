@@ -26,7 +26,7 @@
 				}
 				redirect('chalaman/index');
 			}
-			$this->load->view('daftar');	
+			$this->load->view('/auth/daftar');	
 		}
 
 		function login()
@@ -40,12 +40,12 @@
 				redirect('chalaman/index');
 			}
 
-			$this->load->view('login');	
+			$this->load->view('/auth/login');	
 		}
 
 		function lupaPass()
 		{
-			$this->load->view('lupa_pass');
+			$this->load->view('/auth/lupa_pass');
 		}
 
 		function proseslogin()

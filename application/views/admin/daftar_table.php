@@ -14,6 +14,7 @@
                         <th>No</th>
                         <th>Email</th>
                         <th>Username</th>
+                        <th>Nama</th>
                         <th>Role</th>
                         <th>Aksi</th>
                     </tr>
@@ -30,9 +31,9 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $data->email ?></td>
                         <td><?php echo $data->username ?></td>
+                        <td><?php echo $data->nama ?></td>
                         <td><?php echo $data->role ?></td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-primary" id="edit-<?=$data->id;?>">Edit</button>
                             <button type="button" onclick="hapusakun('<?php echo $data->id ?>')" class="btn btn-sm btn-danger">Hapus</button>
                         </td>
                     </tr> 
@@ -47,33 +48,6 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('[id^=edit]').on('click',function(){
-            const id = $(this).attr('id').split('-')[1]; 
-
-            $.ajax({
-                url : "<?=base_url('Cdaftar/getAkun/')?>"+id,
-                type : "GET",
-                dataType : "json",
-                success : function (response) {
-                    // console.log(response);
-                    $('#form').attr("action", "<?=base_url('Cdaftar/updateAkun/')?>"+id);
-
-                    $('#email').val(response[0].email);
-                    $('#username').val(response[0].username);
-                    $('#passwordInput').val(response[0].password); 
-                    $('#role').val(response[0].role); 
-                  
-
-                },
-                error : function (xhr, status, error) {
-                 console.error(error);   
-                }
-            });
-        });
-    });
-</script>
 <script>
     function filterByRole(role) {
         // Hide all rows initially

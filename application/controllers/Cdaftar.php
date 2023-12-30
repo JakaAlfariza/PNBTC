@@ -15,9 +15,9 @@
 
 		function tampilakun(){
 			$tampilakun['hasil']=$this->mdaftar->tampilakun();
-			$data['konten']=$this->load->view('daftar_admin','',TRUE);
-			$data['table']=$this->load->view('daftar_table',$tampilakun,TRUE);
-			$this->load->view('vadmin',$data);
+			$data['konten']=$this->load->view('/admin/daftar_admin','',TRUE);
+			$data['table']=$this->load->view('/admin/daftar_table',$tampilakun,TRUE);
+			$this->load->view('/admin/vadmin',$data);
 		
 		}
 	
@@ -26,14 +26,5 @@
 			$this->mdaftar->hapusakun($id);	
 		}
 		
-		function getAkun($id)
-		{
-			$this->mdaftar->getAkun($id);	
-		}
-
-		function updateAkun($id)
-		{
-			$this->mdaftar->updateAkun($id);	
-		}
 	}
 ?>

@@ -89,6 +89,11 @@
                             <div class="invalid-feedback">
                                 <?php echo $email_error; ?>
                             </div>
+                        </div>
+                        <div class="mb-3" style="margin-top: 15px;">
+                            <label for="username">Nama:</label>
+                            <input type="text" class="form-control" name="nama" placeholder="Nama" required>                            
+                        </div>
                         <div class="mb-3" style="margin-top: 15px;">
                             <label for="username">Username:</label>
                             <input type="text" class="form-control <?php if (!empty($username_error)) echo 'is-invalid'; ?>" name="username" placeholder="Username" required>

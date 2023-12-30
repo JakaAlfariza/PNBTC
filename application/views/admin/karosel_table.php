@@ -25,7 +25,6 @@
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $data->nama_karosel ?></td>
-                        <!-- Display small images -->
                         <td><img src="<?php echo base_url('images/' . $data->gambar_k); ?>" alt="Image" style="max-width: 50px; max-height: 50px;"></td>
                         <td><?php echo $data->nama_sponsor ?></td>
                         <td>
@@ -54,19 +53,23 @@
                 type : "GET",
                 dataType : "json",
                 success : function (response) {
-                    // console.log(response);
+                    console.log(response);
                     $('#form').attr("action", "<?=base_url('ckarosel/updatekarosel/')?>"+id);
-
                     $('#nama_karosel').val(response[0].nama_karosel);
-                    
                     $('#nama_sponsor').val(response[0].nama_sponsor); 
-                  
-
+                    // Show the existing image and set its source
+                    $('#tampilGambar').show();
+                    $('#tampil_gambar').attr('src', "<?php echo base_url('images/')?>"+response[0].gambar_k);
                 },
-                error : function (xhr, status, error) {
-                 console.error(error);   
+                error: function (xhr, status, error) {
+                    console.error(error);
                 }
             });
+        });
+
+        // Add a function to hide the existing image when the form is reset
+        $('button[type="reset"]').on('click', function () {
+            $('#tampilGambar').hide();
         });
     });
 </script>

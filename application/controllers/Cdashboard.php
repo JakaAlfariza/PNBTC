@@ -17,8 +17,8 @@ class Cdashboard extends CI_Controller
         $data['eventCount'] = $this->mdashboard->getEventCounts();
         $data['userCount'] = $this->mdashboard->getUserCounts();
         $data['panitiaCount'] = $this->mdashboard->getPanitiaCounts();
-        $data['konten'] = $this->load->view('dashboard', $data, TRUE);
-        $this->load->view('vadmin', $data);
+        $data['konten'] = $this->load->view('/admin/dashboard', $data, TRUE);
+        $this->load->view('/admin/vadmin', $data);
     }
 }
 ?>

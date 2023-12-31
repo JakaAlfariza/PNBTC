@@ -45,17 +45,17 @@
                                         <?php echo $email_error; ?>
                                     </div>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="nama">Nama:</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" required>
+                                    </div>
+                                </div>
                                 <div class="mb-3" style="margin-top: 15px;">
                                     <label for="username">Username:</label>
                                     <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
                                     <div class="invalid-feedback">
                                         <?php echo $username_error; ?>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nama">Nama:</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" required>
                                     </div>
                                 </div>
                                 <div class="mb-3">

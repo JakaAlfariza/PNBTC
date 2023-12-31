@@ -5,6 +5,7 @@
         {
             $username = $this->input->post('username');
             $email = $this->input->post('email');
+            $nama = $this->input->post('nama');
             $password = $this->input->post('password');
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $role = $this->input->post('role');
@@ -39,6 +40,7 @@
                 $data_to_insert = array(
                     'username' => $username,
                     'email' => $email,
+                    'nama' => $nama,
                     'password' => $hashed_password,
                     'role' => ($role === 'admin') ? 'admin' : 'user' // Set the role from the form
                 );
@@ -79,24 +81,6 @@
             $sql="delete from user where id='".$id."'";
             $this->db->query($sql);
             redirect('cdaftar/tampilakun','refresh');    
-        }
-        function getAkun($id)
-        {
-            $sql="select * from user where id='".$id."'";
-            $data = $this->db->query($sql)->result();
-            echo json_encode($data);
-        } 
-
-        function updateAkun($id)
-        {
-            $data = $_POST;
-
-            $condition = array('id' => $id);
-
-            $response = $this->db->update('user',$data, $condition);
- 
-            
-            redirect('Cdaftar/tampilakun','refresh');	 
         }
 
         function tampilakun()

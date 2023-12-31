@@ -2,16 +2,7 @@
 class Mkarosel extends CI_Model{
         function simpandata()
         {
-            $nama_karosel=$this->input->post('nama_karosel');
-            $gambar_k=$this->input->post('gambar_k');
-            $nama_sponsor=$this->input->post('nama_sponsor');
-        
-            $data=array(
-                'nama_karosel'=>$nama_karosel,
-                'gambar_k'=>$gambar_k,
-                'nama_sponsor'=>$nama_sponsor,
-            );
-        
+            $data = $_POST;        
             $this->db->insert('karosel',$data);
             $this->session->set_flashdata('pesan','Data berhasil disimpan');
             redirect('ckarosel/tampilkarosel','refresh');
@@ -46,17 +37,49 @@ class Mkarosel extends CI_Model{
             return $query->result();
         }
 
-        function updatekarosel($id_karosel)
+        public function updatekarosel($id_karosel)
         {
-            $data = $_POST;
+            $id_karosel = $this->db->escape_str($id_karosel);
+            $config['upload_path']   = './images/';
+            $config['allowed_types'] = 'jpeg|jpg|png';
+            $config['max_size']      = 10240;
+            $config['overwrite']     = TRUE;
 
-            $condition = array('id_karosel' => $id_karosel);
+            $this->load->library('upload', $config);
 
-            $response = $this->db->update('karosel',$data, $condition);
- 
-            
-            redirect('ckarosel/tampilkarosel','refresh');	
+            if (!$this->upload->do_upload('gambar_k')) {
+                $nama_karosel = $this->input->post('nama_karosel', TRUE);
+                $nama_sponsor = $this->input->post('nama_sponsor', TRUE);
+
+                $data = array(
+                    'nama_karosel' => $nama_karosel,
+                    'nama_sponsor' => $nama_sponsor,
+                );
+
+                $this->db->where('id_karosel', $id_karosel);
+                $this->db->update('karosel', $data);
+                $this->session->set_flashdata('pesan', 'Data berhasil diubah');
+                redirect('ckarosel/tampilkarosel', 'refresh');
+            } else {
+                $gambar_k = $this->upload->data();
+                $gambar_k = $gambar_k['file_name'];
+                $nama_karosel = $this->input->post('nama_karosel', TRUE);
+                $nama_sponsor = $this->input->post('nama_sponsor', TRUE);
+
+                $data = array(
+                    'nama_karosel' => $nama_karosel,
+                    'gambar_k' => $gambar_k,
+                    'nama_sponsor' => $nama_sponsor,
+                );
+
+
+                $this->db->where('id_karosel', $id_karosel);
+                $this->db->update('karosel', $data);
+                $this->session->set_flashdata('pesan', 'Data berhasil diubah');
+                redirect('ckarosel/tampilkarosel', 'refresh');
+            }
         }
+
 
 
         function getkarosel($id_karosel) {

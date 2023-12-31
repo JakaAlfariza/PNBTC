@@ -78,5 +78,11 @@ class Mdataevent extends CI_Model{
             echo json_encode($data);
             
         }
+
+        public function getKategoriData()
+        {
+            $query = $this->db->get('kategori');
+            return $query->result();
+        }
     }
 ?>

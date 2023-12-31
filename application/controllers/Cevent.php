@@ -14,9 +14,10 @@
 
 		function tampilevent(){
 			$tampildata['hasil']=$this->mdataevent->tampildata();
-			$data['konten']=$this->load->view('event','',TRUE);
-			$data['table']=$this->load->view('event_table',$tampildata,TRUE);
-			$this->load->view('vadmin',$data);
+			$data['kategoriData'] = $this->mdataevent->getKategoriData();
+			$data['konten']=$this->load->view('/admin/event',$data,TRUE);
+			$data['table']=$this->load->view('/admin/event_table',$tampildata,TRUE);
+			$this->load->view('/admin/vadmin',$data);
 		
 		}
 		function updateEvent($id_event) {

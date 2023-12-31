@@ -12,11 +12,12 @@
 			}
 		}	
 
-		function tampilkarosel(){
+		function tampilkarosel()
+		{
 			$tampildata['hasil']=$this->mkarosel->tampildata();
-			$data['konten']=$this->load->view('karosel','',TRUE);
-			$data['table']=$this->load->view('karosel_table',$tampildata,TRUE);
-			$this->load->view('vadmin',$data);
+			$data['konten']=$this->load->view('/admin/karosel','',TRUE);
+			$data['table']=$this->load->view('/admin/karosel_table',$tampildata,TRUE);
+			$this->load->view('/admin/vadmin',$data);
 		
 		}
 
@@ -29,12 +30,14 @@
 			$this->mkarosel->hapusdata($id_karosel);	
 		}
 
-		function updatekarosel($id_karosel) {
+		function updatekarosel($id_karosel) 
+		{
 			$this->mkarosel->updatekarosel($id_karosel);
 			
 		}
 
-		function getkarosel($id_karosel) {
+		function getkarosel($id_karosel) 
+		{
 			$this->mkarosel->getkarosel($id_karosel);
 		
 		}

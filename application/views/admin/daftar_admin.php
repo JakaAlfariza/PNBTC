@@ -40,14 +40,20 @@
                             <form class="forms-sample" method="POST" action="<?php echo base_url('cdaftar/simpandaftar'); ?>">
                                 <div class="mb-3">
                                     <label for="email">Email:</label>
-                                    <input type="email" class="form-control <?php if (!empty($email_error)) echo 'is-invalid'; ?>" name="email" id="email"  placeholder="Email" required>
+                                    <input type="email" class="form-control" name="email" id="email"  placeholder="Email" required>
                                     <div class="invalid-feedback">
                                         <?php echo $email_error; ?>
                                     </div>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="nama">Nama:</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" required>
+                                    </div>
+                                </div>
                                 <div class="mb-3" style="margin-top: 15px;">
                                     <label for="username">Username:</label>
-                                    <input type="text" class="form-control <?php if (!empty($username_error)) echo 'is-invalid'; ?>" name="username" id="username" placeholder="Username" required>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
                                     <div class="invalid-feedback">
                                         <?php echo $username_error; ?>
                                     </div>
@@ -83,21 +89,8 @@
     <!-- Bootstrap JS and dependencies -->
     <script>
         function hapusakun(id) {
-        if (confirm("Apakah yakin menghapus data ini?")) {
-            window.location.href = "<?php echo base_url()?>cdaftar/hapusakun/" + id;
+            if (confirm("Apakah yakin menghapus data ini?")) {
+                window.location.href = "<?php echo base_url()?>cdaftar/hapusakun/" + id;
+            }
         }
-        }
-
-        function togglePasswordVisibility() {
-        var passwordInput = document.getElementById("passwordInput");
-        var eyeIcon = document.getElementById("eyeIcon");
-
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            eyeIcon.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
-        } else {
-            passwordInput.type = "password";
-            eyeIcon.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
-        }
-    }
     </script>

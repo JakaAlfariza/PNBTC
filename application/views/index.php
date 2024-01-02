@@ -66,7 +66,6 @@
     <div class="container-fluid p-0 text-center">
         <!-- Carousell -->
         <div id="iklan" class="carousel slide" data-ride="carousel" style="width: 100vw;">
-<<<<<<< HEAD
             <div class="carousel-inner">
                 <?php
                 $firstItem = true; // To set the first item as active
@@ -90,23 +89,9 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-=======
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="..." alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
-    </div>
-  </div>
-</div>
->>>>>>> 2f51bcb716c176771f137b9f6fb6b1bf54b19aa5
         </div>
-
+      
         <?php
       echo '<pre>';
       print_r($this->session->all_userdata());

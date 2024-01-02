@@ -60,8 +60,8 @@
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand font-weight-bold" href="<?= base_url('chalaman/index');?>">
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
             PNBCC
@@ -77,34 +77,36 @@
             </ul>
         </div>
     </nav>
-
-    <!-- Container -->
+    <!-- New Password Form -->
     <div class="container-fluid centered-form">
         <div class="header">
             <h1>PNBCC</h1>
-            <p>Recover your password</p>
+            <p>Enter your new password</p>
         </div>
         <div class="row justify-content-center align-items-center" style="height: 60vh;">
-            <!-- Card Login -->
-            <div class="card container-card text-dark"style="padding-bottom: 0px; padding-top: 10px;">
+            <!-- Card New Password -->
+            <div class="card container-card text-dark" style="padding-bottom: 0px; padding-top: 10px;">
                 <div class="card-body">
-                    <form name="formlogin" method="post" action="<?php echo base_url('chalaman/prosesreset'); ?>"
+                    <form name="formnewpassword" method="post" action="<?php echo base_url('chalaman/prosesReset'); ?>"
                         class="text-left">
                         <div class="mb-3">
                             <label for="email">Email:</label>
                             <input type="email" class="form-control" name="email" placeholder="Email" required>
-                            <div class="invalid-feedback">
-                                <?php echo $email_error; ?>
-                            </div>
+                        </div>
                         <div class="mb-3">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" name="username" placeholder="Username" Required>
+                            <input type="text" class="form-control" name="username" placeholder="Username" required>
+                        </div>
+                        <!-- Add necessary form fields for new password entry -->
+                        <div class="mb-2">
+                            <label for="new_password">New Password:</label>
+                            <input type="password" class="form-control" name="new_password" placeholder="New Password" required>
                         </div>
                         <div class="mb-2">
-                            <label for="password">New Password:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password" Required>                
+                            <label for="confirm_password">Confirm Password:</label>
+                            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
                         </div>
-                        <button type="submit" class="btn text-white btn-login">R E S E T</button>
+                        <button type="submit" class="btn text-white btn-login">Update Password</button>
                     </form>
                 </div>
             </div>

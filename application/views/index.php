@@ -65,8 +65,7 @@
     <!-- Container -->
     <div class="container-fluid p-0 text-center">
         <!-- Carousell -->
-        <div id="iklan" class="carousel slide" data-ride="carousel" style="width: 100vw;">
-            <div class="carousel-inner">
+        <div class="carousel-inner">
                 <?php
                 $firstItem = true; // To set the first item as active
                 foreach ($karosel as $item):

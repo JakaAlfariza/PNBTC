@@ -84,7 +84,7 @@
                         <span class="ml-2"><?= $this->session->userdata('nama'); ?></span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="<?php echo base_url('cprofile/tampilakun'); ?>">Profile</a>
                         <a class="dropdown-item text-danger" href="<?= base_url('cadmin/logout');?>">Logout</a>
                     </div>
                 </div>

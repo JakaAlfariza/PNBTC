@@ -1,7 +1,7 @@
 <?php
-class Mdaftar extends CI_Model
+class Mprofile extends CI_Model
 {
-    function simpandaftar()
+    function simpanprofile()
     {
         if ($this->session->userdata('role') === 'admin') {
             $username = $this->input->post('username');
@@ -9,20 +9,18 @@ class Mdaftar extends CI_Model
             $nama = $this->input->post('nama');
             $password = $this->input->post('password');
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            $role = $this->input->post('role');
 
             $data_to_insert = array(
                 'username' => $username,
                 'email' => $email,
                 'nama' => $nama,
-                'password' => $hashed_password,
-                'role' => $role
+                'password' => $hashed_password
             );
 
             $this->db->insert('user', $data_to_insert);
 
             echo "<script>alert('Data berhasil disimpan');</script>";
-            redirect('cdaftar/tampilakun', 'refresh');
+            redirect('cprofile/tampilprofile', 'refresh');
         } else {
             $username = $this->input->post('username');
             $email = $this->input->post('email');
@@ -34,8 +32,7 @@ class Mdaftar extends CI_Model
                 'username' => $username,
                 'email' => $email,
                 'nama' => $nama,
-                'password' => $hashed_password,
-                'role' => 'user'
+                'password' => $hashed_password
             );
 
             $this->db->insert('user', $data_to_insert);
@@ -45,28 +42,10 @@ class Mdaftar extends CI_Model
         }
     }
 
-
-    function hapusakun($id)
-    {
-        $sql = "delete from user where id='" . $id . "'";
-        $this->db->query($sql);
-        redirect('cdaftar/tampilakun', 'refresh');
-    }
-
     function tampilakun()
     {
-        $sql = "select * from user";
-        $query = $this->db->query($sql);
-
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $row) {
-                $hasil[] = $row;
-            }
-        } else {
-            $hasil = "";
-        }
-
-        return $hasil;
+        $query = $this->db->get('user');
+        return $query->result();
     }
 }
 ?>

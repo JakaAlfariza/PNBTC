@@ -43,11 +43,6 @@
 			$this->load->view('/auth/login');	
 		}
 
-		function lupaPass()
-		{
-			$this->load->view('/auth/lupa_pass');
-		}
-
 		function proseslogin()
 		{
 			if ($this->session->userdata('role')!=null) {
@@ -58,20 +53,26 @@
 			$this->mlogin->proseslogin();	
 		}
 
-		function prosesReset(){
-			$this->load->model('mlupapass');
-		
-			$email = $this->input->post('email', true);
-			$username = $this->input->post('username', true);
-		
-			// Call the resetPass method in the model
-			if($this->mlupapass->resetPass($email, $username)) {
-				// If the reset is successful, load the view to enter a new password
-				$this->load->view('/auth/login','refresh');
-			} else {
-				// If the reset fails, redirect to the password recovery page
-				redirect('chalaman/lupapass', 'refresh');
+		function lupaPass()
+		{
+			if ($this->session->userdata('role')!=null) {
+				if ($this->session->userdata('role')=='admin') {
+					redirect('cdashboard/tampildata');
+				}elseif ($this->session->userdata('role')!='admin') {
+					redirect('chalaman/index');
+				}
+				redirect('chalaman/index');
 			}
+			$this->load->view('/auth/lupa_pass');
+		}
+
+		function resetPass(){
+			if ($this->session->userdata('role')!=null) {
+				
+				redirect('chalaman/index');
+			}
+			$this->load->model('mlupaPass');
+			$this->mlupaPass->resetPass();	
 		}
 
 		function logout()

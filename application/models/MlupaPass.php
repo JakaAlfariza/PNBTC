@@ -2,50 +2,39 @@
 
 class MlupaPass extends CI_Model
 {
-    function resetPass($email, $username) {
-        $sql = "SELECT * FROM user WHERE username = ? OR email = ?";
-        $query = $this->db->query($sql, array($username, $email));
-    
-        if ($query->num_rows() > 0) {
-            $data = $query->row();
-    
-            // Store user data in session for later use
-            $this->session->set_userdata('reset_user_id', $data->id);
-    
-            return true;
-        } else {
-            $this->session->set_flashdata('pesan', 'Password recovery failed...');
-            echo "<script>alert('Username or email not found');</script>";
-            return false;
-        }
-    }
-
-    function updatePass() {
-        // Handle the form submission to update the password
-        // Validate the form data to ensure a valid new password
-
-        $user_id = $this->session->userdata('reset_user_id');
+    function resetPass() 
+    {
+        $email = $this->input->post('email', true);
+        $username = $this->input->post('username', true);
+        $password = $this->input->post('password');
         $new_password = $this->input->post('new_password');
         $confirm_password = $this->input->post('confirm_password');
 
-        // Example validation:
-        if ($new_password != $confirm_password) {
-            echo "<script>alert('Passwords do not match');</script>";
-            redirect('chalaman/recover', 'refresh');
+        $sql = "SELECT * FROM user WHERE email = ? AND username = ?";
+        $query = $this->db->query($sql, array($email, $username));
+
+        if ($query->num_rows() > 0) {
+            $user_data = $query->row();
+
+            // Check if new password and confirm password match
+            if ($new_password === $confirm_password) {
+                // Update the user's password in the database
+                $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+                $this->db->update('user', array('password' => $hashed_new_password), array('id' => $user_data->id));
+
+                // You can set a flash message or show a success message
+                $this->session->set_flashdata('pesan', 'Password reset successful.');
+                redirect('chalaman/login', 'refresh');
+            } else {
+                // Passwords do not match
+                $this->session->set_flashdata('pesan', 'New password and confirm password do not match.');
+                redirect('chalaman/lupaPass', 'refresh');
+            }
+        } else {
+            // User with the given email and username not found
+            $this->session->set_flashdata('pesan', 'Email and username do not match our records.');
+            redirect('chalaman/lupaPass', 'refresh');
         }
-
-        // Hash and update the new password
-        $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-        $this->db->where('id', $user_id);
-        $this->db->update('user', array('password' => $hashed_password));
-
-        // Clear the stored user data from the session
-        $this->session->unset_userdata('reset_user_id');
-
-        $this->session->set_flashdata('pesan', 'Password updated successfully.');
-        redirect('chalaman/login', 'refresh');
     }
 }
-
-
 ?>

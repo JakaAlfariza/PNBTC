@@ -87,7 +87,7 @@
             <!-- Card New Password -->
             <div class="card container-card text-dark" style="padding-bottom: 0px; padding-top: 10px;">
                 <div class="card-body">
-                    <form name="formnewpassword" method="post" action="<?php echo base_url('chalaman/prosesReset'); ?>"
+                    <form name="formnewpassword" method="post" action="<?php echo base_url('chalaman/resetPass'); ?>"
                         class="text-left">
                         <div class="mb-3">
                             <label for="email">Email:</label>

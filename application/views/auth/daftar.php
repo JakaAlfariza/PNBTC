@@ -85,26 +85,32 @@
                         class="text-left">
                         <div class="mb-3">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control <?php if (!empty($email_error)) echo 'is-invalid'; ?>" name="email" placeholder="Email" required>
+                            <input type="email" class="form-control <?php echo form_error('email') ? 'is-invalid' : ''; ?>" name="email" id="email" placeholder="Email" required>
                             <div class="invalid-feedback">
-                                <?php echo $email_error; ?>
+                                <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama">Nama:</label>
+                            <input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid' : ''; ?>" name="nama" id="nama" placeholder="Nama" required>
+                            <div class="invalid-feedback">
+                                <?php echo form_error('nama'); ?>
                             </div>
                         </div>
                         <div class="mb-3" style="margin-top: 15px;">
-                            <label for="username">Nama:</label>
-                            <input type="text" class="form-control" name="nama" placeholder="Nama" required>                            
-                        </div>
-                        <div class="mb-3" style="margin-top: 15px;">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control <?php if (!empty($username_error)) echo 'is-invalid'; ?>" name="username" placeholder="Username" required>
+                            <input type="text" class="form-control <?php echo form_error('username') ? 'is-invalid' : ''; ?>" name="username" id="username" placeholder="Username" required>
                             <div class="invalid-feedback">
-                                <?php echo $username_error; ?>
+                                <?php echo form_error('username'); ?>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="password">Password:</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" name="password" id="passwordInput" placeholder="Password" required>
+                                <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" name="password" id="password" placeholder="Password" required>
+                                <div class="invalid-feedback">
+                                    <?php echo form_error('password'); ?>
+                                </div>
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="eyeIcon" onclick="togglePasswordVisibility()">
                                         <i class="fa fa-eye" aria-hidden="true"></i>

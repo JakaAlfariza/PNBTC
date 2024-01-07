@@ -135,7 +135,7 @@
         </a>
     </div>
 
-    <h3 class="text-left" style="margin-left: 90px;">Event Tersedia</h3>
+    <h3 class="text-left" style="margin-left: 90px;">Event List</h3>
     <!-- Child Container -->
     <div class="container-child">
         <div class="card-container">

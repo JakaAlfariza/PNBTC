@@ -60,7 +60,7 @@
                         <div class="mb-3">
                             <div class="form-group">
                                 <label for="exampleInputName1"  class="form-label">Thumbnail: (000px*000px)</label>
-                                <input type="file" name="gambar" id="gambar" class="form-control" required>
+                                <input type="file" name="thumbnail" id="thumbnail" class="form-control" required>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -83,8 +83,8 @@
                             <div class="mb-3">
                                 <div class="form-group">
                                     <label for="exampleInputName1" class="form-label">Kategori :</label>
-                                    <select name="kategori" id="kategori" class="form-control" required>
-                                        <option value="">Pilih Kategori</option>
+                                    <select name="kategori" id="kategori" class="form-control" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
+                                        <option value="" >Pilih Kategori</option>
                                         <?php
                                         foreach ($kategoriData as $kategori) {
                                             echo '<option value="' . $kategori->id_kategori . '">' . $kategori->nama_kategori . '</option>';
@@ -129,7 +129,7 @@
                     <div class="mb-3">
                     <div class="form-group">
                         <label for="exampleInputName1" class="form-label">Tingkat Event:</label>
-                        <select name="role" class="form-control" id="role" required>
+                        <select name="tingkat_event" class="form-control" id="tingkat_event" required>
                             <option value="">Pilih Tingkat Event</option>
                             <option value="ukm">UKM</option>
                             <option value="kampus">Kampus</option>

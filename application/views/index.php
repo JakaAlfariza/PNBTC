@@ -13,9 +13,8 @@
     <title>Home</title>
     <style>
         #iklan {
-            height: 300px;
+            height: 350px;
             overflow: hidden;
-            /* Ensure the container doesn't overflow */
         }
 
         .carousel-inner img {
@@ -24,8 +23,45 @@
             width: 100%;
         }
 
-        .body{
-            background-color: #004789;
+        .body {
+            background-color: #e8e8e8;
+        }
+
+        .container-parent {
+            padding: 0;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        .container-child {
+            background-color: #ffffff;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px; /* Adjust the gap between cards as needed */
+        }
+
+        .card {
+            width: calc(25% - 20px); /* Adjust the width of each card and consider the gap */
+            box-sizing: border-box;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow effect */
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px; /* Set the desired height for the card images */
+            object-fit: cover;
         }
     </style>
 </head>
@@ -51,28 +87,33 @@
         </div>
 
         <ul class="navbar-nav font-weight-bold">
-            <li class="nav-item">
-                <?php
-            // Check if the user is logged in
-            if ($this->session->userdata('id')) {
-            // User is logged in
-            echo '<a class="nav-link text-danger" href="' . base_url('chalaman/logout') . '"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>';
-            }else {
-            // User is not logged in
-            echo '<a class="nav-link" href="' . base_url('chalaman/login') . '"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+            <?php
+                // Cek jika login
+                if ($this->session->userdata('id')) {
+                // Login
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link text-danger" href="' . base_url('chalaman/logout') . '"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>';
+                echo '</li>';
+                }else {
+                // Tidak login
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link" href="' .base_url('chalaman/daftar').'"><i class="fa-solid fa-user-plus"></i> Daftar</a>';
+                echo '</li>';
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link" href="' .base_url('chalaman/login') . '"><i class="fa-solid fa-right-from-bracket"></i> Login</a>';
+                echo '</li>';
             }
-          ?>
-            </li>
+            ?>
         </ul>
     </nav>
 
-    <!-- Container -->
+<!-- Container Parent-->
 <div class="container-fluid p-0 text-center">
-    <!-- Carousell -->
+    <!-- Karosel -->
     <div id="iklan" class="carousel slide mb-4" data-ride="carousel" style="width: 100vw;">
         <div class="carousel-inner">
             <?php
-            $firstItem = true; // To set the first item as active
+            $firstItem = true;
             foreach ($karosel as $item):
             ?>
             <div class="carousel-item <?php echo $firstItem ? 'active' : ''; ?>">
@@ -83,7 +124,7 @@
             endforeach;
             ?>
         </div>
-        <!-- Add controls if needed -->
+        <!-- Button panah -->
         <a class="carousel-control-prev" href="#iklan" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -94,147 +135,44 @@
         </a>
     </div>
 
-    <!-- Card Deck -->
-    <div class="card-deck mb-5">
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
+    <h3 class="text-left" style="margin-left: 90px;">Event Tersedia</h3>
+    <!-- Child Container -->
+    <div class="container-child">
+        <div class="card-container">
+            <?php foreach ($events as $event): ?>
+                <div class="card">
+                    <img src="<?= base_url('images/' . $event->thumbnail); ?>" class="card-img-top" alt="<?= $event->nama_event; ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $event->nama_event; ?></h5>
+                        <p class="card-text"><?= substr($event->deskripsi, 0, 100) . '...'; ?></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Tanggal Event: <?= $event->tgl_event; ?></li>
+                        <li class="list-group-item">Lokasi: <?= $event->lokasi; ?></li>
+                        <li class="list-group-item">Harga: <?= $event->harga; ?></li>
+                    </ul>
+                    <div class="card-body">
+                        <!-- Add any additional actions or links here -->
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 
-    <div class="card-deck mb-5">
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-    </div>
 
-    <div class="card-deck">
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-        <div class="card" style="max-width: 300px; margin: 0 auto;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>
-    </div>
+
 </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
 </body>
 
 </html>

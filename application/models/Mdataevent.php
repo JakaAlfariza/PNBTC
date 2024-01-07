@@ -3,41 +3,23 @@ class Mdataevent extends CI_Model{
         function simpandata()
         {
             $data = $_POST;
-            // $nama_event=$this->input->post('nama_event');
-            // $gambar=$this->input->post('gambar');
-            // $penyelenggara=$this->input->post('penyelenggara');
-            // $tgl_awal=$this->input->post('tgl_awal');
-            // $tgl_akhir=$this->input->post('tgl_akhir');
-            // $tgl_event=$this->input->post('tgl_event');
-            // $harga=$this->input->post('harga');
-            // $lokasi=$this->input->post('lokasi');
-            // $deskripsi=$this->input->post('deskripsi');
-            // $kategori=$this->input->post('kategori');
-            // $link_daftar=$this->input->post('link_daftar');
-        
-        
-            // $data=array(
-            //     'nama_event'=>$nama_event,
-            //     'gambar'=>$gambar,
-            //     'penyelenggara'=>$penyelenggara,
-            //     'tgl_awal'=>$tgl_awal,
-            //     'tgl_akhir'=>$tgl_akhir,
-            //     'tgl_event'=>$tgl_event,
-            //     'harga'=>$harga,
-            //     'lokasi'=>$lokasi,
-            //     'deskripsi'=>$deskripsi,
-            //     'kategori'=>$kategori,
-            //     'link_daftar'=>$link_daftar
-            // );
-        
+            $pembuat_event = $this->session->userdata('id');
+            $data['pembuat_event'] = $pembuat_event;
+
             $this->db->insert('event',$data);
-            $this->session->set_flashdata('pesan','Data berhasil disimpan');
+            echo "<script>alert('Event berhasil disimpan');</script>";
             redirect('cevent/tampilevent','refresh');
         }
 
         function tampildata()
         {
-            $sql="select * from event";
+            $sql=
+            "
+            select event.*, user.nama AS pembuat_event, kategori.nama_kategori as kategori
+            FROM event
+            JOIN user ON event.pembuat_event = user.id
+            JOIN kategori ON event.kategori = kategori.id_kategori;
+            ";
             $query= $this->db->query($sql);
             if($query->num_rows()>0){
                 foreach($query->result() as $row){
@@ -55,6 +37,7 @@ class Mdataevent extends CI_Model{
         {
             $sql="delete from event where id_event='".$id_event."'";
             $this->db->query($sql);
+            echo "<script>alert('Event berhasil dihapus');</script>";
             redirect('cevent/tampilevent','refresh');	
         }
 
@@ -85,5 +68,12 @@ class Mdataevent extends CI_Model{
             $query = $this->db->get('kategori');
             return $query->result();
         }
+
+        public function get_events() {
+            // Gantilah query di bawah ini sesuai dengan struktur tabel dan kolom database Anda
+            $query = $this->db->get('event');
+            return $query->result();
+        }
+
     }
 ?>

@@ -5,6 +5,7 @@
 		{
 			parent::__construct();
 			$this->load->model('mkarosel');
+			$this->load->model('mdataevent');
 		}
 
         function index()
@@ -13,6 +14,7 @@
 					redirect('cdashboard/tampildata');
 			}
 			$data['karosel'] = $this->mkarosel->getCarouselImages();
+			$data['events'] = $this->mdataevent->get_events();
 			$this->load->view('index', $data);
 		}
 

@@ -10,6 +10,7 @@
                         <th>Nama Event</th>
                         <th>Penyelenggara</th>
                         <th>Kategori</th>
+                        <th>Dibuat oleh</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                         <td><?php echo $data->nama_event ?></td>
                         <td><?php echo $data->penyelenggara ?></td>
                         <td><?php echo $data->kategori ?></td>
+                        <td><?php echo $data->pembuat_event ?></td>
                         <td>
                             <button type="button" id="edit-<?= $data->id_event ?>" class="btn btn-sm btn-primary">Edit</button>
                             <button type="button" onclick="hapusdata('<?php echo $data->id_event ?>')" class="btn btn-sm btn-danger">Hapus</button>
@@ -61,8 +63,7 @@
                     
                     $('#form').attr("action", "<?=base_url('Cevent/updateEvent/')?>"+id);
 
-                    $('#nama_event').val(response[0].nama_event);
-                    
+                    $('#nama_event').val(response[0].nama_event);                    
                     $('#penyelenggara').val(response[0].penyelenggara); 
                     $('#lokasi').val(response[0].lokasi);
                     $('#kategori').val(response[0].kategori);
@@ -70,6 +71,7 @@
                     $('#tgl_akhir').val(response[0].tgl_akhir);
                     $('#tgl_event').val(response[0].tgl_event);
                     $('#harga').val(response[0].harga);
+                    $('#tingkat_event').val(response[0].tingkat_event);
                     $('#link_daftar').val(response[0].link_daftar);
                     $('#summernote').summernote('code',response[0].deskripsi);
                     console.log(response[0].deskripsi);

@@ -70,7 +70,7 @@
         <div class="ml-auto">
             <ul class="navbar-nav font-weight-bold">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('chalaman/daftar');?>"><i class="fa-solid fa-right-from-bracket"></i> Daftar</a>
+                    <a class="nav-link" href="<?= base_url('chalaman/daftar');?>"><i class="fa-solid fa-user-plus"></i> Daftar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('chalaman/index');?>"><i class="fas fa-home"></i> Home</a>
@@ -89,15 +89,21 @@
             <!-- Card Login -->
             <div class="card container-card text-dark"style="padding-bottom: 0px; padding-top: 10px;">
                 <div class="card-body">
-                    <form name="formlogin" method="post" action="<?php echo base_url('chalaman/proseslogin'); ?>"
-                        class="text-left">
+                    <form name="formlogin" method="post" action="<?php echo base_url('chalaman/proseslogin'); ?>" class="text-left">
                         <div class="mb-3">
                             <label for="username">Username:</label>
                             <input type="text" class="form-control" name="username" placeholder="Username" Required>
                         </div>
-                        <div class="mb-2">
-                            <label for="password">Password:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password" Required>                
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password:</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="eyeIcon" onclick="togglePasswordVisibility()">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
                         <a href="<?= base_url('chalaman/lupaPass');?>">Lupa Password?</a>
@@ -120,5 +126,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("passwordInput");
+            var eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+            }
+        }
+    </script>
 </body>
 </html>

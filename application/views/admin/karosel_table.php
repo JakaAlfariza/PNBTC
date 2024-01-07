@@ -57,7 +57,7 @@
                     $('#form').attr("action", "<?=base_url('ckarosel/updatekarosel/')?>"+id);
                     $('#nama_karosel').val(response[0].nama_karosel);
                     $('#nama_sponsor').val(response[0].nama_sponsor); 
-                    // Show the existing image and set its source
+                    // Menampilkan Gambar
                     $('#tampilGambar').show();
                     $('#tampil_gambar').attr('src', "<?php echo base_url('images/')?>"+response[0].gambar_k);
                 },
@@ -67,7 +67,7 @@
             });
         });
 
-        // Add a function to hide the existing image when the form is reset
+        
         $('button[type="reset"]').on('click', function () {
             $('#tampilGambar').hide();
         });

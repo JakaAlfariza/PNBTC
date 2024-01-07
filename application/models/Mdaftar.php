@@ -55,7 +55,9 @@ class Mdaftar extends CI_Model
 
     function tampilakun()
     {
-        $sql = "select * from user";
+        $logged_in_user_id = $this->session->userdata('id');
+
+        $sql = "SELECT * FROM user WHERE id != $logged_in_user_id";
         $query = $this->db->query($sql);
 
         if ($query->num_rows() > 0) {
@@ -68,5 +70,6 @@ class Mdaftar extends CI_Model
 
         return $hasil;
     }
+
 }
 ?>

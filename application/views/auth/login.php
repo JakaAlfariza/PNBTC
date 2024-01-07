@@ -70,9 +70,10 @@
         <div class="ml-auto">
             <ul class="navbar-nav font-weight-bold">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('chalaman/index');?>">
-                        <i class="fas fa-home"></i> Home
-                    </a>
+                    <a class="nav-link" href="<?= base_url('chalaman/daftar');?>"><i class="fa-solid fa-right-from-bracket"></i> Daftar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('chalaman/index');?>"><i class="fas fa-home"></i> Home</a>
                 </li>
             </ul>
         </div>
@@ -102,8 +103,7 @@
                         <a href="<?= base_url('chalaman/lupaPass');?>">Lupa Password?</a>
                         </div>
                         <button type="submit" class="btn text-white btn-login">L O G I N</button>
-                        <p class="text-center mt-3">Belum memiliki akun? <a
-                                href="<?php echo base_url('chalaman/daftar'); ?>">Daftar disini</a></p>
+                        <p class="text-center mt-3">Belum memiliki akun? <a href="<?php echo base_url('chalaman/daftar'); ?>">Daftar disini</a></p>
                     </form>
                 </div>
             </div>

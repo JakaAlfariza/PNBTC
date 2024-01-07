@@ -23,7 +23,7 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $data->nama_kategori ?></td>
                         <td>
-                            <button type="button" onclick="hapusdata('<?php echo $data->id_kategori ?>')" class="btn btn-sm btn-danger">Hapus</button>
+                            <button type="button" onclick="hapuskategori('<?php echo $data->id_kategori ?>')" class="btn btn-sm btn-danger">Hapus</button>
                         </td>
                     </tr> 
                     <?php

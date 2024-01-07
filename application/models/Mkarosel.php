@@ -5,6 +5,7 @@ class Mkarosel extends CI_Model{
             $data = $_POST;        
             $this->db->insert('karosel',$data);
             $this->session->set_flashdata('pesan','Data berhasil disimpan');
+            echo "<script>alert('Karosel berhasil disimpan');</script>";
             redirect('ckarosel/tampilkarosel','refresh');
         }
 
@@ -28,6 +29,7 @@ class Mkarosel extends CI_Model{
         {
             $sql="delete from karosel where id_karosel='".$id_karosel."'";
             $this->db->query($sql);
+            echo "<script>alert('Karosel berhasil dihapus');</script>";
             redirect('ckarosel/tampilkarosel','refresh');	
         }
 
@@ -58,7 +60,7 @@ class Mkarosel extends CI_Model{
 
                 $this->db->where('id_karosel', $id_karosel);
                 $this->db->update('karosel', $data);
-                $this->session->set_flashdata('pesan', 'Data berhasil diubah');
+                echo "<script>alert('Karosel berhasil diubah');</script>";
                 redirect('ckarosel/tampilkarosel', 'refresh');
             } else {
                 $gambar_k = $this->upload->data();
@@ -75,7 +77,7 @@ class Mkarosel extends CI_Model{
 
                 $this->db->where('id_karosel', $id_karosel);
                 $this->db->update('karosel', $data);
-                $this->session->set_flashdata('pesan', 'Data berhasil diubah');
+                echo "<script>alert('Karosel berhasil diubah');</script>";
                 redirect('ckarosel/tampilkarosel', 'refresh');
             }
         }

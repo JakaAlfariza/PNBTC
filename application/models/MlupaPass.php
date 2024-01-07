@@ -23,16 +23,16 @@ class MlupaPass extends CI_Model
                 $this->db->update('user', array('password' => $hashed_new_password), array('id' => $user_data->id));
 
                 // You can set a flash message or show a success message
-                $this->session->set_flashdata('pesan', 'Password reset successful.');
+                echo "<script>alert('Password berhasil diubah');</script>";
                 redirect('chalaman/login', 'refresh');
             } else {
                 // Passwords do not match
-                $this->session->set_flashdata('pesan', 'New password and confirm password do not match.');
+                echo "<script>alert('Password tidak sama');</script>";
                 redirect('chalaman/lupaPass', 'refresh');
             }
         } else {
             // User with the given email and username not found
-            $this->session->set_flashdata('pesan', 'Email and username do not match our records.');
+            echo "<script>alert('Username/Email tidak ada');</script>";
             redirect('chalaman/lupaPass', 'refresh');
         }
     }

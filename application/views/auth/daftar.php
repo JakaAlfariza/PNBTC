@@ -64,6 +64,11 @@
         <div class="ml-auto">
             <ul class="navbar-nav font-weight-bold">
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('chalaman/login');?>">
+                        <i class="fa-solid fa-right-from-bracket"></i> Login
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('chalaman/index');?>">
                         <i class="fas fa-home"></i> Home
                     </a>

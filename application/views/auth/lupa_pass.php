@@ -15,33 +15,27 @@
 
     <!-- CSS -->
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
-
         .centered-form {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            min-height: 100vh;
+            min-height: 110vh;
             background-color: #004789;
         }
 
         .header h1 {
             text-align: center;
             font-weight: bold;
-            color: #ffc107;
-            font-size: 4em;
+            color: #ffc107; 
+            font-size: 4em; 
             padding-top: 30px;
         }
 
         .header p {
             text-align: center;
-            color: #fff; 
-            font-size: 1.2em;
+            color: #fff; /* White color */
+            font-size: 1.2em; /* Adjust the value as needed */
             margin-top: -10px;
         }
 
@@ -52,7 +46,7 @@
             margin: 10px ;
         }
 
-        .btn-login {
+        .btn-reset {
             width: 100%;
             background-color: #004789;
         }
@@ -61,7 +55,7 @@
 
 <body>
     
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand font-weight-bold" href="<?= base_url('chalaman/index');?>">
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
             PNBCC
@@ -70,13 +64,17 @@
         <div class="ml-auto">
             <ul class="navbar-nav font-weight-bold">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('chalaman/index');?>">
-                        <i class="fas fa-home"></i> Home
-                    </a>
+                    <a class="nav-link" href="<?= base_url('chalaman/login');?>"><i class="fa-solid fa-right-from-bracket"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('chalaman/index');?>"><i class="fas fa-home"></i> Home</a>
                 </li>
             </ul>
         </div>
     </nav>
+
+
+    
     <!-- New Password Form -->
     <div class="container-fluid centered-form">
         <div class="header">
@@ -98,15 +96,16 @@
                             <input type="text" class="form-control" name="username" placeholder="Username" required>
                         </div>
                         <!-- Add necessary form fields for new password entry -->
-                        <div class="mb-2">
+                        <div class="mb-3">
                             <label for="new_password">New Password:</label>
                             <input type="password" class="form-control" name="new_password" placeholder="New Password" required>
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-3">
                             <label for="confirm_password">Confirm Password:</label>
                             <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
                         </div>
-                        <button type="submit" class="btn text-white btn-login">Update Password</button>
+                        <button type="submit" class="btn text-white btn-reset">R E S E T</button>
+                        <p class="text-center mt-3">Sudah ingat password? <a href="<?php echo base_url('chalaman/login'); ?>">klik disini</a></p>
                     </form>
                 </div>
             </div>

@@ -9,7 +9,7 @@ class Mkategori extends CI_Model{
             );   
             
             $this->db->insert('kategori',$data);
-            $this->session->set_flashdata('pesan','Data berhasil disimpan');
+            echo "<script>alert('Kategori berhasil disimpan');</script>";
             redirect('ckategori/tampilkategori','refresh');
         }
 
@@ -33,6 +33,7 @@ class Mkategori extends CI_Model{
         {
             $sql="delete from kategori where id_kategori='".$id_kategori."'";
             $this->db->query($sql);
+            echo "<script>alert('Kategori berhasil dihapus');</script>";
             redirect('ckategori/tampilkategori','refresh');	
         }
     }

@@ -114,56 +114,6 @@
 
 <!-- Container Parent-->
 <div class="container-fluid p-0 text-center">
-    <!-- Karosel -->
-    <div id="iklan" class="carousel slide mb-4" data-ride="carousel" style="width: 100vw;">
-        <div class="carousel-inner">
-            <?php
-            $firstItem = true;
-            foreach ($karosel as $item):
-            ?>
-            <div class="carousel-item <?php echo $firstItem ? 'active' : ''; ?>">
-                <img class="d-block w-100" src="<?php echo base_url('images/' . $item->gambar_k); ?>" alt="<?php echo $item->nama_karosel; ?>">
-            </div>
-            <?php
-            $firstItem = false; 
-            endforeach;
-            ?>
-        </div>
-        <!-- Button panah -->
-        <a class="carousel-control-prev" href="#iklan" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#iklan" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-
-    <h3 class="text-left" style="margin-left: 90px;">Event List</h3>
-    <!-- Child Container -->
-    <div class="container-child">
-        <div class="card-container">
-            <?php foreach ($events as $event): ?>
-                <div class="card clickable-card" data-event-id="<?= $event->id_event; ?>">
-                    <img src="<?= base_url('images/' . $event->thumbnail); ?>" class="card-img-top" alt="<?= $event->nama_event; ?>">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $event->nama_event; ?></h5>
-                        <p class="card-text"><?= substr($event->deskripsi, 0, 100) . '...'; ?></p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Tanggal Event: <?= $event->tgl_event; ?></li>
-                        <li class="list-group-item">Lokasi: <?= $event->lokasi; ?></li>
-                        <li class="list-group-item">Harga: <?= $event->harga; ?></li>
-                    </ul>
-                    <div class="card-body">
-                        <!-- Add any additional actions or links here -->
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-
 
 
 </div>
@@ -190,7 +140,7 @@
             var eventId = this.getAttribute('data-event-id');
 
             // Redirect to the detailed view page using JavaScript
-            window.location.href = '<?= base_url('cevent/detailEvent/'); ?>' + eventId;
+            window.location.href = '<?= base_url(''); ?>cevent/detailEvent/' + eventId;
         });
     });
 });

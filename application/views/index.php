@@ -25,6 +25,7 @@
 
         .body {
             background-color: #e8e8e8;
+            overflow-x: hidden; /* Add this style to prevent horizontal scrolling */
         }
 
         .container-parent {
@@ -40,7 +41,6 @@
             padding: 20px;
             border-radius: 8px;
             margin-top: 20px;
-            
         }
 
         .card-container {

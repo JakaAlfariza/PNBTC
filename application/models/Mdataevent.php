@@ -15,10 +15,10 @@ class Mdataevent extends CI_Model{
         {
             $sql=
             "
-            select event.*, user.nama AS pembuat_event, kategori.nama_kategori as kategori
+            select event.*, user.nama AS id_user, kategori.nama_kategori as id_kategori
             FROM event
-            JOIN user ON event.pembuat_event = user.id
-            JOIN kategori ON event.kategori = kategori.id_kategori;
+            JOIN user ON event.id_user = user.id
+            JOIN kategori ON event.id_kategori = kategori.id_kategori;
             ";
             $query= $this->db->query($sql);
             if($query->num_rows()>0){

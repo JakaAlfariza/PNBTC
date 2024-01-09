@@ -39,8 +39,8 @@
 		}
 		
 		public function detailEvent($id_event) {
-			$data['event'] = $this->mdataevent->getEvent($id_event);
-			$this->load->view('detailed_event_view', $data);
+			
+			$this->load->view('detailed_event_view');
 		}
 		
 

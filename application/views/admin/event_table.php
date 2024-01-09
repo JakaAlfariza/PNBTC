@@ -33,6 +33,7 @@
                         <td>
                             <button type="button" id="edit-<?= $data->id_event ?>" class="btn btn-sm btn-primary">Edit</button>
                             <button type="button" onclick="hapusdata('<?php echo $data->id_event ?>')" class="btn btn-sm btn-danger">Hapus</button>
+                            <input type="button" class="btn btn-success" value="Cetak Data" onclick="cetakpdf()">
                         </td>
                     </tr> 
                     <?php
@@ -83,4 +84,9 @@
             });
         });
     });
+
+        function cetakpdf()
+        {
+            window.open("<?php echo base_url() ?>cevent/cetakpdf","_blank");	
+        }
 </script>

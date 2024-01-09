@@ -43,6 +43,21 @@
 			$this->load->view('detailed_event_view', $data);
 		}
 		
+		function cetakpdf()
+		{
+			require_once(APPPATH . 'libraries/dompdf/autoload.inc.php');
+			$pdf = new Dompdf\Dompdf();
+			$pdf->setPaper('A4', 'potrait');
+			$pdf->set_option('isRemoteEnabled', TRUE);
+			$pdf->set_option('isHtml5ParserEnabled', true);
+			$pdf->set_option('isPhpEnabled', true);
+			$pdf->set_option('isFontSubsettingEnabled', true);
+			
+			$pdf->loadHtml($this->load->view('admin/cetak_pdf',"", true));
+			$pdf->render();
+			$pdf->stream('NamaFile.pdf', ['Attachment' => 0]);	
+		}
+		
 
 	}
 ?>

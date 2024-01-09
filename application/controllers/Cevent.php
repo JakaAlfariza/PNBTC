@@ -53,7 +53,7 @@
 			$pdf->set_option('isPhpEnabled', true);
 			$pdf->set_option('isFontSubsettingEnabled', true);
 			
-			$pdf->loadHtml($this->load->view('admin/cetak_pdf',"", true));
+			$pdf->loadHtml($this->load->view('admin/cetak_pdf',array('nama'=>'budhi'), true));
 			$pdf->render();
 			$pdf->stream('NamaFile.pdf', ['Attachment' => 0]);	
 		}

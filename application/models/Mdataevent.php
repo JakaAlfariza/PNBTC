@@ -56,10 +56,8 @@ class Mdataevent extends CI_Model{
 
         function getEvent($id_event) {
 
-            $this->db->select('*')->from('event')->where('id_event',$id_event);
-            $data = $this->db->get()->result();
-
-            echo json_encode($data);
+        return $this->db->select('*')->from('event')->where('id_event',$id_event)->get()->first_row(); 
+           
             
         }
 
@@ -75,5 +73,6 @@ class Mdataevent extends CI_Model{
             return $query->result();
         }
 
+       
     }
 ?>

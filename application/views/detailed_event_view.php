@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Home</title>
+    <title>Details of event</title>
     <style>
         #iklan {
             height: 350px;
@@ -114,8 +114,29 @@
 
 <!-- Container Parent-->
 <div class="container-fluid p-0 text-center">
-
-
+  <!-- Container for Event Details -->
+  <div class="container mt-5">
+        <?php if ($event): ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="<?= base_url('images/' . $event[0]->thumbnail); ?>" class="img-fluid" alt="<?= $event[0]->nama_event; ?>">
+                </div>
+                <div class="col-md-6">
+                    <h2><?= $event[0]->nama_event; ?></h2>
+                    <p><?= $event[0]->deskripsi; ?></p>
+                    <ul>
+                        <li>Tanggal Event: <?= $event[0]->tgl_event; ?></li>
+                        <li>Lokasi: <?= $event[0]->lokasi; ?></li>
+                        <li>Harga: <?= $event[0]->harga; ?></li>
+                        <!-- Add more details as needed -->
+                    </ul>
+                    <!-- Add any additional content or buttons here -->
+                </div>
+            </div>
+        <?php else: ?>
+            <p>No event details available.</p>
+        <?php endif; ?>
+    </div>
 </div>
 
 <!-- Bootstrap JS and dependencies -->
@@ -127,24 +148,6 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Get all clickable cards
-    var cards = document.querySelectorAll('.clickable-card');
-
-    // Add a click event listener to each card
-    cards.forEach(function(card) {
-        card.addEventListener('click', function() {
-            // Get the event ID from the data attribute
-            var eventId = this.getAttribute('data-event-id');
-
-            // Redirect to the detailed view page using JavaScript
-            window.location.href = '<?= base_url(''); ?>cevent/detailEvent/' + eventId;
-        });
-    });
-});
-
 </script>
 </body>
 

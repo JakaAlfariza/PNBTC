@@ -190,7 +190,7 @@
             var eventId = this.getAttribute('data-event-id');
 
             // Redirect to the detailed view page using JavaScript
-            window.location.href = '<?= base_url('cevent/detailEvent/'); ?>' + eventId;
+            window.location.href = '<?= base_url('cdetail/detailEvent/'); ?>' + eventId;
         });
     });
 });

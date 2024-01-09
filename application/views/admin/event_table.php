@@ -33,7 +33,7 @@
                         <td>
                             <button type="button" id="edit-<?= $data->id_event ?>" class="btn btn-sm btn-primary">Edit</button>
                             <button type="button" onclick="hapusdata('<?php echo $data->id_event ?>')" class="btn btn-sm btn-danger">Hapus</button>
-                            <input type="button" class="btn btn-success" value="Cetak Data" onclick="cetakpdf()">
+                            <input type="button" class="btn btn-success" value="Cetak Data" onclick="cetakpdf('<?php echo $data->id_event ?>')">
                         </td>
                     </tr> 
                     <?php
@@ -85,8 +85,12 @@
         });
     });
 
-        function cetakpdf()
-        {
-            window.open("<?php echo base_url() ?>cevent/cetakpdf","_blank");	
-        }
+    function cetakpdf(id_event) {
+    // Change the URL to the correct controller and method
+    var url = "<?php echo base_url('Cevent/cetakpdf/') ?>" + id_event;
+
+    // Open a new window or tab with the PDF
+    window.open(url, "_blank");
+}
+
 </script>

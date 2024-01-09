@@ -43,8 +43,10 @@
 			$this->load->view('detailed_event_view', $data);
 		}
 		
-		function cetakpdf()
-		{
+		function cetakpdf($id_event)
+		{	
+			$report['event']=$this->mdataevent->getEvent($id_event); 
+			// var_dump($report);
 			require_once(APPPATH . 'libraries/dompdf/autoload.inc.php');
 			$pdf = new Dompdf\Dompdf();
 			$pdf->setPaper('A4', 'potrait');
@@ -53,9 +55,10 @@
 			$pdf->set_option('isPhpEnabled', true);
 			$pdf->set_option('isFontSubsettingEnabled', true);
 			
-			$pdf->loadHtml($this->load->view('admin/cetak_pdf',array('nama'=>'budhi'), true));
+			$pdf->loadHtml($this->load->view('admin/cetak_pdf',$report, true));
 			$pdf->render();
 			$pdf->stream('NamaFile.pdf', ['Attachment' => 0]);	
+
 		}
 		
 

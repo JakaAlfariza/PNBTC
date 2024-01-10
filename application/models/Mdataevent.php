@@ -1,12 +1,32 @@
 <?php
 class Mdataevent extends CI_Model{
+
+        public function __construct()
+        {
+            parent::__construct();
+            $this->load->model('memail');
+        }
         function simpandata()
         {
             $data = $_POST;
             $pembuat_event = $this->session->userdata('id');
             $data['pembuat_event'] = $pembuat_event;
+            unset($data['notif']); //agar tidak masuk kedatabase
 
             $this->db->insert('event',$data);
+
+            $notif = $this->input->post('notif');
+            
+            if($notif == "on"){
+                $link = base_url('cdetail/detailEvent/'.$this->db->insert_id());
+    
+                $item = $this->db->query("SELECT * FROM user")->result();
+                foreach ($item as $data) {
+                    $this->memail->send($link,$data->email);
+                }
+            }
+        
+            // $this->db->where('')->row();
             echo "<script>alert('Event berhasil disimpan');</script>";
             redirect('cevent/tampilevent','refresh');
         }

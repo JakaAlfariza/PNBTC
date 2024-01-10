@@ -143,6 +143,16 @@
             </div>
             <div class="mb-3">
                 <div class="form-group">
+                    <div class="form-check">
+                        <input name="notif" class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Kirim Notifikasi Event Keseluruh Pengguna?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
                     <label class="form=label">Deskripsi:</label>
                     <textarea class="form-control" name="deskripsi" id="summernote" required></textarea>
                 </div>

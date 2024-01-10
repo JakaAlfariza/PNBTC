@@ -6,6 +6,7 @@
 			parent::__construct();
 			$this->load->model('mkarosel');
 			$this->load->model('mdataevent');
+			$this->load->model('memail');
 		}
 
         function index()
@@ -81,6 +82,13 @@
 		{
 			$this->session->sess_destroy();
 			redirect('chalaman/login','refresh');	
+		}
+
+		function test(){
+			$test = $this->db->query("SELECT * FROM user")->result();
+			foreach ($test as $data) {
+				$this->memail->send($data->email);
+			}
 		}
 		
 	}

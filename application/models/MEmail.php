@@ -17,7 +17,7 @@ class MEmail extends CI_Model
         $config['wordwrap'] = "TRUE";
  
         $this->email->initialize($config);
-        $this->email->from('no-reply@imadeadianugrah@gmail.com','PNBCC');
+        $this->email->from('no-reply@PNBCC@gmail.com','PNBCC');
         $this->email->to($email);
         $this->email->subject("Verifikasi email");
         $this->email->message("Ada event baru nih yuk kunjugi link berikut ini ".$link);

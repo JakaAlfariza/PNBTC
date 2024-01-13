@@ -42,7 +42,7 @@
         .container-card {
             padding: 20px;
             border-radius: 10px;
-            min-width: 350px;
+            min-width: 400px;
             margin: 10px ;
         }
 
@@ -90,38 +90,40 @@
                         class="text-left">
                         <div class="mb-3">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control <?php echo form_error('email') ? 'is-invalid' : ''; ?>" name="email" id="email" placeholder="Email" required>
+                            <input type="text" class="form-control <?php echo form_error('email') ? 'is-invalid' : ''; ?>" name="email" id="email" placeholder="Email" value="<?= set_value('email')?>">
                             <div class="invalid-feedback">
                                 <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="nama">Nama:</label>
-                            <input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid' : ''; ?>" name="nama" id="nama" placeholder="Nama" required>
+                            <input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid' : ''; ?>" name="nama" id="nama" placeholder="Nama" value="<?= set_value('nama')?>">
                             <div class="invalid-feedback">
-                                <?php echo form_error('nama'); ?>
+                                <?php echo form_error('nama', '<small class="text-danger pl-3">','</small>'); ?>
                             </div>
                         </div>
                         <div class="mb-3" style="margin-top: 15px;">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control <?php echo form_error('username') ? 'is-invalid' : ''; ?>" name="username" id="username" placeholder="Username" required>
+                            <input type="text" class="form-control <?php echo form_error('username') ? 'is-invalid' : ''; ?>" name="username" id="username" placeholder="Username" value="<?= set_value('username')?>">
                             <div class="invalid-feedback">
-                                <?php echo form_error('username'); ?>
+                            <?php echo form_error('username', '<small class="text-danger pl-3">','</small>'); ?>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="password">Password:</label>
                             <div class="input-group">
-                                <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" name="password" id="password" placeholder="Password" required>
-                                <div class="invalid-feedback">
-                                    <?php echo form_error('password'); ?>
-                                </div>
+                                <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" name="password" id="password" placeholder="Password" value="<?= set_value('password')?>">
+                                
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="eyeIcon" onclick="togglePasswordVisibility()">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </span>
                                 </div>
+                                <div class="invalid-feedback">
+                                <?php echo form_error('password', '<small class="text-danger pl-3">','</small>'); ?>
+                                </div> 
                             </div>
+                            
                         </div>
                         <button type="submit" class="btn text-white btn-login">D A F T A R</button>
                         <p class="text-center mt-3">Sudah memiliki akun? <a

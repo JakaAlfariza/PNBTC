@@ -1,8 +1,10 @@
 <?php
 class Mdaftar extends CI_Model
 {
+    
     function simpandaftar()
-    {
+    {   
+
         if ($this->session->userdata('role') === 'admin') {
             $username = $this->input->post('username');
             $email = $this->input->post('email');

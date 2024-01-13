@@ -84,9 +84,9 @@
 			redirect('chalaman/login','refresh');	
 		}
 
-		function test(){
-			$test = $this->db->query("SELECT * FROM user")->result();
-			foreach ($test as $data) {
+		function mailing(){
+			$mailing = $this->db->query("SELECT * FROM user")->result();
+			foreach ($mailing as $data) {
 				$this->memail->send($data->email);
 			}
 		}

@@ -19,7 +19,7 @@ class MEmail extends CI_Model
         $this->email->initialize($config);
         $this->email->from('no-reply@PNBCC@gmail.com','PNBCC');
         $this->email->to($email);
-        $this->email->subject("Verifikasi email");
+        $this->email->subject("EVENT TERBARU");
         $this->email->message("Ada event baru nih yuk kunjugi link berikut ini ".$link);
  
         if ($this->email->send()){

@@ -10,6 +10,7 @@
                         <th>Judul</th>
                         <th>Gambar</th>
                         <th>Nama Sponsor</th>
+                        <th>Pembuat Karosel</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@
                         <td><?php echo $data->nama_karosel ?></td>
                         <td><img src="<?php echo base_url('images/' . $data->gambar_k); ?>" alt="Image" style="max-width: 50px; max-height: 50px;"></td>
                         <td><?php echo $data->nama_sponsor ?></td>
+                        <td><?php echo $data->id_user ?></td>
                         <td>
                             <button type="button" id="edit-<?= $data->id_karosel ?>" class="btn btn-sm btn-primary">Edit</button>
                             <button type="button" onclick="hapusdata('<?php echo $data->id_karosel ?>')" class="btn btn-sm btn-danger">Hapus</button>

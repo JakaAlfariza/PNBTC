@@ -28,12 +28,12 @@
                         <td><?php echo $no; ?></td>
                         <td><?php echo $data->nama_event ?></td>
                         <td><?php echo $data->penyelenggara ?></td>
-                        <td><?php echo $data->kategori ?></td>
-                        <td><?php echo $data->pembuat_event ?></td>
+                        <td><?php echo $data->id_kategori ?></td>
+                        <td><?php echo $data->id_user ?></td>
                         <td>
                             <button type="button" id="edit-<?= $data->id_event ?>" class="btn btn-sm btn-primary">Edit</button>
                             <button type="button" onclick="hapusdata('<?php echo $data->id_event ?>')" class="btn btn-sm btn-danger">Hapus</button>
-                            <input type="button" class="btn btn-success" value="Cetak Data" onclick="cetakpdf('<?php echo $data->id_event ?>')">
+                            <button type="button" onclick="cetakpdf('<?php echo $data->id_event ?>')" class="btn btn-sm btn-success">Cetak Surat</button>
                         </td>
                     </tr> 
                     <?php
@@ -67,7 +67,7 @@
                     $('#nama_event').val(response[0].nama_event);                    
                     $('#penyelenggara').val(response[0].penyelenggara); 
                     $('#lokasi').val(response[0].lokasi);
-                    $('#kategori').val(response[0].kategori);
+                    $('#id_kategori').val(response[0].id_kategori);
                     $('#tgl_awal').val(response[0].tgl_awal);  
                     $('#tgl_akhir').val(response[0].tgl_akhir);
                     $('#tgl_event').val(response[0].tgl_event);
@@ -86,11 +86,9 @@
     });
 
     function cetakpdf(id_event) {
-    // Change the URL to the correct controller and method
     var url = "<?php echo base_url('Cevent/cetakpdf/') ?>" + id_event;
 
-    // Open a new window or tab with the PDF
     window.open(url, "_blank");
-}
+    }
 
 </script>

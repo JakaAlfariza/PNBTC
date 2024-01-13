@@ -41,5 +41,6 @@
 			$this->mkarosel->getkarosel($id_karosel);
 		
 		}
+
 	}
 ?>

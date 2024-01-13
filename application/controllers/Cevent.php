@@ -45,7 +45,7 @@
 		
 		function cetakpdf($id_event)
 		{	
-			$report['event']=$this->mdataevent->getEvent($id_event); 
+			$report['event']=$this->mdataevent->getEventSurat($id_event); 
 			// var_dump($report);
 			require_once(APPPATH . 'libraries/dompdf/autoload.inc.php');
 			$pdf = new Dompdf\Dompdf();
@@ -60,7 +60,6 @@
 			$pdf->stream('NamaFile.pdf', ['Attachment' => 0]);	
 
 		}
-		
 
 	}
 ?>

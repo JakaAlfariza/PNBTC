@@ -2,16 +2,48 @@
 class Mkarosel extends CI_Model{
         function simpandata()
         {
-            $data = $_POST;        
-            $this->db->insert('karosel',$data);
-            $this->session->set_flashdata('pesan','Data berhasil disimpan');
-            echo "<script>alert('Karosel berhasil disimpan');</script>";
-            redirect('ckarosel/tampilkarosel','refresh');
+            $config['upload_path']   = './images/';
+            $config['allowed_types'] = 'jpeg|jpg|png';
+            $config['max_size']      = 10240;
+            $config['overwrite']     = TRUE;
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('gambar_k')) {
+                // File uploaded successfully, get the file name
+                $gambar_k = $this->upload->data('file_name');
+
+                $nama_karosel = $this->input->post('nama_karosel', TRUE);
+                $nama_sponsor = $this->input->post('nama_sponsor', TRUE);
+
+                $data = array(
+                    'nama_karosel' => $nama_karosel,
+                    'gambar_k' => $gambar_k,
+                    'nama_sponsor' => $nama_sponsor,
+                );
+
+                $id_user = $this->session->userdata('id');
+                $data['id_user'] = $id_user;
+
+                $this->db->insert('karosel', $data);
+                $this->session->set_flashdata('pesan', 'Data berhasil disimpan');
+                echo "<script>alert('Karosel berhasil disimpan');</script>";
+                redirect('ckarosel/tampilkarosel', 'refresh');
+            } else {
+                // File upload failed, handle accordingly (e.g., show an error message).
+                echo $this->upload->display_errors();
+            }
         }
+
 
         function tampildata()
         {
-            $sql="select * from karosel";
+            $sql=
+            "
+            select karosel.*, user.nama AS id_user
+            FROM karosel
+            JOIN user ON karosel.id_user = user.id
+            ";
             $query= $this->db->query($sql);
             if($query->num_rows()>0){
                 foreach($query->result() as $row){
@@ -58,6 +90,9 @@ class Mkarosel extends CI_Model{
                     'nama_sponsor' => $nama_sponsor,
                 );
 
+                $id_user = $this->session->userdata('id');
+                $data['id_user'] = $id_user;
+
                 $this->db->where('id_karosel', $id_karosel);
                 $this->db->update('karosel', $data);
                 echo "<script>alert('Karosel berhasil diubah');</script>";
@@ -73,6 +108,9 @@ class Mkarosel extends CI_Model{
                     'gambar_k' => $gambar_k,
                     'nama_sponsor' => $nama_sponsor,
                 );
+
+                $id_user = $this->session->userdata('id');
+                $data['id_user'] = $id_user;
 
 
                 $this->db->where('id_karosel', $id_karosel);
@@ -92,5 +130,6 @@ class Mkarosel extends CI_Model{
             echo json_encode($data);
             
         }
+
     }
 ?>

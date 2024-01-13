@@ -83,7 +83,7 @@
                             <div class="mb-3">
                                 <div class="form-group">
                                     <label for="exampleInputName1" class="form-label">Kategori :</label>
-                                    <select name="kategori" id="kategori" class="form-control" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
+                                    <select name="id_kategori" id="id_kategori" class="form-control" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
                                         <option value="" >Pilih Kategori</option>
                                         <?php
                                         foreach ($kategoriData as $kategori) {
@@ -148,7 +148,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary me-2">Submit</button>
-            <button type="reset" class="btn btn-danger">Cancel</button>
+            <button type="reset" class="btn btn-danger" onclick="resetSummernote()">Cancel</button>
             </form>
         </div>
     </div>
@@ -166,5 +166,23 @@
     tabsize: 2,
     height: 200
     });
+
+    function resetSummernote() {
+        $('#nama_event').val('');
+        $('#thumbnail').val('');
+        $('#gambar').val('');
+        $('#penyelenggara').val('');
+        $('#lokasi').val('');
+        $('#id_kategori').val('');
+        $('#tgl_awal').val('');
+        $('#tgl_akhir').val('');
+        $('#tgl_event').val('');
+        $('#harga').val('');
+        $('#tingkat_event').val('');
+        $('#link_daftar').val('');
+
+        $('#summernote').summernote('code', '');
+    }
+
 
 </script>

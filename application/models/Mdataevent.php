@@ -3,8 +3,8 @@ class Mdataevent extends CI_Model{
         function simpandata()
         {
             $data = $_POST;
-            $pembuat_event = $this->session->userdata('id');
-            $data['pembuat_event'] = $pembuat_event;
+            $id_user = $this->session->userdata('id');
+            $data['id_user'] = $id_user;
 
             $this->db->insert('event',$data);
             echo "<script>alert('Event berhasil disimpan');</script>";
@@ -17,20 +17,21 @@ class Mdataevent extends CI_Model{
             "
             select event.*, user.nama AS id_user, kategori.nama_kategori as id_kategori
             FROM event
-            JOIN user ON event.id_user = user.id
-            JOIN kategori ON event.id_kategori = kategori.id_kategori;
+            INNER JOIN user ON event.id_user = user.id
+            INNER JOIN kategori ON event.id_kategori = kategori.id_kategori;
             ";
+            
             $query= $this->db->query($sql);
             if($query->num_rows()>0){
                 foreach($query->result() as $row){
                     $hasil[]=$row; 
                 }
-                }
-                else{
-                    $hasil="";
-        
-                }
-                return $hasil;
+            }
+            else{
+                $hasil="";
+    
+            }
+            return $hasil;
         }
 
         function hapusdata($id_event)
@@ -44,20 +45,21 @@ class Mdataevent extends CI_Model{
         function updateEvent($id_event)
         {
             $data = $_POST;
+            $id_user = $this->session->userdata('id');
+            $data['id_user'] = $id_user;
 
             $condition = array('id_event' => $id_event);
-
             $response = $this->db->update('event',$data, $condition);
- 
-            
             redirect('cevent/tampilevent','refresh');	
         }
 
 
-        function getEvent($id_event) {
+        function getEvent($id_event) 
+        {
+            $this->db->select('*')->from('event')->where('id_event',$id_event);
+            $data = $this->db->get()->result();
 
-        return $this->db->select('*')->from('event')->where('id_event',$id_event)->get()->first_row(); 
-           
+            echo json_encode($data);
             
         }
 
@@ -67,12 +69,16 @@ class Mdataevent extends CI_Model{
             return $query->result();
         }
 
-        public function get_events() {
-            // Gantilah query di bawah ini sesuai dengan struktur tabel dan kolom database Anda
+        public function get_events() 
+        {
             $query = $this->db->get('event');
             return $query->result();
         }
 
-       
+        function getEventSurat($id_event) {
+        return $this->db->select('*')->from('event')->where('id_event',$id_event)->get()->first_row(); 
+        }        
+        
+
     }
 ?>

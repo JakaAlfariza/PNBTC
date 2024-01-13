@@ -10,6 +10,7 @@
 			if ($this->session->userdata('role')!='admin') {
 				redirect('chalaman/index');
 			}
+			
 		}	
 
 		function tampilkarosel()

@@ -34,6 +34,28 @@
 </head>
 
 <body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand font-weight-bold" href="<?php echo base_url('cdashboard/tampildata'); ?>">
+            <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt=""> PNBCC [<?= strtoupper($this->session->userdata('role')); ?>]
+        </a>
+        <ul class="navbar-nav font-weight-bold ml-auto">
+            <li class="nav-item">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle custom-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user"></i>
+                        <span class="ml-2"><?= $this->session->userdata('nama'); ?></span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="<?php echo base_url('cdashboard/tampildata'); ?>">Home</a>
+                        <a class="dropdown-item" href="<?php echo base_url('cprofile/tampilakun'); ?>">Profile</a>
+                        <a class="dropdown-item text-danger" href="<?= base_url('cadmin/logout');?>">Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
 
 <div class="container">
     <h2>Edit Profile</h2>

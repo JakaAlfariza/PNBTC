@@ -12,61 +12,71 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Details of event</title>
     <style>
-        #iklan {
-            height: 350px;
-            overflow: hidden;
-        }
-
-        .carousel-inner img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-        }
-
-        .body {
+        body {
             background-color: #e8e8e8;
-            overflow-x: hidden; /* Add this style to prevent horizontal scrolling */
         }
 
-        .container-parent {
-            padding: 0;
-            margin-left: 8px;
-            margin-right: 8px;
-        }
-
-        .container-child {
+        .container-details {
             background-color: #ffffff;
-            width: 90%;
-            margin: 0 auto;
-            padding: 20px;
+            padding: 40px;
             border-radius: 8px;
             margin-top: 20px;
+            width: 100%; /* Adjusted width */
+            max-width: 1600px; /* Set a maximum width for the container */
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 100px;
         }
 
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px; /* Adjust the gap between cards as needed */
-        }
-
-        .card {
-            width: calc(25% - 20px); /* Adjust the width of each card and consider the gap */
-            box-sizing: border-box;
+        .container-details img {
+            width: 100%; /* Make the image fill the container width */
+            height: auto;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow effect */
-            transition: transform 0.3s ease-in-out;
+            margin-bottom: 20px; /* Add margin to create space between image and details */
         }
 
-        .card:hover{
-            transform: scale(1.1);
-        }
 
-        .card img {
-            width: 100%;
-            height: 150px; /* Set the desired height for the card images */
-            object-fit: cover;
+        .container-details h2 {
+            color: #004789;
+            text-align: left; /* Align the heading to the left */
+            font-size: 45px; /* Adjust the font size as needed */
+            margin-bottom: 0px; /* Add margin for spacing */
+        }
+        .container-details .tanggal {
+        color: #FF0000;
+        text-align: left;
+        font-size: 34px; /* Adjust the font size as needed */
+        margin-bottom: -15px; /* Add margin for spacing */
+        }
+        .container-details .lokasi {
+        text-align: left;
+        font-size: 24px; /* Adjust the font size as needed */
+        margin-bottom: 10px;
+        }
+        .container-details .harga {
+        color: #00A859; /* Green color */
+        text-align: right;
+        font-size: 24px; /* Adjust the font size as needed */
+        margin-bottom: -65px;
+        }
+        .container-details .deskripsi {
+        text-align: left;
+        text-align-last: justify;
+        font-size: 18px; /* Adjust the font size as needed */
+        margin-bottom: 20px; /* Adjust the margin as needed */
+        }
+        .daftar-button a.btn {
+        background-color: #003366; /* Darker blue color */
+        color: #ffffff;
+        padding:10px 30px; /* Adjust padding for a slightly bigger size */
+        font-size: 16px; /* Adjust font size for a slightly bigger size */
+        transition: transform 0.2s ease-in-out;
+        }
+        .daftar-button a.btn:hover {
+        transform: scale(1.05); /* Slightly bigger on hover */
+        }
+        .daftar-button a.btn:active {
+        transform: scale(0.95); /* Slightly smaller on click */
         }
     </style>
 </head>
@@ -112,30 +122,40 @@
         </ul>
     </nav>
 
-    <!-- Container Parent -->
-    <div class="container-fluid p-0 text-center">
+  <!-- Container Parent -->
+  <div class="container-fluid p-0 text-center">
         <!-- Container for Event Details -->
         <div class="container mt-5">
             <?php if (!empty($event)): ?>
                 <div class="row">
-                    <div class="col-md-6">
-                        <img src="<?= base_url('images/' . $event->thumbnail); ?>" class="img-fluid"
-                            alt="<?= $event->nama_event; ?>">
-                    </div>
-                    <div class="col-md-6">
-                        <h2><?= $event->nama_event; ?></h2>
-                        <p><?= $event->deskripsi; ?></p>
-                        <ul>
-                            <li>Tanggal Mulai: <?= $event->tgl_awal; ?></li>
-                            <li>Tanggal Selesai: <?= $event->tgl_akhir; ?></li>
-                            <li>Tanggal Event: <?= $event->tgl_event; ?></li>
-                            <li>Lokasi: <?= $event->lokasi; ?></li>
-                            <li>Harga: <?= $event->harga; ?></li>
-                            <li>Penyelenggara: <?= $event->penyelenggara; ?></li>
-                            <li>Tingkat Event: <?= $event->tingkat_event; ?></li>
-                            <!-- Add more details as needed -->
-                        </ul>
-                        <!-- Add any additional content or buttons here -->
+                    <div class="col-md-12">
+                        <div class="container-details">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <img src="<?= base_url('images/' . $event->thumbnail); ?>" class="img-fluid"
+                                        alt="<?= $event->nama_event; ?>">
+                                </div>
+                                <div class="col-md-12">
+                                <div class="harga">
+                                        <p>Harga: <?= $event->harga; ?></p>
+                                    </div>
+                                    <h2><?= $event->nama_event; ?></h2>
+                                    <div class="tanggal">
+                                        <p><?= $event->tgl_event; ?></p>
+                                    </div>
+                                    <div class="lokasi">
+                                        <p>Lokasi: <?= $event->lokasi; ?></p>
+                                    </div>
+                                    <div class="deskripsi">
+                                        <p><?= $event->deskripsi; ?></p>
+                                    </div>
+                                    <div class="daftar-button">
+                                        <a href="<?= $event->link_daftar; ?>" class="btn btn-primary" target="_blank">Daftar Sekarang</a>
+                                    </div>
+                                    <!-- Add any additional content or buttons here -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <?php else: ?>
@@ -143,6 +163,8 @@
             <?php endif; ?>
         </div>
     </div>
+
+
 
 
 

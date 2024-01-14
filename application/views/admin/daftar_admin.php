@@ -73,7 +73,7 @@
             <div class="mb-3">
                 <label for="password">Password:</label>
                 <div class="input-group">
-                    <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" name="password" id="password" placeholder="Password" value="<?= set_value('password')?>">
+                    <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" name="password" id="password" placeholder="Password" >
                     
                     <div class="input-group-append">
                         <span class="input-group-text" id="eyeIcon" onclick="togglePasswordVisibility()">

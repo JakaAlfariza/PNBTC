@@ -1,28 +1,26 @@
 <?php
-	class Cprofile extends CI_Controller
-	{
-		public function __construct()
-		{
-			parent::__construct();
-			$this->load->model('mprofile');
-		}	
+class Cprofile extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Mprofile'); 
+    }
 
-		function simpanprofile()
-		{
-			$this->load->model('mprofile');
-			$this->mprofile->simpanprofile();
-		}
+    function simpanprofile()
+    {
+        $this->Mprofile->simpanprofile();
+    }
 
-		function tampilakun(){
-			$tampilakun['hasil']=$this->mprofile->tampilakun();
-			$this->load->view('/admin/profile',$tampilakun);
-		
-		}
-	
-		function hapusakun($id)
-		{
-			$this->mprofile->hapusakun($id);	
-		}
-		
-	}
+    function tampilakun()
+    {
+        $tampilakun['user'] = $this->Mprofile->tampilakun();
+        $this->load->view('/admin/profile', $tampilakun);
+    }
+
+    function hapusakun($id)
+    {
+        $this->Mprofile->hapusakun($id);
+    }
+}
 ?>

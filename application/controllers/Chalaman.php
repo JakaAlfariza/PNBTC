@@ -7,6 +7,7 @@
 			$this->load->model('mkarosel');
 			$this->load->model('mdataevent');
 			$this->load->model('memail');
+			$this->load->library('form_validation');
 		}
 
         function index()
@@ -49,12 +50,23 @@
 
 		function proseslogin()
 		{
-			if ($this->session->userdata('role')!=null) {
+			$this->form_validation->set_rules('username','Username','required|trim',['required'=>'Username harus diisi!']);
+			$this->form_validation->set_rules('password','Password','required|trim',['required'=>'Password harus diisi!']);
+			
+
+			if($this->form_validation->run()==false){
+				$this->load->view('/auth/login');	
 				
-				redirect('chalaman/index');
+			} else{
+				if ($this->session->userdata('role')!=null) {
+
+					redirect('chalaman/index');
+				}
+				$this->load->model('mlogin');
+				$this->mlogin->proseslogin();
 			}
-			$this->load->model('mlogin');
-			$this->mlogin->proseslogin();	
+			
+				
 		}
 
 		function lupaPass()
@@ -70,13 +82,31 @@
 			$this->load->view('/auth/lupa_pass');
 		}
 
+
+
 		function resetPass(){
-			if ($this->session->userdata('role')!=null) {
+
+
+			
+			$this->form_validation->set_rules('username','Username','required|trim',['required'=>'Username harus diisi!']);
+			$this->form_validation->set_rules('email','Email','required|trim|valid_email'
+			,['required'=>'Email harus diisi!','valid_email'=>'Email tidak Valid!',]);
+			$this->form_validation->set_rules('new_password','Password baru','required|trim|min_length[5]|matches[confirm_password]',
+			['min_length'=>'Password minimal 5 kata','required'=>'Password harus diisi!']);
+			$this->form_validation->set_rules('confirm_password','Password baru','required|trim|min_length[5]|matches[new_password]',
+			['min_length'=>'Password minimal 5 kata','required'=>'Konfirmasi password harus diisi!','matches'=>'password tidak sama']);
+			if($this->form_validation->run()==false){
+				$this->load->view('/auth/lupa_pass');	
 				
-				redirect('chalaman/index');
+			} else{
+				if ($this->session->userdata('role')!=null) {
+				
+					redirect('chalaman/index');
+				}
+				$this->load->model('mlupaPass');
+				$this->mlupaPass->resetPass();	
 			}
-			$this->load->model('mlupaPass');
-			$this->mlupaPass->resetPass();	
+			
 		}
 
 		function logout()

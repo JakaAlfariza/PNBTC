@@ -92,17 +92,23 @@
                     <form name="formlogin" method="post" action="<?php echo base_url('chalaman/proseslogin'); ?>" class="text-left">
                         <div class="mb-3">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" name="username" placeholder="Username" Required>
+                            <input type="text" class="form-control <?php echo form_error('username') ? 'is-invalid' : ''; ?>" name="username" placeholder="Username" value="<?= set_value('username')?>">
+                            <div class="invalid-feedback">
+                            <?php echo form_error('username', '<small class="text-danger pl-3">','</small>'); ?>
+                            </div> 
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password:</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" required>
+                                <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" id="passwordInput" name="password" placeholder="Password" >
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="eyeIcon" onclick="togglePasswordVisibility()">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </span>
                                 </div>
+                                <div class="invalid-feedback">
+                                <?php echo form_error('password', '<small class="text-danger pl-3">','</small>'); ?>
+                                </div> 
                             </div>
                         </div>
                         <div class="mb-3">

@@ -40,13 +40,19 @@
                                 <div class="mb-3">
                                     <div class="form-label">
                                         <label for="exampleInputName1" class="form-label">Judul Karosel:</label>
-                                        <input type="text" name="nama_karosel" id="nama_karosel" class="form-control" style="font-size:17px" placeholder="Judul Karosel" required>
+                                        <input type="text" name="nama_karosel" id="nama_karosel" class="form-control <?php echo form_error('nama_karosel') ? 'is-invalid' : ''; ?>" style="font-size:17px" placeholder="Judul Karosel">
+                                        <div class="invalid-feedback">
+                                        <?php echo form_error('nama_karosel', '<small class="text-danger pl-3">','</small>'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-group">
-                                        <label for="exampleInputName1" class="form-label">Gambar: (000px*000px)</label>
-                                        <input type="file" name="gambar_k" id="gambar_k" class="form-control" onchange="readURL(this);">
+                                        <label for="exampleInputName1" class="form-label">Gambar: (1350px300px)</label>
+                                        <input type="file" name="gambar_k" id="gambar_k" class="form-control <?php echo form_error('gambar_k') ? 'is-invalid' : ''; ?>" onchange="readURL(this);">
+                                        <div class="invalid-feedback">
+                                        <?php echo form_error('gambar_k', '<small class="text-danger pl-3">','</small>'); ?>
+                                        </div>
                                         <div id="tampilGambar" style="display: none;">
                                             <img id="tampil_gambar" src="" alt="Existing Image" style="max-width: 200px; max-height: 200px; margin-top:5px;">
                                         </div>
@@ -55,7 +61,10 @@
                                 <div class="mb-3">
                                     <div class="form-group">
                                         <label for="exampleInputName1" class="form-label">Nama Sponsor:</label>
-                                        <input type="text" name="nama_sponsor" id="nama_sponsor" class="form-control" placeholder="Nama Sponsor" required>
+                                        <input type="text" name="nama_sponsor" id="nama_sponsor" class="form-control <?php echo form_error('nama_sponsor') ? 'is-invalid' : ''; ?>" placeholder="Nama Sponsor">
+                                        <div class="invalid-feedback">
+                                        <?php echo form_error('nama_sponsor', '<small class="text-danger pl-3">','</small>'); ?>
+                                        </div>
                                     </div>
                                 </div>
                             <button type="submit" class="btn btn-primary me-2">Submit</button>

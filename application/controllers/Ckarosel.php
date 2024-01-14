@@ -10,6 +10,7 @@
 			if ($this->session->userdata('role')!='admin') {
 				redirect('chalaman/index');
 			}
+			$this->load->library('form_validation');
 			
 		}	
 
@@ -23,7 +24,18 @@
 		}
 
 		function simpandata(){
-			$this->mkarosel->simpandata();
+			$this->form_validation->set_rules('nama_karosel','Nama karosel','required|trim',['required'=>'Nama karosel harus diisi harus diisi!']);
+			$this->form_validation->set_rules('gambar_k','Gambar karosel','required|trim',['required'=>'gambar karosel harus diisi!']);
+			$this->form_validation->set_rules('nama_sponsor','Nama sponsor','required|trim',['required'=>'Nama sponsor harus diisi!']);
+			if($this->form_validation->run()==false){
+				$tampildata['hasil']=$this->mkarosel->tampildata();
+				$data['konten']=$this->load->view('/admin/karosel','',TRUE);
+				$data['table']=$this->load->view('/admin/karosel_table',$tampildata,TRUE);
+				$this->load->view('/admin/vadmin',$data);
+			} else{
+				$this->mkarosel->simpandata();
+			}
+			
 		}
 
 		function hapusdata($id_karosel)

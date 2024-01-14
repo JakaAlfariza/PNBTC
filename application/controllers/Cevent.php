@@ -34,7 +34,7 @@
 		}
 
 		function getEvent($id_event) {
-			$this->mdataevent->getEvent($id_event);
+    		$this->mdataevent->getEvent($id_event);
 		
 		}
 		
@@ -61,5 +61,5 @@
 			$pdf->render();
 			$pdf->stream('Surat Pemberitahuan ' . $filename, ['Attachment' => 0]);
 		}
-	}
+			}
 ?>

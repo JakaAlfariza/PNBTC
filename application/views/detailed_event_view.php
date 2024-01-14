@@ -112,32 +112,40 @@
         </ul>
     </nav>
 
-<!-- Container Parent-->
-<div class="container-fluid p-0 text-center">
-  <!-- Container for Event Details -->
-  <div class="container mt-5">
-        <?php if ($event): ?>
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="<?= base_url('images/' . $event[0]->thumbnail); ?>" class="img-fluid" alt="<?= $event[0]->nama_event; ?>">
+    <!-- Container Parent -->
+    <div class="container-fluid p-0 text-center">
+        <!-- Container for Event Details -->
+        <div class="container mt-5">
+            <?php if (!empty($event)): ?>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="<?= base_url('images/' . $event->thumbnail); ?>" class="img-fluid"
+                            alt="<?= $event->nama_event; ?>">
+                    </div>
+                    <div class="col-md-6">
+                        <h2><?= $event->nama_event; ?></h2>
+                        <p><?= $event->deskripsi; ?></p>
+                        <ul>
+                            <li>Tanggal Mulai: <?= $event->tgl_awal; ?></li>
+                            <li>Tanggal Selesai: <?= $event->tgl_akhir; ?></li>
+                            <li>Tanggal Event: <?= $event->tgl_event; ?></li>
+                            <li>Lokasi: <?= $event->lokasi; ?></li>
+                            <li>Harga: <?= $event->harga; ?></li>
+                            <li>Penyelenggara: <?= $event->penyelenggara; ?></li>
+                            <li>Tingkat Event: <?= $event->tingkat_event; ?></li>
+                            <!-- Add more details as needed -->
+                        </ul>
+                        <!-- Add any additional content or buttons here -->
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h2><?= $event[0]->nama_event; ?></h2>
-                    <p><?= $event[0]->deskripsi; ?></p>
-                    <ul>
-                        <li>Tanggal Event: <?= $event[0]->tgl_event; ?></li>
-                        <li>Lokasi: <?= $event[0]->lokasi; ?></li>
-                        <li>Harga: <?= $event[0]->harga; ?></li>
-                        <!-- Add more details as needed -->
-                    </ul>
-                    <!-- Add any additional content or buttons here -->
-                </div>
-            </div>
-        <?php else: ?>
-            <p>No event details available.</p>
-        <?php endif; ?>
+            <?php else: ?>
+                <p>No event details available.</p>
+            <?php endif; ?>
+        </div>
     </div>
-</div>
+
+
+
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

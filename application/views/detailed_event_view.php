@@ -77,6 +77,15 @@
         .daftar-button a.btn:active {
         transform: scale(0.95); /* Slightly smaller on click */
         }
+        .footer {
+            background-color: #333; /* Dark background color for the footer */
+            color: white; /* Text color for the footer */
+            padding: 20px;
+            text-align: center;
+            bottom: 0;
+            width: 100%;
+        }
+
     </style>
 </head>
 
@@ -163,8 +172,10 @@
         </div>
     </div>
 
-
-
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 PNBCC TEAM</p>
+    </div>
 
 
 

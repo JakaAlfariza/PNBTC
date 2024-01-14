@@ -110,5 +110,15 @@ class Mdataevent extends CI_Model{
 
             return $query->result();
         }
+
+        public function searchEvent($query) {
+            $this->db->like('nama_event', $query);
+            $this->db->or_like('penyelenggara', $query);
+
+            $result = $this->db->get('event');
+
+            return $result->result();
+        }
+
     }
 ?>

@@ -20,10 +20,12 @@
 			$this->load->view('/admin/vadmin',$data);
 		
 		}
+
 		function updateEvent($id_event) {
 			$this->mdataevent->updateEvent($id_event);
 			
 		}
+
 		function simpandata(){
 			$this->mdataevent->simpandata();
 		}
@@ -61,5 +63,5 @@
 			$pdf->render();
 			$pdf->stream('Surat Pemberitahuan ' . $filename, ['Attachment' => 0]);
 		}
-			}
+	}
 ?>

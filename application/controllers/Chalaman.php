@@ -91,6 +91,15 @@
 				$this->memail->send($data->email);
 			}
 		}
-		
+
+		public function searchEvent() {
+			$query = $this->input->get('query');
+
+			$suggestions = $this->mdataevent->searchEvent($query);
+
+			$data['event'] = $suggestions;
+			$this->load->view('hasil_search', $data);
+		}
+
 	}
 ?>

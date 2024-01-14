@@ -83,7 +83,7 @@
                             <div class="mb-3">
                                 <div class="form-group">
                                     <label for="exampleInputName1" class="form-label">Kategori :</label>
-                                    <select name="id_kategori" id="id_kategori" class="form-control" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
+                                    <select name="id_kategori" id="id_kategori" class="form-control">
                                         <option value="" >Pilih Kategori</option>
                                         <?php
                                         foreach ($kategoriData as $kategori) {

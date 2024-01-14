@@ -8,18 +8,27 @@ class Cprofile extends CI_Controller
     }
 
     function simpanprofile()
-    {
-        $this->Mprofile->simpanprofile();
+{
+    // Get the user ID from the session
+    $id = $this->session->userdata('id');
+    
+    $this->Mprofile->simpanprofile($id);
 
-        // Use base_url to generate the correct URL
-        redirect(base_url('cprofile/tampilakun'), 'refresh');
-    }
+    // Update session data with the new user details
+    $new_user_data = array(
+        'nama' => $this->input->post('nama'),
+        'email' => $this->input->post('email'),
+        // Update other user details as needed
+    );
+
+    $this->session->set_userdata($new_user_data);
+}
 
 
     function tampilakun()
     {
-        $data['user'] = $this->Mprofile->tampilakun();
-        $this->load->view('/admin/profile', $data);
+        $tampilakun['user'] = $this->Mprofile->tampilakun();
+        $this->load->view('/admin/profile', $tampilakun);
     }
 
     function hapusakun($id)

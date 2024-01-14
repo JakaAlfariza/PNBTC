@@ -36,34 +36,37 @@
 <body>
 
 <div class="container">
-        <h2>Edit Profile</h2>
+    <h2>Edit Profile</h2>
+    <form action="<?= base_url('cprofile/simpanprofile') ?>" method="post">
+        <!-- Add a hidden input field to store the user's ID -->
+        <input type="hidden" name="id" value="<?= $this->session->userdata('id') ?>">
 
-        <form action="<?= base_url('cprofile/simpanprofile') ?>" method="post">
-            <div class="form-group">
-                <label for="nama">Name:</label>
-                <input type="text" class="form-control" name="nama" value="<?= isset($user->nama) ? $user->nama : '' ?>">
-            </div>
+        <div class="form-group">
+            <label for="nama">Name:</label>
+            <input type="text" class="form-control" name="nama" value="<?= $this->session->userdata('nama') ?>">
+        </div>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" name="email" value="<?= isset($user->email) ? $user->email : '' ?>">
-            </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name="email" value="<?= $this->session->userdata('email') ?>">
+        </div>
 
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" name="password" value="<?= isset($user->password) ? $user->password : '' ?>">
-            </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" name="password" value="">
+            <!-- Note: It's not recommended to pre-fill the password field for security reasons -->
+        </div>
 
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" class="form-control" name="username" value="<?= isset($user->username) ? $user->username : '' ?>">
-            </div>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" name="username" value="<?= $this->session->userdata('username') ?>">
+        </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-success">Update</button>
-            </div>
-        </form>
-    </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+    </form>
+</div>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

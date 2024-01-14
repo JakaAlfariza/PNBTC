@@ -10,12 +10,16 @@ class Cprofile extends CI_Controller
     function simpanprofile()
     {
         $this->Mprofile->simpanprofile();
+
+        // Use base_url to generate the correct URL
+        redirect(base_url('cprofile/tampilakun'), 'refresh');
     }
+
 
     function tampilakun()
     {
-        $tampilakun['user'] = $this->Mprofile->tampilakun();
-        $this->load->view('/admin/profile', $tampilakun);
+        $data['user'] = $this->Mprofile->tampilakun();
+        $this->load->view('/admin/profile', $data);
     }
 
     function hapusakun($id)

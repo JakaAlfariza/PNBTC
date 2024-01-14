@@ -72,6 +72,10 @@
             transform: scale(1.1);
         }
 
+        .card:active{
+            transform: scale(0.75);
+        }
+
         .card img {
             width: 100%;
             height: 150px; /* Set the desired height for the card images */

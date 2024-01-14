@@ -45,23 +45,22 @@
         .container-details .tanggal {
         color: #FF0000;
         text-align: left;
-        font-size: 34px; /* Adjust the font size as needed */
+        font-size: 26px; /* Adjust the font size as needed */
         margin-bottom: -15px; /* Add margin for spacing */
         }
         .container-details .lokasi {
         text-align: left;
-        font-size: 24px; /* Adjust the font size as needed */
+        font-size: 20px; /* Adjust the font size as needed */
         margin-bottom: 10px;
         }
         .container-details .harga {
         color: #00A859; /* Green color */
         text-align: right;
-        font-size: 24px; /* Adjust the font size as needed */
+        font-size: 30px; /* Adjust the font size as needed */
         margin-bottom: -65px;
         }
         .container-details .deskripsi {
         text-align: left;
-        text-align-last: justify;
         font-size: 18px; /* Adjust the font size as needed */
         margin-bottom: 20px; /* Adjust the margin as needed */
         }
@@ -137,11 +136,11 @@
                                 </div>
                                 <div class="col-md-12">
                                 <div class="harga">
-                                        <p>Harga: <?= $event->harga; ?></p>
+                                        <p>Rp.<?= $event->harga; ?></p>
                                     </div>
-                                    <h2><?= $event->nama_event; ?></h2>
+                                        <h2><?= $event->nama_event; ?></h2>
                                     <div class="tanggal">
-                                        <p><?= $event->tgl_event; ?></p>
+                                        <p><?= date('l, j-n-Y', strtotime($event->tgl_event)); ?></p>
                                     </div>
                                     <div class="lokasi">
                                         <p>Lokasi: <?= $event->lokasi; ?></p>

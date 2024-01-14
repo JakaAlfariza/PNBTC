@@ -89,20 +89,32 @@
                         class="text-left">
                         <div class="mb-3">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            <input type="text" class="form-control <?php echo form_error('email') ? 'is-invalid' : ''; ?>" name="email" placeholder="Email" >
+                            <div class="invalid-feedback">
+                            <?php echo form_error('email', '<small class="text-danger pl-3">','</small>'); ?>
+                            </div> 
                         </div>
                         <div class="mb-3">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" name="username" placeholder="Username" required>
+                            <input type="text" class="form-control <?php echo form_error('username') ? 'is-invalid' : ''; ?>" name="username" placeholder="Username" >
+                            <div class="invalid-feedback">
+                            <?php echo form_error('username', '<small class="text-danger pl-3">','</small>'); ?>
+                            </div> 
                         </div>
                         <!-- Add necessary form fields for new password entry -->
                         <div class="mb-3">
                             <label for="new_password">New Password:</label>
-                            <input type="password" class="form-control" name="new_password" placeholder="New Password" required>
+                            <input type="password" class="form-control <?php echo form_error('new_password') ? 'is-invalid' : ''; ?>" name="new_password" placeholder="New Password" >
+                            <div class="invalid-feedback">
+                            <?php echo form_error('new_password', '<small class="text-danger pl-3">','</small>'); ?>
+                            </div> 
                         </div>
                         <div class="mb-3">
                             <label for="confirm_password">Confirm Password:</label>
-                            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
+                            <input type="password" class="form-control <?php echo form_error('confirm_password') ? 'is-invalid' : ''; ?>" name="confirm_password" placeholder="Confirm Password" >
+                            <div class="invalid-feedback">
+                            <?php echo form_error('confirm_password', '<small class="text-danger pl-3">','</small>'); ?>
+                            </div> 
                         </div>
                         <button type="submit" class="btn text-white btn-reset">R E S E T</button>
                         <p class="text-center mt-3">Sudah ingat password? <a href="<?php echo base_url('chalaman/login'); ?>">klik disini</a></p>

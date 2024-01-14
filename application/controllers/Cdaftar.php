@@ -17,8 +17,9 @@
 			,['required'=>'Email harus diisi!','valid_email'=>'Email tidak Valid!','is_unique'=>'Email sudah ada!']);
 			$this->form_validation->set_rules('password','Password','required|trim|min_length[5]',
 			['min_length'=>'Password minimal 5 kata','required'=>'Password harus diisi!']);
-			$this->form_validation->set_rules('role','role','required|trim',['required'=>'role harus diisi!']);
-
+			if ($this->session->userdata('role') === 'admin'){
+                $this->form_validation->set_rules('role','role','required|trim',['required'=>'role harus diisi!']);
+            }
 			if($this->form_validation->run()==false){
 				if ($this->session->userdata('role') === 'admin'){
 					$tampilakun['hasil']=$this->mdaftar->tampilakun();

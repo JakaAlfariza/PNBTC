@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -13,7 +13,8 @@
     <title>Home</title>
     <style>
         #iklan {
-            height: 350px;
+            margin-top: 65px;
+            height: 300px;
             overflow: hidden;
         }
 
@@ -21,6 +22,11 @@
             object-fit: cover;
             height: 100%;
             width: 100%;
+        }
+
+        .btn{
+            background-color: #004789;
+            color: #ffffff;
         }
 
         .body {
@@ -41,13 +47,14 @@
             padding: 20px;
             border-radius: 8px;
             margin-top: 20px;
+            margin-bottom: 50px;
         }
 
         .card-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
             gap: 20px; /* Adjust the gap between cards as needed */
+            margin-bottom: 30px;
         }
 
         .card {
@@ -68,25 +75,31 @@
             height: 150px; /* Set the desired height for the card images */
             object-fit: cover;
         }
+
+        .footer {
+            background-color: #333; /* Dark background color for the footer */
+            color: white; /* Text color for the footer */
+            padding: 20px;
+            text-align: center;
+            bottom: 0;
+            width: 100%;
+        }
+
     </style>
 </head>
 
 <body class="body">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand" href="<?= base_url('chalaman/index');?>">
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
         </a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="form-inline my-2 my-lg-0">
-                <div class="input-group">
+                <div class="input-group mt">
+                    <i class="fas fa-search"></i>
                     <input class="form-control mr-sm-2" type="search" placeholder="Cari Event" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-                    </div>
                 </div>
             </form>
         </div>
@@ -119,10 +132,10 @@
         <div class="carousel-inner">
             <?php
             $firstItem = true;
-            foreach ($karosel as $item):
+            foreach ($karosel as $item_karosel):
             ?>
             <div class="carousel-item <?php echo $firstItem ? 'active' : ''; ?>">
-                <img class="d-block w-100" src="<?php echo base_url('images/' . $item->gambar_k); ?>" alt="<?php echo $item->nama_karosel; ?>">
+                <img class="d-block w-100" src="<?php echo base_url('images/' . $item_karosel->gambar_k); ?>" alt="<?php echo $item_karosel->nama_karosel; ?>">
             </div>
             <?php
             $firstItem = false; 
@@ -140,21 +153,32 @@
         </a>
     </div>
 
-    <h3 class="text-left" style="margin-left: 90px;">Event List</h3>
+    <h3 class="text-left" style="margin-left: 85px;">Event List</h3>
+    <!-- Add category buttons here -->
+        <div class="text-left mb-4" style="margin-left: 85px;">
+            <button class="btn category-filter" data-category="all">Semua Event</button>
+            <?php foreach ($kategori as $item_kategori): ?>
+                <button class="btn category-filter" data-category="<?= $item_kategori->id_kategori; ?>">
+                    <?= $item_kategori->nama_kategori; ?>
+                </button>
+            <?php endforeach; ?>
+        </div>
+
     <!-- Child Container -->
     <div class="container-child">
         <div class="card-container">
-            <?php foreach ($events as $event): ?>
-                <div class="card clickable-card" data-event-id="<?= $event->id_event; ?>">
-                    <img src="<?= base_url('images/' . $event->thumbnail); ?>" class="card-img-top" alt="<?= $event->nama_event; ?>">
+            <!-- Card Event -->
+            <?php foreach ($event as $item_event): ?>
+                <div class="card clickable-card" data-event-id="<?= $item_event->id_event; ?>" data-category="<?= $item_event->id_kategori; ?>">
+                    <img src="<?= base_url('images/' . $item_event->thumbnail); ?>" class="card-img-top" alt="<?= $item_event->nama_event; ?>">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $event->nama_event; ?></h5>
-                        <p class="card-text"><?= substr($event->deskripsi, 0, 100) . '...'; ?></p>
+                        <h5 class="card-title"><?= $item_event->nama_event; ?></h5>
+                        <p class="card-text"><?= substr($item_event->deskripsi, 0, 100) . '...'; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Tanggal Event: <?= $event->tgl_event; ?></li>
-                        <li class="list-group-item">Lokasi: <?= $event->lokasi; ?></li>
-                        <li class="list-group-item">Harga: <?= $event->harga; ?></li>
+                        <li class="list-group-item">Tanggal Event: <?= $item_event->tgl_event; ?></li>
+                        <li class="list-group-item">Lokasi: <?= $item_event->lokasi; ?></li>
+                        <li class="list-group-item">Harga: <?= $item_event->harga; ?></li>
                     </ul>
                     <div class="card-body">
                         <!-- Add any additional actions or links here -->
@@ -163,39 +187,51 @@
             <?php endforeach; ?>
         </div>
     </div>
-
-
-
 </div>
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 PNBCC TEAM</p>
+    </div>
 
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-</script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Get all clickable cards
-    var cards = document.querySelectorAll('.clickable-card');
+    document.addEventListener('DOMContentLoaded', function () {
+        var cards = document.querySelectorAll('.clickable-card');
+        var categoryButtons = document.querySelectorAll('.category-filter');
 
-    // Add a click event listener to each card
-    cards.forEach(function(card) {
-        card.addEventListener('click', function() {
-            // Get the event ID from the data attribute
-            var eventId = this.getAttribute('data-event-id');
+        categoryButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var selectedCategory = this.getAttribute('data-category');
 
-            // Redirect to the detailed view page using JavaScript
-            window.location.href = '<?= base_url('cdetail/detailEvent/'); ?>' + eventId;
+                cards.forEach(function (card) {
+                    var cardCategory = card.getAttribute('data-category');
+
+                    if (selectedCategory === 'all' || selectedCategory === cardCategory) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        cards.forEach(function (card) {
+            card.addEventListener('click', function () {
+                var eventId = this.getAttribute('data-event-id');
+                window.location.href = '<?= base_url('cdetail/detailEvent/'); ?>' + eventId;
+            });
         });
     });
-});
-
 </script>
-</body>
 
+</body>
 </html>

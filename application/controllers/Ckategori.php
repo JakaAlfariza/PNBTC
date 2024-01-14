@@ -22,7 +22,8 @@
 		}
 
 		function simpankategori(){
-			$this->form_validation->set_rules('nama_kategori','nama_kategori','required|trim|is_unique[kategori.nama_kategori]',['required'=>'nama kategori harus diisi!','is_unique'=>'Kategori sudah ada!']);
+			$this->form_validation->set_rules('nama_kategori','Kategori','required|trim|is_unique[kategori.nama_kategori]',
+			['required'=>'Kategori harus diisi!','is_unique'=>'Kategori sudah ada!']);
 
 			if($this->form_validation->run()==false){
 				$tampilkategori['hasil']=$this->mkategori->tampilkategori();

@@ -10,7 +10,6 @@ class Mkarosel extends CI_Model{
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('gambar_k')) {
-                // File uploaded successfully, get the file name
                 $gambar_k = $this->upload->data('file_name');
 
                 $nama_karosel = $this->input->post('nama_karosel', TRUE);
@@ -30,7 +29,6 @@ class Mkarosel extends CI_Model{
                 echo "<script>alert('Karosel berhasil disimpan');</script>";
                 redirect('ckarosel/tampilkarosel', 'refresh');
             } else {
-                // File upload failed, handle accordingly (e.g., show an error message).
                 echo $this->upload->display_errors();
             }
         }
@@ -63,12 +61,6 @@ class Mkarosel extends CI_Model{
             $this->db->query($sql);
             echo "<script>alert('Karosel berhasil dihapus');</script>";
             redirect('ckarosel/tampilkarosel','refresh');	
-        }
-
-        public function getCarouselImages()
-        {
-            $query = $this->db->get('karosel');
-            return $query->result();
         }
 
         public function updatekarosel($id_karosel)
@@ -120,8 +112,6 @@ class Mkarosel extends CI_Model{
             }
         }
 
-
-
         function getkarosel($id_karosel) {
 
             $this->db->select('*')->from('karosel')->where('id_karosel',$id_karosel);
@@ -129,6 +119,12 @@ class Mkarosel extends CI_Model{
 
             echo json_encode($data);
             
+        }
+
+        public function getGambarKarosel()
+        {
+            $query = $this->db->get('karosel');
+            return $query->result();
         }
 
     }

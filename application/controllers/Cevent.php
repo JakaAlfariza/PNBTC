@@ -45,10 +45,12 @@
 		
 		function cetakpdf($id_event)
 		{	
+			$event = $this->mdataevent->getEventSurat($id_event);
 			$report['event']=$this->mdataevent->getEventSurat($id_event); 
 			// var_dump($report);
 			require_once(APPPATH . 'libraries/dompdf/autoload.inc.php');
 			$pdf = new Dompdf\Dompdf();
+			$filename = $event->nama_event . '.pdf';
 			$pdf->setPaper('A4', 'potrait');
 			$pdf->set_option('isRemoteEnabled', TRUE);
 			$pdf->set_option('isHtml5ParserEnabled', true);
@@ -57,9 +59,7 @@
 			
 			$pdf->loadHtml($this->load->view('admin/cetak_pdf',$report, true));
 			$pdf->render();
-			$pdf->stream('NamaFile.pdf', ['Attachment' => 0]);	
-
+			$pdf->stream('Surat Pemberitahuan ' . $filename, ['Attachment' => 0]);
 		}
-
 	}
 ?>

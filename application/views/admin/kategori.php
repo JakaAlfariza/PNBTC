@@ -40,14 +40,11 @@
                             <form class="forms-sample" method="POST" action="<?php echo base_url('ckategori/simpankategori'); ?>">
                                 <div class="mb-3">
                                     <label for="nama_kategori">Nama Kategori:</label>
-                                    <div class="input-group">
                                     <input type="text" class="form-control <?php echo form_error('nama_kategori') ? 'is-invalid' : ''; ?>" name="nama_kategori" placeholder="Nama Kategori">
+                                    <div class="invalid-feedback">
+                                        <?php echo form_error('nama_kategori', '<small class="text-danger pl-3">','</small>'); ?>
                                     </div>
-                                   
                                 </div>
-                                <div class="invalid-feedback">
-                                    <?php echo form_error('nama_kategori', '<small class="text-danger pl-3">','</small>'); ?>
-                                    </div>
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
                             <button type="reset" class="btn btn-danger">Cancel</button>
                             </form>

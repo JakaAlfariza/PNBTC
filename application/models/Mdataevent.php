@@ -6,11 +6,12 @@ class Mdataevent extends CI_Model{
             parent::__construct();
             $this->load->model('memail');
         }
+
         function simpandata()
         {
             $data = $_POST;
-            $pembuat_event = $this->session->userdata('id');
-            $data['pembuat_event'] = $pembuat_event;
+            $id_user = $this->session->userdata('id');
+            $data['id_user'] = $id_user;
             unset($data['notif']); //agar tidak masuk kedatabase
 
             $this->db->insert('event',$data);
@@ -89,16 +90,25 @@ class Mdataevent extends CI_Model{
             return $query->result();
         }
 
-        public function get_events() 
+        function getEventSurat($id_event) {
+        return $this->db->select('*')->from('event')->where('id_event',$id_event)->get()->first_row(); 
+        }        
+
+        public function getEventIndex() 
         {
             $query = $this->db->get('event');
             return $query->result();
         }
+    
+        public function getEventKategori() {
+            $this->db->distinct();
+            $this->db->select('kategori.id_kategori, kategori.nama_kategori');
+            $this->db->from('event');
+            $this->db->join('kategori', 'event.id_kategori = kategori.id_kategori');
+            
+            $query = $this->db->get();
 
-        function getEventSurat($id_event) {
-        return $this->db->select('*')->from('event')->where('id_event',$id_event)->get()->first_row(); 
-        }        
-        
-
+            return $query->result();
+        }
     }
 ?>

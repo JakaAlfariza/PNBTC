@@ -14,8 +14,9 @@
 			if ($this->session->userdata('role')=='admin') {
 					redirect('cdashboard/tampildata');
 			}
-			$data['karosel'] = $this->mkarosel->getCarouselImages();
-			$data['events'] = $this->mdataevent->get_events();
+			$data['karosel'] = $this->mkarosel->getGambarKarosel();
+			$data['event'] = $this->mdataevent->getEventIndex();
+			$data['kategori'] = $this->mdataevent->getEventKategori();
 			$this->load->view('index', $data);
 		}
 

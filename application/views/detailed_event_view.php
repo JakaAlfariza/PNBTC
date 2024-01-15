@@ -68,12 +68,14 @@
         }
 
         .container-details .deskripsi {
-            padding-left: 20px; 
-            padding-right: 20px; 
+            padding: 20px;
             text-align: left;
             font-size: 18px;
             margin-bottom: 20px;
+            width: 100%;
+            word-wrap: break-word; 
         }
+
 
         .daftar-button a.btn {
             background-color: #003366;

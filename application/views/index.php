@@ -204,11 +204,14 @@
             for ($i = $startIndex; $i < $startIndex + $itemsPerPage && $i < $totalItems; $i++) {
                 $item_event = $event[$i];
             ?>
+            <?=
+            setlocale(LC_TIME, 'id_ID');
+            ?>
             <div class="card clickable-card" data-event-id="<?= $item_event->id_event; ?>" data-category="<?= $item_event->id_kategori; ?>">
                 <img src="<?= base_url('images/' . $item_event->thumbnail); ?>" class="card-img-top" alt="<?= $item_event->nama_event; ?>">
                 <div class="card-body" style="text-align:left;">
                     <h5 class="card-title" style="margin-bottom: 5px;"><?= $item_event->nama_event; ?></h5>
-                    <p class="card-date small" style="margin-bottom: 0px;"><?= date('l, j-n-Y', strtotime($item_event->tgl_event)); ?></p>
+                    <p class="card-date small" style="margin-bottom: 0px;"><?= strftime('%A %H:%M %e %B %Y', strtotime($item_event->tgl_event)); ?></p>
                     <p class="card-text small" style="margin-bottom: 0px;"><?= substr($item_event->deskripsi, 0, 100); ?></p>
                     <?php
                     if ($item_event->harga != 0) {

@@ -137,7 +137,7 @@
                     <div class="mb-3">
                         <div class="form-group">
                             <label for="exampleInputName1" class="form-label">Tanggal Event:</label>
-                            <input type="date" name="tgl_event" id="tgl_event" class="form-control <?php echo form_error('tgl_event') ? 'is-invalid' : ''; ?>" value="<?= set_value('tgl_event')?>">
+                            <input type="datetime-local" name="tgl_event" id="tgl_event" class="form-control <?php echo form_error('tgl_event') ? 'is-invalid' : ''; ?>" value="<?= set_value('tgl_event')?>">
                             <div class="invalid-feedback">
                             <?php echo form_error('tgl_event', '<small class="text-danger pl-3">','</small>'); ?>
                             </div>

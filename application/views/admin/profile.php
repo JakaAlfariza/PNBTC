@@ -14,10 +14,6 @@
 
     <!-- Custom CSS -->
     <style>
-        body {
-            padding: 20px;
-        }
-
         .form-group {
             margin-bottom: 20px;
         }
@@ -57,7 +53,7 @@
     </nav>
 
 
-<div class="container">
+<div class="container mt-5">
     <h2>Edit Profile</h2>
     <form action="<?= base_url('cprofile/simpanprofile') ?>" method="post">
         <!-- Add a hidden input field to store the user's ID -->

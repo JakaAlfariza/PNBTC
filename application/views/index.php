@@ -92,8 +92,8 @@
         }
 
         .search-result {
-        display: flex;
-        align-items: center;
+            display: flex;
+            align-items: center;
         }
 
         .search-result-text {

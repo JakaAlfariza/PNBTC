@@ -29,7 +29,15 @@ class Mkarosel extends CI_Model{
                 echo "<script>alert('Karosel berhasil disimpan');</script>";
                 redirect('ckarosel/tampilkarosel', 'refresh');
             } else {
-                echo $this->upload->display_errors();
+                $this->form_validation->set_rules('gambar_k','Gambar karosel','required',['required'=>'gambar karosel harus diisi!']);
+                if($this->form_validation->run()==false){
+                    $tampildata['hasil']=$this->mkarosel->tampildata();
+                    $data['konten']=$this->load->view('/admin/karosel','',TRUE);
+                    $data['table']=$this->load->view('/admin/karosel_table',$tampildata,TRUE);
+                    $this->load->view('/admin/vadmin',$data);
+                } else{
+                    $this->mkarosel->simpandata();
+                }
             }
         }
 

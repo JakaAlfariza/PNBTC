@@ -3,7 +3,7 @@ class Cdetail extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model('mvalidasi');
-        $this->mvalidasi->validasi();
+        $this->mvalidasi->validasiEvent();
         $this->load->model('mdataevent');
     }
 

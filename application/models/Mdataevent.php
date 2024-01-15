@@ -112,6 +112,7 @@ class Mdataevent extends CI_Model{
         }
 
         public function searchEvent($query) {
+            $this->db->select('id_event, nama_event, penyelenggara, thumbnail');
             $this->db->like('nama_event', $query);
             $this->db->or_like('penyelenggara', $query);
 

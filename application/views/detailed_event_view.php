@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">\
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <?php include 'script.php'; ?>
     
@@ -25,11 +25,11 @@
         .container-details {
             background-color: #ffffff;
             padding: 0;
-            border-radius: 8px;
             margin-top: 20px;
             width: 100%;
             margin-left: auto;
             margin-right: auto;
+            margin-top: 40px;
             margin-bottom: 50px;
         }
 
@@ -42,7 +42,8 @@
 
         .container-details h2 {
             text-align: left;
-            font-size: 40px;
+            font-size: 36px;
+            margin-top: 20px;
             margin-bottom: 0px;
             padding-left: 20px; 
         }
@@ -50,15 +51,19 @@
         .container-details .tanggal {
             padding-left: 20px; 
             text-align: left;
-            font-size: 20px;
-            margin-bottom: -15px;
-        }
-
-        .container-details .lokasi {
-            padding-left: 20px; 
-            text-align: left;
             font-size: 18px;
             margin-bottom: 10px;
+        }
+
+        .container-details .penyelenggara,
+        .container-details .tanggal-daftar,
+        .container-details .lokasi,
+        .container-details .tingkat-event
+        {
+            padding-left: 20px; 
+            text-align: left;
+            font-size: 16px;
+            margin-bottom: -15px;
         }
 
         .container-details .harga {
@@ -72,10 +77,18 @@
         .container-details .deskripsi {
             padding: 20px;
             text-align: left;
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 20px;
             width: 100%;
             word-wrap: break-word; 
+        }
+
+        .container-details .back {
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+            width: 100%;
+            color: blue;
         }
 
         .daftar-button a.btn {
@@ -84,7 +97,7 @@
             padding: 10px 30px;
             font-size: 16px;
             transition: transform 0.2s ease-in-out;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
         }
 
         .daftar-button a.btn:hover {
@@ -122,7 +135,8 @@
                                     <div class="harga">
                                         <?php
                                         if ($event->harga != 0) {
-                                            echo '<p class="card-harga " style="margin-bottom: 10px;">Rp. ' . $event->harga . '</p>';
+                                            $formatted_price = 'Rp. ' . number_format($event->harga, 0, ',', '.');
+                                            echo '<p class="card-harga small" style="margin-bottom: 10px;">' . $formatted_price . '</p>';
                                         } else {
                                             echo '<p class="card-harga " style="color: green;">Gratis</p>';
                                         }
@@ -130,16 +144,28 @@
                                     </div>
                                     <h2><?= $event->nama_event; ?></h2>
                                     <div class="tanggal">
-                                        <p><?= date('l, j-n-Y', strtotime($event->tgl_event)); ?></p>
+                                        <p><?= strftime('%A %H:%M'." WITA, ". '%e %B %Y', strtotime($event->tgl_event)); ?></p>
+                                    </div>
+                                    <div class="penyelenggara">
+                                        <p>Penyelenggara: <?= $event->penyelenggara; ?></p>
+                                    </div>
+                                    <div class="tanggal-daftar">
+                                        <p>Tanggal Pendaftaran: <?= strftime('%e %B %Y', strtotime($event->tgl_awal)); ?> - <?= strftime('%e %B %Y', strtotime($event->tgl_akhir)); ?></p>
                                     </div>
                                     <div class="lokasi">
                                         <p>Lokasi: <?= $event->lokasi; ?></p>
+                                    </div>
+                                    <div class="tingkat-event">
+                                        <p>Tingkat Event: <?= $event->tingkat_event; ?></p>
                                     </div>
                                     <div class="deskripsi">
                                         <p><?= $event->deskripsi; ?></p>
                                     </div>
                                     <div class="daftar-button">
                                         <a href="<?= $event->link_daftar; ?>" class="btn btn-primary" target="_blank">Daftar Sekarang</a>
+                                    </div>
+                                    <div class="back">
+                                        <p><a href="<?= base_url('chalaman/index'); ?>">Kembali Ke Halaman Utama </a><i class="fa-solid fa-circle-arrow-left"></i></p>
                                     </div>
                                 </div>
                             </div>

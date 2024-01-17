@@ -2,6 +2,7 @@
 class MEmail extends CI_Model
 {
     public function send($link,$email){
+        //Konfugrasi email
         $config['useragent'] = "codeigniter";
         $config['mailpath'] = "usr/bin/sendmail";
         $config['protocol'] = "smtp";
@@ -26,9 +27,8 @@ class MEmail extends CI_Model
          echo"Email Terkirim";
         }
         else{
-         echo"failed";
+         echo"Email gagal terikirm";
         }
-        // redirect('chalaman/tampil');
     }
 }
 

@@ -4,7 +4,7 @@ class Mdaftar extends CI_Model
     
     function simpandaftar()
     {   
-
+        //Cek siapa yang melakukan daftar
         if ($this->session->userdata('role') === 'admin') {
             $username = $this->input->post('username');
             $email = $this->input->post('email');
@@ -18,7 +18,7 @@ class Mdaftar extends CI_Model
                 'email' => $email,
                 'nama' => $nama,
                 'password' => $hashed_password,
-                'role' => $role
+                'role' => $role //jika admin maka sesuai input
             );
 
             $this->db->insert('user', $data_to_insert);
@@ -37,7 +37,7 @@ class Mdaftar extends CI_Model
                 'email' => $email,
                 'nama' => $nama,
                 'password' => $hashed_password,
-                'role' => 'user'
+                'role' => 'user' //jika bukan admin, default 'user'
             );
 
             $this->db->insert('user', $data_to_insert);
@@ -47,7 +47,7 @@ class Mdaftar extends CI_Model
         }
     }
 
-
+    //Admin only
     function hapusakun($id)
     {
         $sql = "delete from user where id='" . $id . "'";
@@ -55,6 +55,7 @@ class Mdaftar extends CI_Model
         redirect('cdaftar/tampilakun', 'refresh');
     }
 
+    //Admin only
     function tampilakun()
     {
         $logged_in_user_id = $this->session->userdata('id');

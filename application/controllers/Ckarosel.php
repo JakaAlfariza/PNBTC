@@ -34,7 +34,6 @@
 			} else{
 				$this->mkarosel->simpandata();
 			}
-			
 		}
 
 		function hapusdata($id_karosel)
@@ -48,6 +47,7 @@
 			
 		}
 
+		//Mengambil value karosel untuk preview
 		function getkarosel($id_karosel) 
 		{
 			$this->mkarosel->getkarosel($id_karosel);

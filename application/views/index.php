@@ -2,16 +2,13 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <?php include 'script.php'; ?>
     
     <title>Home</title>
     <style>
@@ -123,8 +120,8 @@
             </a>
         </div>
 
-        <h3 class="text-left" style="margin-left: 85px;">Event List</h3>
-        <!-- Add category buttons here -->
+        <h3 class="text-left" style="margin-left: 85px;">List Event</h3>
+        <!-- Button Kategori -->
             <div class="text-left mb-4" style="margin-left: 85px;">
                 <button class="btn category-filter" data-category="all">Semua Event</button>
                 <?php foreach ($kategori as $item_kategori): ?>
@@ -139,28 +136,18 @@
             <div class="card-container">
                 <!-- Card Event -->
                 <?php
-                $itemsPerPage = 12;
-                $totalItems = count($event);
-                $totalPages = ceil($totalItems / $itemsPerPage);
-
-                $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                $startIndex = ($currentPage - 1) * $itemsPerPage;
-
-                for ($i = $startIndex; $i < $startIndex + $itemsPerPage && $i < $totalItems; $i++) {
-                    $item_event = $event[$i];
-                ?>
-                <?=
-                setlocale(LC_TIME, 'id_ID');
+                    foreach ($event as $item_event):
                 ?>
                 <div class="card clickable-card" data-event-id="<?= $item_event->id_event; ?>" data-category="<?= $item_event->id_kategori; ?>">
                     <img src="<?= base_url('images/' . $item_event->thumbnail); ?>" class="card-img-top" alt="<?= $item_event->nama_event; ?>">
                     <div class="card-body" style="text-align:left;">
                         <h5 class="card-title" style="margin-bottom: 5px;"><?= $item_event->nama_event; ?></h5>
                         <p class="card-date small" style="margin-bottom: 0px;"><?= strftime('%A %H:%M %e %B %Y', strtotime($item_event->tgl_event)); ?></p>
-                        <p class="card-text small" style="margin-bottom: 0px;"><?= substr($item_event->deskripsi, 0, 100); ?></p>
+                        <p class="card-text small" style="margin-bottom: 0px;"><?= substr($item_event->deskripsi, 0, 100); ?>...</p>
                         <?php
                         if ($item_event->harga != 0) {
-                            echo '<p class="card-harga small" style="margin-bottom: 10px;">Rp. ' . $item_event->harga . '</p>';
+                            $formatted_price = 'Rp. ' . number_format($item_event->harga, 0, ',', '.');
+                            echo '<p class="card-harga small" style="margin-bottom: 10px;">' . $formatted_price . '</p>';
                         } else {
                             echo '<p class="card-harga small" style="color: green; margin-bottom: 10px;">Gratis</p>';
                         }
@@ -168,20 +155,9 @@
                     </div>
                 </div>
                 <?php
-                }
+                    endforeach;
                 ?>
             </div>
-
-            <!-- Pagination Links -->
-            <nav aria-label="Event Pagination">
-                <ul class="pagination justify-content-center">
-                    <?php for ($page = 1; $page <= $totalPages; $page++) : ?>
-                        <li class="page-item <?= ($currentPage == $page) ? 'active' : ''; ?>">
-                            <a class="page-link" href="<?= base_url('chalaman/index?page=' . $page); ?>"><?= $page; ?></a>
-                        </li>
-                    <?php endfor; ?>
-                </ul>
-            </nav>
         </div>
     </div>
 

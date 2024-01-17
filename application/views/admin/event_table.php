@@ -1,7 +1,9 @@
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
+
 <div class="card mt-3 mb-3">
     <div class="card-body">
         <h4 class="card-title">Data Event</h4>
-        </p>
         <div class="table-responsive">
             <table class="table table-hover" id="tabel-data">
                 <thead>
@@ -16,13 +18,13 @@
                 </thead>
                 <tbody> 
                     <?php
-                    if(empty($hasil))
-                    {
-                        echo "<td colspan='5'>Data Kosong</td>";	
-                        echo "</tr>";	
-                    }else {
-                        $no=1;
-                    foreach ($hasil as $data):
+                        if(empty($hasil))
+                        {
+                            echo "<td colspan='5'>Data Kosong</td>";	
+                            echo "</tr>";	
+                        }else {
+                            $no=1;
+                        foreach ($hasil as $data):
                     ?> 
                     <tr>
                         <td><?php echo $no; ?></td>
@@ -48,6 +50,13 @@
     </div>
 </div>
 
+<script>
+    function hapusdata(id_event) {
+        if (confirm("Apakah yakin menghapus data ini?")) {
+            window.open("<?php echo base_url()?>cevent/hapusdata/" + id_event, "_self");
+        }
+    }
+</script>
 
 <script>
     $(document).ready(function () {
@@ -90,5 +99,15 @@
 
     window.open(url, "_blank");
     }
+</script>
 
+<script>
+    $(document).ready(function () {
+        $('#tabel-data').DataTable({
+            "lengthMenu": [ [5, 10], [5, 10] ],
+            "pageLength": 10,
+            "scrollX": false,
+            "responsive": true
+        });
+    });
 </script>

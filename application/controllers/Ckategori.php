@@ -32,8 +32,7 @@
 				$this->load->view('/admin/vadmin',$data);
 			} else{
 				$this->mkategori->simpankategori();
-			}
-			
+			}	
 		}
 
 		function hapuskategori($id_kategori)

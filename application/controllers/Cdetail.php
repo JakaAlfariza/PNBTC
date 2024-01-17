@@ -5,6 +5,9 @@ class Cdetail extends CI_Controller{
         $this->load->model('mvalidasi');
         $this->mvalidasi->validasiEvent();
         $this->load->model('mdataevent');
+        if ($this->session->userdata('role')=='admin') {
+             redirect('cdashboard/tampildata');
+        }
     }
 
     public function detailEvent($id_event) {

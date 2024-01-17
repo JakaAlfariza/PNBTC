@@ -5,15 +5,6 @@
         height: 95%;
     }
 
-    .card-1 {
-    }
-
-    .card-2 {
-    }
-
-    .card-3 {
-    }
-
     .custom-btn {
         background-color: #004789;
         color: #fff;
@@ -30,8 +21,8 @@
         margin-right: 20px;
         font-size: 50px;
         background-color: #04bade;
-        height: 80px; /* Adjust the height as needed */
-        width: 80px; /* Adjust the width as needed */
+        height: 80px;
+        width: 80px; 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -42,8 +33,8 @@
         margin-right: 20px;
         font-size: 50px;
         background-color: #0496c7;
-        height: 80px; /* Adjust the height as needed */
-        width: 80px; /* Adjust the width as needed */
+        height: 80px;
+        width: 80px; 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -58,8 +49,8 @@
         margin-right: 20px;
         font-size: 50px;
         background-color: #009ca5;
-        height: 80px; /* Adjust the height as needed */
-        width: 80px; /* Adjust the width as needed */
+        height: 80px; 
+        width: 80px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -91,8 +82,8 @@
                 <div class="card-body-2">
                     <i class="fa-solid fa-user-tie"></i>
                     <div>
-                        <h5 class="card-title">Jumlah Panitia</h5>
-                        <p class="card-text"><?= $panitiaCount; ?> Panitia</p>
+                        <h5 class="card-title">Jumlah Admin</h5>
+                        <p class="card-text"><?= $adminCount; ?> Admin</p>
                     </div>
                 </div>
             </div>

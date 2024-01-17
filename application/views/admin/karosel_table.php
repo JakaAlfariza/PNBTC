@@ -45,7 +45,43 @@
         </div>
     </div>
 </div>
+
+<!-- Javascript, JQuery & Ajax -->
 <script>
+    //Reset Button
+    function refreshCarousel() {
+        window.location.href = 'tampilkarosel';
+    }
+
+    //Hapus Button
+    function hapusdata(id_karosel) {
+        if (confirm("Apakah yakin menghapus data ini?")) {
+            window.open("<?php echo base_url()?>ckarosel/hapusdata/" + id_karosel, "_self");
+        }
+    }
+
+    //Menampikan gambar input
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#tampil_gambar').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    //Menampikan gambar edit
+    $(document).ready(function () {
+        $('#gambar_k').on('change', function () {
+            $('#tampilGambar').show();
+            readURL(this);
+        });
+    });
+
+    //Edit Button
     $(document).ready(function () {
         $('[id^=edit]').on('click',function(){
             const id = $(this).attr('id').split('-')[1]; 

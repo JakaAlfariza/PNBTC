@@ -43,6 +43,9 @@
         color: #fff;
     }
     
+    .dataTables_filter {
+        margin-left: 300px;
+    }
 </style>
 <!-- Main Content -->
     <div class="card mt-3">
@@ -202,14 +205,8 @@
         </div>
     </div>
     
-<!-- Bootstrap JS and dependencies -->
+<!-- Summernote -->
 <script>
-    function hapusdata(id_event) {
-        if (confirm("Apakah yakin menghapus data ini?")) {
-            window.open("<?php echo base_url()?>cevent/hapusdata/" + id_event, "_self");
-        }
-    }
-
     $('#summernote').summernote({
     placeholder: 'Ketikkan Deskripsi',
     tabsize: 2,
@@ -232,6 +229,4 @@
 
         $('#summernote').summernote('code', '');
     }
-
-
 </script>

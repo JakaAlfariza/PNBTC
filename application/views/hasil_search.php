@@ -1,9 +1,11 @@
-<!-- Display search results in a dropdown -->
+<!-- hasil Search -->
 <div class="dropdown">
+    <!-- Dropdown Button -->
     <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="searchDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-search"></i>
     </button>
     <div class="dropdown-menu" aria-labelledby="searchDropdownButton" style="max-height: 200px; overflow-y: auto;">
+        <!-- Pengondisian -->
         <?php if (empty($event)): ?>
             <p class="dropdown-item mb-0 small">Hasil pencarian tidak ditemukan</p>
         <?php else: ?>

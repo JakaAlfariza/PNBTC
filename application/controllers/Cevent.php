@@ -60,21 +60,15 @@
 			$this->mdataevent->hapusdata($id_event);	
 		}
 
+		//Mengambil mengarahkan value untuk Edit event ajax
 		function getEvent($id_event) {
     		$this->mdataevent->getEvent($id_event);
-		
-		}
-		
-		public function detailEvent($id_event) {
-			
-			$this->load->view('detailed_event_view');
 		}
 		
 		function cetakpdf($id_event)
 		{	
 			$event = $this->mdataevent->getEventSurat($id_event);
 			$report['event']=$this->mdataevent->getEventSurat($id_event); 
-			// var_dump($report);
 			require_once(APPPATH . 'libraries/dompdf/autoload.inc.php');
 			$pdf = new Dompdf\Dompdf();
 			$filename = $event->nama_event . '.pdf';

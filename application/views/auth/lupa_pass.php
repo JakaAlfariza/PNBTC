@@ -2,14 +2,11 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Lupa Password</title>
 
@@ -20,7 +17,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            min-height: 110vh;
+            min-height: 120vh;
             background-color: #004789;
         }
 
@@ -72,13 +69,11 @@
         </div>
     </nav>
 
-
-    
     <!--Container Form -->
     <div class="container-fluid centered-form">
         <div class="header">
             <h1>PNBCC</h1>
-            <p>Enter your new password</p>
+            <p>Perbaiki Password Akun</p>
         </div>
         <div class="row justify-content-center align-items-center" style="height: 60vh;">
             <!-- Card Lupa Pass -->
@@ -88,30 +83,44 @@
                         class="text-left">
                         <div class="mb-3">
                             <label for="email">Email:</label>
-                            <input type="text" class="form-control <?php echo form_error('email') ? 'is-invalid' : ''; ?>" name="email" placeholder="Email" >
+                            <input type="text" class="form-control <?php echo form_error('email') ? 'is-invalid' : ''; ?>" name="email" placeholder="Email" value="<?= set_value('email')?>">
                             <div class="invalid-feedback">
-                            <?php echo form_error('email', '<small class="text-danger pl-3">','</small>'); ?>
+                                <?php echo form_error('email', '<small class="text-danger pl-3">','</small>'); ?>
                             </div> 
                         </div>
                         <div class="mb-3">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control <?php echo form_error('username') ? 'is-invalid' : ''; ?>" name="username" placeholder="Username" >
+                            <input type="text" class="form-control <?php echo form_error('username') ? 'is-invalid' : ''; ?>" name="username" placeholder="Username" value="<?= set_value('username')?>">
                             <div class="invalid-feedback">
-                            <?php echo form_error('username', '<small class="text-danger pl-3">','</small>'); ?>
+                                <?php echo form_error('username', '<small class="text-danger pl-3">','</small>'); ?>
                             </div> 
                         </div>
                         <div class="mb-3">
                             <label for="new_password">New Password:</label>
-                            <input type="password" class="form-control <?php echo form_error('new_password') ? 'is-invalid' : ''; ?>" name="new_password" placeholder="New Password" >
-                            <div class="invalid-feedback">
-                            <?php echo form_error('new_password', '<small class="text-danger pl-3">','</small>'); ?>
+                            <div class="input-group">
+                                <input type="password" id="passwordInput" class="form-control <?php echo form_error('new_password') ? 'is-invalid' : ''; ?>" name="new_password" placeholder="New Password" >
+                                <div class="input-group-append">
+                                    <span class="input-group-text" onclick="togglePasswordVisibility(event)" id="eyeIcon" onclick="togglePasswordVisibility()">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <?php echo form_error('new_password', '<small class="text-danger pl-3">','</small>'); ?>
+                                </div> 
                             </div> 
                         </div>
                         <div class="mb-3">
                             <label for="confirm_password">Confirm Password:</label>
-                            <input type="password" class="form-control <?php echo form_error('confirm_password') ? 'is-invalid' : ''; ?>" name="confirm_password" placeholder="Confirm Password" >
-                            <div class="invalid-feedback">
-                            <?php echo form_error('confirm_password', '<small class="text-danger pl-3">','</small>'); ?>
+                            <div class="input-group">
+                                <input type="password" id="confirmpasswordInput" class="form-control <?php echo form_error('confirm_password') ? 'is-invalid' : ''; ?>" name="confirm_password" placeholder="Confirm Password" >
+                                <div class="input-group-append">
+                                    <span class="input-group-text" onclick="togglePasswordVisibility(event)" id="eyeIcon" onclick="togglePasswordVisibility()">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <?php echo form_error('confirm_password', '<small class="text-danger pl-3">','</small>'); ?>
+                                </div> 
                             </div> 
                         </div>
                         <button type="submit" class="btn text-white btn-reset">R E S E T</button>
@@ -132,5 +141,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+    <!-- Lihat password -->
+    <script>
+    function togglePasswordVisibility(event) {
+        //inisialisasi id dan mata yang diklik
+        var icon = event.currentTarget; 
+        var inputId = icon.parentElement.previousElementSibling.id;
+        var eyeIconId = icon.id; 
+
+        var passwordInput = document.getElementById(inputId);
+
+        if (passwordInput) {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+            } else {
+                passwordInput.type = "password";
+                icon.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+            }
+        }
+    }
+</script>
 </body>
 </html>

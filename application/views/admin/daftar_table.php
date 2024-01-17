@@ -1,12 +1,9 @@
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
+
 <div class="card mt-3 mb-3">
     <div class="card-body">
         <h4 class="card-title">Data Akun</h4>
-        <div class="mb-3">
-            <button type="button" class="btn btn-primary" onclick="showAll()">Show All</button>
-            <button type="button" class="btn btn-primary" onclick="filterByRole('admin')">Admin</button>
-            <button type="button" class="btn btn-primary" onclick="filterByRole('panitia')">Panitia</button>
-            <button type="button" class="btn btn-primary" onclick="filterByRole('user')">User</button>
-        </div>
         <div class="table-responsive">
             <table class="table table-hover" id="tabel-data">
                 <thead>
@@ -48,17 +45,22 @@
     </div>
 </div>
 
+<!-- Javascript & JQuery -->
 <script>
-    function filterByRole(role) {
-        // Hide all rows initially
-        $('#tabel-data tbody tr').hide();
+    //Datatables
+    $(document).ready(function () {
+        $('#tabel-data').DataTable({
+            "lengthMenu": [ [5, 10], [5, 10] ],
+            "pageLength": 10,
+            "scrollX": false,
+            "responsive": true
+        });
+    });
 
-        // Show rows with the selected role
-        $('#tabel-data tbody tr[data-role="' + role + '"]').show();
-    }
-
-    function showAll() {
-        // Show all rows
-        $('#tabel-data tbody tr').show();
+    //Hapus Button
+    function hapusakun(id) {
+        if (confirm("Apakah yakin menghapus data ini?")) {
+            window.location.href = "<?php echo base_url()?>cdaftar/hapusakun/" + id;
+        }
     }
 </script>

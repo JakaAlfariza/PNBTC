@@ -3,33 +3,34 @@ class Mprofile extends CI_Model
 {
     function simpanprofile($id)
     {
+        // Inisialisai hasil input
         $nama = $this->input->post('nama');
         $email = $this->input->post('email');
         $password = $this->input->post('password');
         $username = $this->input->post('username');
     
-        // Check email apakah sudah ada di email
+        // Check email apakah sudah ada di database
         $existing_email_check = $this->db->get_where('user', array('email' => $email, 'id !=' => $id));
         $existing_email_count = $existing_email_check->num_rows();
     
-        // Check username apakah sudah ada di email
+        // Check username apakah sudah ada di database
         $existing_username_check = $this->db->get_where('user', array('username' => $username, 'id !=' => $id));
         $existing_username_count = $existing_username_check->num_rows();
 
         $existing_data = $this->db->get_where('user', array('id' => $id))->row();
         
-        // Check if any changes are made
-        if (
-            $existing_data->nama == $nama &&
+        // Cek apakah ada perubahan
+        if ($existing_data->nama == $nama &&
             $existing_data->email == $email &&
             empty($password) &&
             $existing_data->username == $username
         ) {
-            // No changes made
+            // Jika tidak ada perubahan
             echo "<script>alert('Tidak ada perubahan yang dibuat');</script>";
             redirect('cprofile/tampilakun', 'refresh');
         }
 
+        // Cek email & username jika telah ada di database
         if ($existing_email_count > 0) {
             echo "<script>alert('Email telah terdaftar');</script>";
             redirect('cprofile/tampilakun', 'refresh');
@@ -38,7 +39,7 @@ class Mprofile extends CI_Model
             redirect('cprofile/tampilakun', 'refresh');
         } else {
             $data_to_update = array();
-    
+
             // Jika kosong gunakan data yang sama
             if (!empty($nama)) {
                 $data_to_update['nama'] = $nama;
@@ -72,12 +73,14 @@ class Mprofile extends CI_Model
         }
     }
 
+    // Mengambil value dari database
     function tampilakun()
     {
         $query = $this->db->get('user');
         return $query->result();
     }
 
+    // Proses hapus akuun
     function hapusakun($id)
     {
     

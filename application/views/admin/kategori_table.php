@@ -1,6 +1,3 @@
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
-
 <div class="card mt-3 mb-3">
     <div class="card-body">
         <h4 class="card-title">Data Kategori</h4>
@@ -34,14 +31,27 @@
                         endforeach;
                     }
                     ?> 
-                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
+<!-- Javascript & JQuery -->
 <script>
-    new DataTable('#tabel-data');
+    //Datatables
+    $(document).ready(function () {
+        $('#tabel-data').DataTable({
+            "lengthMenu": [ [5, 10], [5, 10] ],
+            "pageLength": 5
+        });
+    });
+
+    //Hapus Button
+    function hapuskategori(id_kategori) {
+        if (confirm("Apakah yakin menghapus data ini?")) {
+            window.location.href = "<?php echo base_url()?>ckategori/hapuskategori/" + id_kategori;
+        }
+    }
 </script>
 

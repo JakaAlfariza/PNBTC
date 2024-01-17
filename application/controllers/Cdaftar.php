@@ -36,6 +36,7 @@
 			
 		}
 
+		//Admin Only
 		function tampilakun()
 		{
 			$this->load->model('mvalidasi');
@@ -49,8 +50,14 @@
 			$this->load->view('/admin/vadmin',$data);
 		}
 	
+		//Admin Only
 		function hapusakun($id)
 		{
+			$this->load->model('mvalidasi');
+        	$this->mvalidasi->validasi();
+			if ($this->session->userdata('role')!='admin') {
+				redirect('chalaman/index');
+			}
 			$this->mdaftar->hapusakun($id);	
 		}
 		

@@ -4,6 +4,7 @@ class Mdataevent extends CI_Model{
         public function __construct()
         {
             parent::__construct();
+            //load model untuk kirim email
             $this->load->model('memail');
         }
 
@@ -12,12 +13,13 @@ class Mdataevent extends CI_Model{
             $data = $_POST;
             $id_user = $this->session->userdata('id');
             $data['id_user'] = $id_user;
-            unset($data['notif']); //agar tidak masuk kedatabase
+            unset($data['notif']); //agar value tidak masuk ke database
 
             $this->db->insert('event',$data);
 
             $notif = $this->input->post('notif');
             
+            //Jika notif di ceklis
             if($notif == "on"){
                 $link = base_url('cdetail/detailEvent/'.$this->db->insert_id());
     
@@ -27,7 +29,6 @@ class Mdataevent extends CI_Model{
                 }
             }
         
-            // $this->db->where('')->row();
             echo "<script>alert('Event berhasil disimpan');</script>";
             redirect('cevent/tampilevent','refresh');
         }
@@ -74,7 +75,7 @@ class Mdataevent extends CI_Model{
             redirect('cevent/tampilevent','refresh');	
         }
 
-
+        //Mengambil value untuk Edit event ajax
         function getEvent($id_event) 
         {
             $this->db->select('*')->from('event')->where('id_event',$id_event);
@@ -84,22 +85,26 @@ class Mdataevent extends CI_Model{
             
         }
 
+        //Mengambil value untuk simpan dan tampil pada event
         public function getKategoriData()
         {
             $query = $this->db->get('kategori');
             return $query->result();
         }
 
+        //Mengambil value untuk print surat
         function getEventSurat($id_event) {
         return $this->db->select('*')->from('event')->where('id_event',$id_event)->get()->first_row(); 
         }        
 
+        //Mengambil value untuk menampilkan event di Index
         public function getEventIndex() 
         {
             $query = $this->db->get('event');
             return $query->result();
         }
-    
+        
+        //Mengambil value dari kategori untuk menampilkan event di Index
         public function getEventKategori() {
             $this->db->distinct();
             $this->db->select('kategori.id_kategori, kategori.nama_kategori');
@@ -111,6 +116,7 @@ class Mdataevent extends CI_Model{
             return $query->result();
         }
 
+        //Mengambil value hasil search
         public function searchEvent($query) {
             $this->db->select('id_event, nama_event, penyelenggara, thumbnail');
             $this->db->like('nama_event', $query);

@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
     body,
     html {
@@ -41,6 +39,10 @@
         bottom: -1rem;
         color: #dc3545;
     }
+
+    .dataTables_filter {
+        margin-left: 300px;
+    }
 </style>
 
 <!-- Main Content -->
@@ -74,7 +76,6 @@
                 <label for="password">Password:</label>
                 <div class="input-group">
                     <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" name="password" id="password" placeholder="Password" >
-                    
                     <div class="input-group-append">
                         <span class="input-group-text" id="eyeIcon" onclick="togglePasswordVisibility()">
                             <i class="fa fa-eye" aria-hidden="true"></i>
@@ -84,34 +85,21 @@
                     <?php echo form_error('password', '<small class="text-danger pl-3">','</small>'); ?>
                     </div> 
                 </div>
-                
             </div>
             <div class="mb-3">
                 <label for="exampleInputName1" class="form-label">Role:</label>
                 <select name="role" class="form-control <?php echo form_error('role') ? 'is-invalid' : ''; ?>" id="role">
                     <option value="">Pilih Role</option>
                     <option value="admin">Admin</option>
-                    <option value="panitia">Panitia</option>
                     <option value="user">User</option>
                 </select>
                 <div class="invalid-feedback">
                 <?php echo form_error('role', '<small class="text-danger pl-3">','</small>'); ?>
                 </div>
-                
             </div>
-            
             <button type="submit" name="submit" class="btn btn-primary me-2">Submit</button>
             <button type="reset" class="btn btn-danger">Cancel</button>
             <?php echo form_close(); ?>
         </form>
     </div>
 </div>
-
-<!-- Bootstrap JS and dependencies -->
-<script>
-    function hapusakun(id) {
-        if (confirm("Apakah yakin menghapus data ini?")) {
-            window.location.href = "<?php echo base_url()?>cdaftar/hapusakun/" + id;
-        }
-    }
-</script>

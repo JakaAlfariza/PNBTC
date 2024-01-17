@@ -2,14 +2,11 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Register</title>
 
@@ -20,7 +17,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            min-height: 110vh;
+            min-height: 120vh;
             background-color: #004789;
         }
 
@@ -34,8 +31,8 @@
 
         .header p {
             text-align: center;
-            color: #fff; /* White color */
-            font-size: 1.2em; /* Adjust the value as needed */
+            color: #fff; 
+            font-size: 1.2em;
             margin-top: -10px;
         }
 
@@ -81,8 +78,9 @@
     <div class="container-fluid centered-form">
         <div class="header">
             <h1>PNBCC</h1>
-            <p>Create new account</p>
+            <p>Buat Akun Baru</p>
         </div>
+        <!-- Container Daftar -->
         <div class="row justify-content-center align-items-center" style="height: 60vh;">
             <div class="card container-card text-dark" style="padding-bottom: 0px; padding-top: 10px;">
                 <div class="card-body">
@@ -109,7 +107,7 @@
                             <?php echo form_error('username', '<small class="text-danger pl-3">','</small>'); ?>
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="password">Password:</label>
                             <div class="input-group">
                                 <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" name="password" id="password" placeholder="Password" value="<?= set_value('password')?>">
@@ -126,7 +124,7 @@
                             
                         </div>
                         <button type="submit" class="btn text-white btn-login">D A F T A R</button>
-                        <p class="text-center mt-3">Sudah memiliki akun? <a
+                        <p class="text-center mt-3">Udah punya akun? <a
                                 href="<?php echo base_url('chalaman/login'); ?>">Login sekarang</a></p>
                     </form>
                 </div>

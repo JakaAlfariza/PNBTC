@@ -13,7 +13,7 @@
         function index()
 		{
 			if ($this->session->userdata('role')=='admin') {
-					redirect('cdashboard/tampildata');
+				redirect('cdashboard/tampildata');
 			}
 			$data['karosel'] = $this->mkarosel->getGambarKarosel();
 			$data['event'] = $this->mdataevent->getEventIndex();
@@ -82,16 +82,11 @@
 			$this->load->view('/auth/lupa_pass');
 		}
 
-
-
 		function resetPass(){
-
-
-			
 			$this->form_validation->set_rules('username','Username','required|trim',['required'=>'Username harus diisi!']);
 			$this->form_validation->set_rules('email','Email','required|trim|valid_email'
 			,['required'=>'Email harus diisi!','valid_email'=>'Email tidak Valid!',]);
-			$this->form_validation->set_rules('new_password','Password baru','required|trim|min_length[5]|matches[confirm_password]',
+			$this->form_validation->set_rules('new_password','Password baru','required|trim|min_length[5]',
 			['min_length'=>'Password minimal 5 kata','required'=>'Password harus diisi!']);
 			$this->form_validation->set_rules('confirm_password','Password baru','required|trim|min_length[5]|matches[new_password]',
 			['min_length'=>'Password minimal 5 kata','required'=>'Konfirmasi password harus diisi!','matches'=>'password tidak sama']);
@@ -115,6 +110,7 @@
 			redirect('chalaman/login','refresh');	
 		}
 
+		//Untuk mengirim notif ke semua user diteruskan ke MEmail
 		function mailing(){
 			$mailing = $this->db->query("SELECT * FROM user")->result();
 			foreach ($mailing as $data) {

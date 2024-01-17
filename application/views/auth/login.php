@@ -2,14 +2,11 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Login</title>
 
@@ -40,7 +37,7 @@
         .header p {
             text-align: center;
             color: #fff; 
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin-top: -10px;
         }
 
@@ -65,7 +62,6 @@
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
             PNBCC
         </a>
-
         <div class="ml-auto">
             <ul class="navbar-nav font-weight-bold">
                 <li class="nav-item">
@@ -82,9 +78,9 @@
     <div class="container-fluid centered-form">
         <div class="header">
             <h1>PNBCC</h1>
-            <p>Sign in to your account</p>
+            <p>Masuk Menggunakan Akun</p>
         </div>
-        <div class="row justify-content-center align-items-center" style="height: 60vh;">
+        <div class="row justify-content-center align-items-center mt-1" style="height: 50vh;">
             <!-- Card Login -->
             <div class="card container-card text-dark"style="padding-bottom: 0px; padding-top: 10px;">
                 <div class="card-body">
@@ -114,7 +110,7 @@
                         <a href="<?= base_url('chalaman/lupaPass');?>">Lupa Password?</a>
                         </div>
                         <button type="submit" class="btn text-white btn-login">L O G I N</button>
-                        <p class="text-center mt-3">Belum memiliki akun? <a href="<?php echo base_url('chalaman/daftar'); ?>">Daftar disini</a></p>
+                        <p class="text-center mt-3">Belum punya akun? <a href="<?php echo base_url('chalaman/daftar'); ?>">Daftar disini</a></p>
                     </form>
                 </div>
             </div>
@@ -132,6 +128,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+    <!-- Lihat password -->
     <script>
         function togglePasswordVisibility() {
             var passwordInput = document.getElementById("passwordInput");

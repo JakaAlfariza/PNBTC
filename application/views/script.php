@@ -1,12 +1,13 @@
 <script>
-    $(document).ready(function () {
+   $(document).ready(function () {
         var debounceTimer;
-
+        // inisialisasi by id
         $('#searchQuery').on('input', function () {
             clearTimeout(debounceTimer);
 
             var query = $(this).val();
 
+            // minimal search 1 char
             if (query.length >= 1) {
                 debounceTimer = setTimeout(function () {
                     $.ajax({
@@ -14,7 +15,6 @@
                         method: 'GET',
                         data: { query: query },
                         success: function (response) {
-                            // Update the dropdown with search results
                             $('#searchDropdown').html(response);
                             $('#searchDropdown').show();
                         },
@@ -22,31 +22,40 @@
                             console.error('AJAX Error:', status, error);
                         }
                     });
-                }, 300); // Adjust the delay (in milliseconds) as needed
+                }, 300);
             } else {
                 $('#searchDropdown').hide();
             }
         });
 
+        // Enter = membuka dropdown
         $('#searchQuery').on('keypress', function (e) {
             if (e.which === 13) {
                 e.preventDefault();
-                // Trigger the click event on the dropdown button
                 $('#searchDropdownButton').click();
             }
         });
 
+        // Dropdown diclick
         $('#searchDropdown').on('click', '.search-result-item', function () {
             var value = $(this).data('value');
             selectSuggestion(value);
         });
 
+        // Click selain dropdown
         $(document).on('click', function (e) {
             if (!$(e.target).closest('#searchDropdown').length && !$(e.target).is('#searchQuery')) {
                 $('#searchDropdown').hide();
             }
         });
     });
+
+    // Function pengatur hasil search
+    function selectSuggestion(value) {
+        $('#searchQuery').val(value);
+        $('#searchDropdown').hide();
+        $('#searchForm').submit();
+    }
 
     // Function to handle selecting a suggestion from the dropdown
     function selectSuggestion(value) {

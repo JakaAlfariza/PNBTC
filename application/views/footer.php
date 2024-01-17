@@ -1,4 +1,3 @@
-
 <style>
     .footer {
         background-color: #333;

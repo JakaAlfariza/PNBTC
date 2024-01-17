@@ -11,7 +11,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Login</title>
+    <title>Lupa Password</title>
 
     <!-- CSS -->
     <style>
@@ -34,8 +34,8 @@
 
         .header p {
             text-align: center;
-            color: #fff; /* White color */
-            font-size: 1.2em; /* Adjust the value as needed */
+            color: #fff; 
+            font-size: 1.2em;
             margin-top: -10px;
         }
 
@@ -54,13 +54,12 @@
 </head>
 
 <body>
-    
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand font-weight-bold" href="<?= base_url('chalaman/index');?>">
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
             PNBCC
         </a>
-
         <div class="ml-auto">
             <ul class="navbar-nav font-weight-bold">
                 <li class="nav-item">
@@ -75,14 +74,14 @@
 
 
     
-    <!-- New Password Form -->
+    <!--Container Form -->
     <div class="container-fluid centered-form">
         <div class="header">
             <h1>PNBCC</h1>
             <p>Enter your new password</p>
         </div>
         <div class="row justify-content-center align-items-center" style="height: 60vh;">
-            <!-- Card New Password -->
+            <!-- Card Lupa Pass -->
             <div class="card container-card text-dark" style="padding-bottom: 0px; padding-top: 10px;">
                 <div class="card-body">
                     <form name="formnewpassword" method="post" action="<?php echo base_url('chalaman/resetPass'); ?>"
@@ -101,7 +100,6 @@
                             <?php echo form_error('username', '<small class="text-danger pl-3">','</small>'); ?>
                             </div> 
                         </div>
-                        <!-- Add necessary form fields for new password entry -->
                         <div class="mb-3">
                             <label for="new_password">New Password:</label>
                             <input type="password" class="form-control <?php echo form_error('new_password') ? 'is-invalid' : ''; ?>" name="new_password" placeholder="New Password" >

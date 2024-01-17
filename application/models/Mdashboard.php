@@ -14,7 +14,7 @@ class Mdashboard extends CI_Model {
 
     public function getPanitiaCounts()
     {
-        $query = $this->db->select('COUNT(*) as count')->from('user')->where('role', 'admin')->get();
+        $query = $this->db->select('COUNT(*) as count')->from('user')->where('role', 'panitia')->get();
         return $query->row()->count;
     }
 }

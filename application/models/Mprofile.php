@@ -8,26 +8,38 @@ class Mprofile extends CI_Model
         $password = $this->input->post('password');
         $username = $this->input->post('username');
     
-        // Check if the new email already exists in the database
+        // Check email apakah sudah ada di email
         $existing_email_check = $this->db->get_where('user', array('email' => $email, 'id !=' => $id));
         $existing_email_count = $existing_email_check->num_rows();
     
-        // Check if the new username already exists in the database
+        // Check username apakah sudah ada di email
         $existing_username_check = $this->db->get_where('user', array('username' => $username, 'id !=' => $id));
         $existing_username_count = $existing_username_check->num_rows();
-    
+
+        $existing_data = $this->db->get_where('user', array('id' => $id))->row();
+        
+        // Check if any changes are made
+        if (
+            $existing_data->nama == $nama &&
+            $existing_data->email == $email &&
+            empty($password) &&
+            $existing_data->username == $username
+        ) {
+            // No changes made
+            echo "<script>alert('Tidak ada perubahan yang dibuat');</script>";
+            redirect('cprofile/tampilakun', 'refresh');
+        }
+
         if ($existing_email_count > 0) {
-            // Email already exists, handle the error
-            echo "<script>alert('Email already exists');</script>";
+            echo "<script>alert('Email telah terdaftar');</script>";
             redirect('cprofile/tampilakun', 'refresh');
         } elseif ($existing_username_count > 0) {
-            // Username already exists, handle the error
-            echo "<script>alert('Username already exists');</script>";
+            echo "<script>alert('Username telah terdaftar');</script>";
             redirect('cprofile/tampilakun', 'refresh');
         } else {
-            // Prepare data to update based on what is provided in the form
             $data_to_update = array();
     
+            // Jika kosong gunakan data yang sama
             if (!empty($nama)) {
                 $data_to_update['nama'] = $nama;
             }
@@ -45,24 +57,20 @@ class Mprofile extends CI_Model
                 $data_to_update['username'] = $username;
             }
     
-            // Update only if there is data to update
+            // Proses Update
             if (!empty($data_to_update)) {
-                // Use the user's ID to update the specific user record
                 $this->db->where('id', $id);
                 $this->db->update('user', $data_to_update);
-    
-                echo "<script>alert('Data berhasil disimpan');</script>";
-                redirect('cprofile/tampilakun', 'refresh');
+
+                echo "<script>alert('Perubahan berhasil disimpan, harap login kembali');</script>";
+                $this->session->sess_destroy();
+                redirect('chalaman/login', 'refresh');
             } else {
                 echo "<script>alert('Tidak ada data yang diubah');</script>";
                 redirect('cprofile/tampilakun', 'refresh');
             }
         }
     }
-    
-
-
-
 
     function tampilakun()
     {
@@ -75,6 +83,10 @@ class Mprofile extends CI_Model
     
         $this->db->where('id', $id);
         $this->db->delete('user');
+
+        echo "<script>alert('Akun berhasil dihapus');</script>";
+        $this->session->sess_destroy();
+        redirect('chalaman/login', 'refresh');
     }
 }
 ?>

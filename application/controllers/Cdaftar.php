@@ -38,6 +38,11 @@
 
 		function tampilakun()
 		{
+			$this->load->model('mvalidasi');
+        	$this->mvalidasi->validasi();
+			if ($this->session->userdata('role')!='admin') {
+				redirect('chalaman/index');
+			}
 			$tampilakun['hasil']=$this->mdaftar->tampilakun();
 			$data['konten']=$this->load->view('/admin/daftar_admin','',TRUE);
 			$data['table']=$this->load->view('/admin/daftar_table',$tampilakun,TRUE);

@@ -8,7 +8,7 @@ class Cdetail extends CI_Controller{
     }
 
     public function detailEvent($id_event) {
-        $data['event'] = $this->mdataevent->getEventSurat($id_event);
+        $data['event'] = $this->mdataevent->getEventSurat($id_event); 
         $this->load->view('detailed_event_view', $data);
     }
 }

@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Login</title>
 
-    <!-- CSS -->
     <style>
         body, html {
             height: 100%;
@@ -60,7 +59,7 @@
 </head>
 
 <body>
-    <!-- NAVBAR -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand font-weight-bold" href="<?= base_url('chalaman/index');?>">
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">

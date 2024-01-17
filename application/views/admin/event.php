@@ -62,7 +62,7 @@
                         </div>
                         <div class="mb-3">
                             <div class="form-group">
-                                <label for="exampleInputName1"  class="form-label">Thumbnail: (000px*000px)</label>
+                                <label for="exampleInputName1"  class="form-label">Thumbnail: (278px*317px)</label>
                                 <input type="file" name="thumbnail" id="thumbnail" class="form-control <?php echo form_error('thumbnail') ? 'is-invalid' : ''; ?>" value="<?= set_value('thumbnail')?>">
                                 <div class="invalid-feedback">
                                 <?php echo form_error('thumbnail', '<small class="text-danger pl-3">','</small>'); ?>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="mb-3">
                             <div class="form-group">
-                                <label for="exampleInputName1"  class="form-label">Gambar: (000px*000px)</label>
+                                <label for="exampleInputName1"  class="form-label">Gambar: (1000px*315px)</label>
                                 <input type="file" name="gambar" id="gambar" class="form-control <?php echo form_error('gambar') ? 'is-invalid' : ''; ?>" value="<?= set_value('gambar')?>">
                                 <div class="invalid-feedback">
                                 <?php echo form_error('gambar', '<small class="text-danger pl-3">','</small>'); ?>
@@ -145,7 +145,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-group">
-                            <label for="exampleInputName1" class="form-label">Harga:</label>
+                            <label for="exampleInputName1" class="form-label">Harga: (0 jika gratis)</label>
                             <input type="number" name="harga" id="harga" class="form-control <?php echo form_error('harga') ? 'is-invalid' : ''; ?>"  placeholder="Harga" value="<?= set_value('harga')?>">
                             <div class="invalid-feedback">
                             <?php echo form_error('harga', '<small class="text-danger pl-3">','</small>'); ?>

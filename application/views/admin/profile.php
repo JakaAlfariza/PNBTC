@@ -30,8 +30,8 @@
 </head>
 
 <body>
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand font-weight-bold" href="<?php echo base_url('cdashboard/tampildata'); ?>">
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt=""> PNBCC [<?= strtoupper($this->session->userdata('role')); ?>]
         </a>
@@ -44,7 +44,6 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="<?php echo base_url('cdashboard/tampildata'); ?>">Home</a>
-                        <a class="dropdown-item" href="<?php echo base_url('cprofile/tampilakun'); ?>">Profile</a>
                         <a class="dropdown-item text-danger" href="<?= base_url('cadmin/logout');?>">Logout</a>
                     </div>
                 </div>
@@ -53,38 +52,39 @@
     </nav>
 
 
-<div class="container mt-5">
-    <h2>Edit Profile</h2>
-    <form action="<?= base_url('cprofile/simpanprofile') ?>" method="post">
-        <!-- Add a hidden input field to store the user's ID -->
-        <input type="hidden" name="id" value="<?= $this->session->userdata('id') ?>">
+    <div class="container mt-5">
+        <h2>Edit Profile</h2>
+        <form action="<?= base_url('cprofile/simpanprofile') ?>" method="post">
+            <!-- Add a hidden input field to store the user's ID -->
+            <input type="hidden" name="id" value="<?= $this->session->userdata('id') ?>">
 
-        <div class="form-group">
-            <label for="nama">Name:</label>
-            <input type="text" class="form-control" name="nama" value="<?= $this->session->userdata('nama') ?>">
-        </div>
+            <div class="form-group">
+                <label for="nama">Name:</label>
+                <input type="text" class="form-control" name="nama" value="<?= $this->session->userdata('nama') ?>">
+            </div>
 
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" name="email" value="<?= $this->session->userdata('email') ?>">
-        </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" value="<?= $this->session->userdata('email') ?>">
+            </div>
 
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" name="password" value="">
-            <!-- Note: It's not recommended to pre-fill the password field for security reasons -->
-        </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" name="password" value="">
+                <!-- Note: It's not recommended to pre-fill the password field for security reasons -->
+            </div>
 
-        <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" name="username" value="<?= $this->session->userdata('username') ?>">
-        </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" name="username" value="<?= $this->session->userdata('username') ?>">
+            </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Update</button>
-        </div>
-    </form>
-</div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-success">Update</button>
+                <button type="button" onclick="hapusakun()" class="btn btn-sm btn-danger">Hapus Akun</button>
+            </div>
+        </form>
+    </div>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -95,6 +95,15 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+    <script>
+    function hapusakun(id) {
+        var id = document.querySelector('input[name="id"]').value;
+        
+        if (confirm("Apakah yakin menghapus data ini?")) {
+            window.location.href = "<?php echo base_url()?>cprofile/hapusakun/" + id;
+        }
+    }
+</script>
 </body>
 
 </html>

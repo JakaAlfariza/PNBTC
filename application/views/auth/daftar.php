@@ -54,7 +54,7 @@
 </head>
 
 <body>
-    <!-- NAVBAR -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand font-weight-bold" href="<?= base_url('chalaman/index');?>">
             <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
@@ -135,20 +135,6 @@
     </div>
 
     <!-- Bootstrap JS and dependencies -->
-    <script>
-    function togglePasswordVisibility() {
-        var passwordInput = document.getElementById("passwordInput");
-        var eyeIcon = document.getElementById("eyeIcon");
-
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            eyeIcon.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
-        } else {
-            passwordInput.type = "password";
-            eyeIcon.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
-        }
-    }
-    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -158,6 +144,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("passwordInput");
+            var eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+            }
+        }
+    </script>
 </body>
 
 </html>

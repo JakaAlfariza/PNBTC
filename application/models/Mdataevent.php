@@ -21,11 +21,15 @@ class Mdataevent extends CI_Model{
             
             //Jika notif di ceklis
             if($notif == "on"){
+                $nama_event = $this->input->post('nama_event');
+                $penyelenggara = $this->input->post('penyelenggara');
+                $tingkat_event = $this->input->post('tingkat_event');
+                $tgl_event = $this->input->post('tgl_event');
                 $link = base_url('cdetail/detailEvent/'.$this->db->insert_id());
     
                 $item = $this->db->query("SELECT * FROM user")->result();
                 foreach ($item as $data) {
-                    $this->memail->send($link,$data->email);
+                    $this->memail->send($link, $data->email, $nama_event, $penyelenggara, $tingkat_event, $tgl_event);
                 }
             }
         
@@ -69,9 +73,27 @@ class Mdataevent extends CI_Model{
             $data = $_POST;
             $id_user = $this->session->userdata('id');
             $data['id_user'] = $id_user;
-
+            unset($data['notif']); //agar value tidak masuk ke database
+            
             $condition = array('id_event' => $id_event);
             $response = $this->db->update('event',$data, $condition);
+
+            $notif = $this->input->post('notif');
+            //Jika notif di ceklis
+            if($notif == "on"){
+                $nama_event = $this->input->post('nama_event');
+                $penyelenggara = $this->input->post('penyelenggara');
+                $tingkat_event = $this->input->post('tingkat_event');
+                $tgl_event = $this->input->post('tgl_event');
+                $link = base_url('cdetail/detailEvent/' . $id_event);
+
+                $item = $this->db->query("SELECT * FROM user")->result();
+                foreach ($item as $data) {
+                    $this->memail->send($link, $data->email, $nama_event, $penyelenggara, $tingkat_event, $tgl_event);
+                }
+            }
+
+            echo "<script>alert('Event berhasil diubah');</script>";
             redirect('cevent/tampilevent','refresh');	
         }
 

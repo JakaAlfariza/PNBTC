@@ -53,7 +53,7 @@
                     <?php echo form_error('gambar_k', '<small class="text-danger pl-3">','</small>'); ?>
                     </div>
                     <div id="tampilGambar" style="display: none;">
-                        <img id="tampil_gambar" src="" alt="Existing Image" style="max-width: 200px; max-height: 200px; margin-top:5px;">
+                        <img id="tampil_gambar" src="" alt="Existing Image" style="max-width: 100px; max-height: 200px; margin-top:5px;">
                     </div>
                 </div>
             </div>

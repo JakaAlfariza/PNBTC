@@ -31,7 +31,7 @@
 
         .body {
             background-color: #e8e8e8;
-            overflow-x: hidden; /* Add this style to prevent horizontal scrolling */
+            overflow-x: hidden;
             width: 100vw;
         }
 
@@ -54,16 +54,16 @@
         .card-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px; /* Adjust the gap between cards as needed */
+            gap: 20px; 
             margin-bottom: 40px;
         }
 
         .card {
-            width: calc(25% - 20px); /* Adjust the width of each card and consider the gap */
+            width: calc(25% - 20px);
             box-sizing: border-box;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow effect */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
         }
 
@@ -77,7 +77,7 @@
 
         .card img {
             width: 100%;
-            height: 150px; /* Set the desired height for the card images */
+            height: 150px; 
             object-fit: cover;
         }
 
@@ -142,7 +142,7 @@
                     <img src="<?= base_url('images/' . $item_event->thumbnail); ?>" class="card-img-top" alt="<?= $item_event->nama_event; ?>">
                     <div class="card-body" style="text-align:left;">
                         <h5 class="card-title" style="margin-bottom: 5px;"><?= $item_event->nama_event; ?></h5>
-                        <p class="card-date small" style="margin-bottom: 0px;"><?= strftime('%A %H:%M %e %B %Y', strtotime($item_event->tgl_event)); ?></p>
+                        <p class="card-date small" style="margin-bottom: 0px;"><?= strftime('%A %H:%M, %e %B %Y', strtotime($item_event->tgl_event)); ?></p>
                         <p class="card-text small" style="margin-bottom: 0px;"><?= substr($item_event->deskripsi, 0, 100); ?>...</p>
                         <?php
                         if ($item_event->harga != 0) {

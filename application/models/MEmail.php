@@ -1,7 +1,7 @@
 <?php
 class MEmail extends CI_Model
 {
-    public function send($link,$email){
+    public function send($link, $email, $nama_event, $penyelenggara, $tingkat_event, $tgl_event){
         //Konfugrasi email
         $config['useragent'] = "codeigniter";
         $config['mailpath'] = "usr/bin/sendmail";
@@ -18,10 +18,13 @@ class MEmail extends CI_Model
         $config['wordwrap'] = "TRUE";
  
         $this->email->initialize($config);
-        $this->email->from('no-reply@PNBCC@gmail.com','PNBCC');
+        $this->email->from('no-reply@pnbcc@gmail.com','PNBCC');
         $this->email->to($email);
-        $this->email->subject("EVENT TERBARU");
-        $this->email->message("Ada event baru nih yuk kunjugi link berikut ini ".$link);
+        $this->email->subject("[EVENT TERBARU!] ".$nama_event);
+        $this->email->message(
+        "Ada event baru nih ".$nama_event." yang di selenggarakan oleh ".$penyelenggara.", Mungkin event baru ini 
+        menarik untuk kamu! jangan ragu untuk mendaftar, event ini tingkat ".$tingkat_event." loh.. & akan dilaksanakan
+        pada ".strftime('%A %H:%M, %e %B %Y', strtotime($tgl_event)).". Yuk segera kunjugi website PNBCC untuk informasi lebih lanjut, pada link berikut ".$link);
  
         if ($this->email->send()){
          echo"Email Terkirim";

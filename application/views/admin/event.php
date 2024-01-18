@@ -207,6 +207,7 @@
     
 <!-- Summernote -->
 <script>
+    
     $('#summernote').summernote({
     placeholder: 'Ketikkan Deskripsi',
     tabsize: 2,
@@ -214,19 +215,6 @@
     });
 
     function resetSummernote() {
-        $('#nama_event').val('');
-        $('#thumbnail').val('');
-        $('#gambar').val('');
-        $('#penyelenggara').val('');
-        $('#lokasi').val('');
-        $('#id_kategori').val('');
-        $('#tgl_awal').val('');
-        $('#tgl_akhir').val('');
-        $('#tgl_event').val('');
-        $('#harga').val('');
-        $('#tingkat_event').val('');
-        $('#link_daftar').val('');
-
-        $('#summernote').summernote('code', '');
+       window.location.href = 'tampilevent';
     }
 </script>

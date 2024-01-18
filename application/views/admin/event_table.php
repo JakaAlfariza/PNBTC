@@ -56,12 +56,8 @@
             window.open("<?php echo base_url()?>cevent/hapusdata/" + id_event, "_self");
         }
     }
-</script>
 
-<script>
     $(document).ready(function () {
-    
-        
         $('[id^=edit]').on('click',function(){
             const id = $(this).attr('id').split('-')[1];
 
@@ -85,7 +81,6 @@
                     $('#link_daftar').val(response[0].link_daftar);
                     $('#summernote').summernote('code',response[0].deskripsi);
                     console.log(response[0].deskripsi);
-
                 },
                 error : function (xhr, status, error) {
                  console.error(error);   
@@ -102,12 +97,19 @@
 </script>
 
 <script>
-    $(document).ready(function () {
+     $(document).ready(function () {
         $('#tabel-data').DataTable({
             "lengthMenu": [ [5, 10], [5, 10] ],
-            "pageLength": 10,
+            "pageLength": 5,
             "scrollX": false,
-            "responsive": true
+            "responsive": true,
+            "columnDefs": [
+                {
+                    "targets": [1,2],  // Second column (zero-based index)
+                    "width": "180px",  // Set the maximum width for the second column
+                    "responsivePriority": 1  // Set the responsive priority for the second column
+                }
+            ]
         });
     });
 </script>

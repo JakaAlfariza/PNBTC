@@ -48,28 +48,11 @@
 
 <!-- Javascript, JQuery & Ajax -->
 <script>
-    //Reset Button
-    function refreshCarousel() {
-        window.location.href = 'tampilkarosel';
-    }
 
     //Hapus Button
     function hapusdata(id_karosel) {
         if (confirm("Apakah yakin menghapus data ini?")) {
             window.open("<?php echo base_url()?>ckarosel/hapusdata/" + id_karosel, "_self");
-        }
-    }
-
-    //Menampikan gambar input
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#tampil_gambar').attr('src', e.target.result);
-            };
-
-            reader.readAsDataURL(input.files[0]);
         }
     }
 

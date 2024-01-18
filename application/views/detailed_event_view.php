@@ -144,7 +144,7 @@
                                     </div>
                                     <h2><?= $event->nama_event; ?></h2>
                                     <div class="tanggal">
-                                        <p><?= strftime('%A %H:%M'." WITA, ". '%e %B %Y', strtotime($event->tgl_event)); ?></p>
+                                        <p><?= strftime('%A %H:%M, %e %B %Y', strtotime($event->tgl_event)); ?></p>
                                     </div>
                                     <div class="penyelenggara">
                                         <p>Penyelenggara: <?= $event->penyelenggara; ?></p>

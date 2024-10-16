@@ -1,0 +1,305 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: white;
+    padding: 10px /*Top*/ 60px /*Right*/ 0px /*Bottom*/ 55px /*Left*/;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.header-under {
+    background-color: white;
+    padding: 0px /*Top*/ 60px /*Right*/ 10px /*Bottom*/ 60px /*Left*/;
+    display: flex;
+    align-items: center;
+    border-bottom: 4px solid #355E3B;
+    transition: opacity 0.3s ease;
+    position: relative;
+}
+
+.header-scrolled {
+    background-color: white;
+    padding: 10px /*Top*/ 60px /*Right*/ 10px /*Bottom*/ 60px /*Left*/;
+    border-bottom: 4px solid #355E3B;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    transform: translateY(0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    width: 100%;
+}
+
+.header .logo img {
+    max-width: 100%;
+    height: 50px;
+    display: block;
+    transition: opacity 1s ease;
+}
+
+.header-scrolled .logo img {
+    max-width: 100%;
+    height: 40px;
+    display: block;
+    margin-right: 15px;
+    animation: slide-up 1s forwards;
+    opacity: 1;
+}
+
+.header-scrolled.show {
+    display: flex;
+    z-index: 1000;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.custom1{
+    font-size: 14px;
+    padding-right: 5px;
+}
+
+.header .contact-info {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-left: auto
+}
+
+.header .contact-info div {
+    margin-left: 20px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: black;
+    border-bottom: 2px solid #FDD835;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+/* General Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space out left and right content */
+    align-items: center;
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #f8f9fa; /* Background color of the navbar */
+    border-bottom: 1px solid #ddd; /* Border at the bottom of the navbar */
+}
+
+/* Navbar Container for Buttons */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+/* Button Container Styles */
+.button-container {
+    display: flex;
+    gap: 10px; /* Margin between buttons */
+}
+
+/* Button Styles */
+.login, .signin {
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none; /* Remove underline from links */
+    text-align: center; /* Center the text */
+    line-height: 1; /* Ensure the text is vertically centered */
+}
+
+.login {
+    background-color: #355E3B; /* Background color */
+    color: white; /* Text color */
+    border: 0; /* No border */
+}
+
+.login:hover {
+    background-color: #222b1a; /* Background color on hover */
+    color: white; /* Text color on hover */
+}
+
+.signin {
+    background-color: white; /* White background */
+    color: #355E3B; /* Text color */
+    border: 2px solid #355E3B; /* Outline border */
+}
+
+.signin:hover {
+    background-color: rgb(245, 245, 245); /* Background color on hover */
+    color: #355E3B; /* Text color on hover */
+    border-color: #355E3B; /* Border color on hover */
+}
+
+.signin a, .login a {
+    color: inherit; /* Ensure the link color matches the button color */
+    font-size: 16px;
+    text-decoration: none; /* Remove underline from links */
+}
+
+
+/* sidebar */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Dark background with 70% opacity */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 998;
+}
+
+.sidebar.active+.sidebar-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: white;
+    z-index: 1050;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;  /* Flex column layout to easily place items at the top and bottom */
+    justify-content: space-between;  /* Place the close button and links at the top and buttons at the bottom */
+    padding: 20px;
+}
+
+.sidebar.active {
+    right: 0;
+    transform: translateX(0);
+}
+
+.close-btn {
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 20px; /* Space below close button */
+    top: 30px;
+    right: 20px; /* Position the close button on the right */
+    text-align: right;
+}
+
+.sidebar-links {
+    text-align: right;
+    flex-grow: 1;
+}
+
+.sidebar-links a {
+    display: block;
+    margin: 10px 0;
+    font-size: 18px;
+    color: black;
+}
+
+.sidebar .close-btn {
+    align-self: flex-end;  /* Ensure the close button stays at the top right */
+}
+
+.sidebar .button-container {
+    display: flex;
+    flex-direction: column;  /* Stack buttons vertically */
+}
+
+.signin, .login {
+    display: flex;           /* Use flex to center the text */
+    justify-content: center; /* Center text horizontally */
+    align-items: center;     /* Center text vertically */
+    border-radius: 6px;      /* Rounded corners */
+    padding: 10px 20px;      /* Padding for buttons */
+    text-decoration: none;   /* Remove underline from links */
+    width: 100%;             /* Full width for centering */
+    box-sizing: border-box;  /* Include padding in the width */
+}
+
+.hamburger {
+    cursor: pointer;
+    font-size: 24px;
+    display: none;
+}
+
+/* Disable scrolling */
+.no-scroll {
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px /*Top*/ 15px /*Right*/ 5px /*Bottom*/ 15px /*Left*/;
+    }
+
+    .header-scrolled.show {
+        width: 100%;
+        padding: 15px /*Top*/ 15px /*Right*/ 15px /*Bottom*/ 15px /*Left*/;
+        margin-top: -3px;
+    }
+
+    .hamburger {
+        align-items: center;
+        margin-left: auto;
+        display: block; /* Show hamburger menu on mobile */
+    }
+    
+    .header .logo img {
+        max-width: 100%;
+        height: 45px;
+        display: block;
+        transition: opacity 1s ease;
+    }
+
+    .header-under .nav-links {
+        display: none; /* Hide links on mobile */
+    }
+
+    .header-under .button-container {
+        display: none; /* Hide buttons on mobile */
+    }
+}

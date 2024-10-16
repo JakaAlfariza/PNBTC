@@ -1,0 +1,102 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.test-info-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1 {
+    text-align: center;
+    color: #006400;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.accordion-button {
+    background-color: #006400;
+    color: #fff;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: #004b23;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-collapse {
+    border-top: 1px solid #ddd;
+}
+
+.accordion-body {
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.accordion-body h3 {
+    margin-top: 0;
+}
+
+.accordion-body ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.sidebar {
+    padding: 20px;
+    background-color: #e9f5ff;
+    border-left: 3px solid #006400;
+    margin-top: 20px;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.sidebar h2 {
+    color: #006400;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.download-link {
+    display: block;
+    margin-top: 10px;
+    color: #006400;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+}
+
+.accordion-container {
+    flex: 2;
+    margin-right: 20px;
+}

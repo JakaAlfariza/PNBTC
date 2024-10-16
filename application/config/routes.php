@@ -50,6 +50,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'chalaman/index';
-$route['cdetail/detailEvent/(:any)'] = 'Cdetail/detailEvent/$1';
+//section
+$route['csoal/tampilsection/(:any)'] = 'csoal/tampilSection/$1';
+$route['csoal/simpansection'] = 'csoal/simpanSection';
+$route['csoal/hapussection/(:any)'] = 'csoal/hapusSection/$1';
+$route['csoal/getsection/(:any)'] = 'csoal/getSection/$1';
+$route['csoal/updatesection/(:any)'] = 'csoal/updateSection/$1';
+//soal
+$route['csoal/tampilsoal/(:any)'] = 'csoal/tampilsoal/$1';
+$route['csoal/simpansoal'] = 'csoal/simpanSoal';
+$route['csoal/hapussoal/(:any)/(:any)/(:any)'] = 'csoal/hapussoal/$1/$2/$3';
+$route['csoal/getsoal/(:any)'] = 'csoal/getsoal/$1';
+$route['csoal/updatesoal/(:any)'] = 'csoal/updateSoal/$1';
+
+//practice
+$route['cpractice/show_section_intro/(:any)'] = 'cpractice/show_section_intro/$1';
+
+//error
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

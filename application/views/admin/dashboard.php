@@ -20,7 +20,7 @@
     .card-body-1 i {
         margin-right: 20px;
         font-size: 50px;
-        background-color: #04bade;
+        background-color: #3A966A;
         height: 80px;
         width: 80px; 
         display: flex;
@@ -32,7 +32,7 @@
     .card-body-2 i {
         margin-right: 20px;
         font-size: 50px;
-        background-color: #0496c7;
+        background-color: #45B293;
         height: 80px;
         width: 80px; 
         display: flex;
@@ -48,7 +48,7 @@
     .card-body-3 i {
         margin-right: 20px;
         font-size: 50px;
-        background-color: #009ca5;
+        background-color: #6BA87C;
         height: 80px; 
         width: 80px;
         display: flex;
@@ -94,8 +94,8 @@
                 <div class="card-body-3">
                     <i class="fa-solid fa-calendar-plus"></i>
                     <div>
-                        <h5 class="card-title">Jumlah Event</h5>
-                        <p class="card-text"><?= $eventCount; ?> Event</p>
+                        <h5 class="card-title">Jumlah Bank Soal</h5>
+                        <p class="card-text"><?= $soalCount; ?> Bank Soal</p>
                     </div>
                 </div>
             </div>

@@ -1,162 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+    .card-body {
+        border: 2px solid #355E3B; /* Green border */
+        border-radius: 10px;
+        padding: 1.25rem; /* Adjust padding as needed */
+        box-shadow: none; /* Remove default shadow */
+        margin-top: 20px;
+        box-sizing: border-box; /* Ensure padding is included in width */
+    }
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+.col-md-6 {
+    padding: 0 15px; /* Padding inside columns */
+}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Register</title>
+.mb-3{
+    max-height: 280px;
+}
 
-    <!-- CSS -->
-    <style>
-        .centered-form {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 120vh;
-            background-color: #004789;
-        }
+.form-control,
+.input-group {
+    width: 100%; /* Ensure form controls fit within their container */
+    height: auto; /* Automatically adjust height */
+}
 
-        .header h1 {
-            text-align: center;
-            font-weight: bold;
-            color: #ffc107; 
-            font-size: 4em; 
-            padding-top: 30px;
-        }
+.card {
+    width: 80%;
+    max-width: 100%; /* Ensure card width fits content */
+}
 
-        .header p {
-            text-align: center;
-            color: #fff; 
-            font-size: 1.2em;
-            margin-top: -10px;
-        }
+</style>
 
-        .container-card {
-            padding: 20px;
-            border-radius: 10px;
-            min-width: 400px;
-            margin: 10px ;
-        }
-
-        .btn-login {
-            width: 100%;
-            background-color: #004789;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand font-weight-bold" href="<?= base_url('chalaman/index');?>">
-            <img src="<?= base_url('images/pnb.png');?>" width="40" height="40" alt="">
-            PNBCC
-        </a>
-
-        <div class="ml-auto">
-            <ul class="navbar-nav font-weight-bold">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('chalaman/login');?>">
-                        <i class="fa-solid fa-right-from-bracket"></i> Login
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('chalaman/index');?>">
-                        <i class="fas fa-home"></i> Home
-                    </a>
-                </li>
-            </ul>
+<div class="card container-card text-dark">
+    <div class="card-body">
+        <div class="card-body-p">
+            <p>Create Your Account</p>
         </div>
-    </nav>
+        <?php if ($this->session->flashdata('error')): ?>
+            <div class="alert alert-danger" style="font-size:14px;">
+                <?= $this->session->flashdata('error'); ?>
+            </div>
+        <?php endif; ?>
 
-    <!-- Container -->
-    <div class="container-fluid centered-form">
-        <div class="header">
-            <h1>PNBCC</h1>
-            <p>Buat Akun Baru</p>
-        </div>
-        <!-- Container Daftar -->
-        <div class="row justify-content-center align-items-center" style="height: 60vh;">
-            <div class="card container-card text-dark" style="padding-bottom: 0px; padding-top: 10px;">
-                <div class="card-body">
-                    <form name="formlogin" method="post" action="<?php echo base_url('cdaftar/simpandaftar'); ?>"
-                        class="text-left">
-                        <div class="mb-3">
-                            <label for="email">Email:</label>
-                            <input type="text" class="form-control <?php echo form_error('email') ? 'is-invalid' : ''; ?>" name="email" id="email" placeholder="Email" value="<?= set_value('email')?>">
-                            <div class="invalid-feedback">
-                                <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
+        <form name="formlogin" method="post" action="<?php echo base_url('cdaftar/simpandaftar'); ?>" class="text-left">
+            <div class="row">
+                <!-- First Column -->
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="text" class="form-control <?php echo form_error('email') ? 'is-invalid' : ''; ?>" name="email" placeholder="Email" value="<?= set_value('email')?>">
+                        <div class="invalid-feedback">
+                            <?php echo form_error('email', '<small class="text-danger pl-3">','</small>'); ?>
                         </div>
-                        <div class="mb-3">
-                            <label for="nama">Nama:</label>
-                            <input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid' : ''; ?>" name="nama" id="nama" placeholder="Nama" value="<?= set_value('nama')?>">
-                            <div class="invalid-feedback">
-                                <?php echo form_error('nama', '<small class="text-danger pl-3">','</small>'); ?>
-                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nama" class="form-label">Nama:</label>
+                        <input type="text" class="form-control <?php echo form_error('nama') ? 'is-invalid' : ''; ?>" name="nama" id="nama" placeholder="Nama" value="<?= set_value('nama')?>">
+                        <div class="invalid-feedback">
+                            <?php echo form_error('nama', '<small class="text-danger pl-3">','</small>'); ?>
                         </div>
-                        <div class="mb-3" style="margin-top: 15px;">
-                            <label for="username">Username:</label>
-                            <input type="text" class="form-control <?php echo form_error('username') ? 'is-invalid' : ''; ?>" name="username" id="username" placeholder="Username" value="<?= set_value('username')?>">
-                            <div class="invalid-feedback">
-                            <?php echo form_error('username', '<small class="text-danger pl-3">','</small>'); ?>
-                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tgl_lahir" class="form-label">Date of Birth:</label>
+                        <input type="date" class="form-control <?php echo form_error('tgl_lahir') ? 'is-invalid' : ''; ?>" name="tgl_lahir" id="tgl_lahir" placeholder="tgl_lahir" value="<?= set_value('tgl_lahir')?>">
+                        <div class="invalid-feedback">
+                            <?php echo form_error('tgl_lahir', '<small class="text-danger pl-3">','</small>'); ?>
                         </div>
-                        <div class="mb-4">
-                            <label for="password">Password:</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" name="password" id="password" placeholder="Password" value="<?= set_value('password')?>">
-                                
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="eyeIcon" onclick="togglePasswordVisibility()">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <div class="invalid-feedback">
+                    </div>
+                </div>
+
+                <!-- Second Column -->
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="gender" class="form-label">Gender:</label>
+                        <select name="gender" class="form-control <?php echo form_error('gender') ? 'is-invalid' : ''; ?>" id="gender">
+                            <option value="">Choose Gender</option>
+                            <option value="Male" <?= set_select('gender', 'Male', set_value('gender') == 'Male' ? true : false); ?>>Male</option>
+                            <option value="Female" <?= set_select('gender', 'Female', set_value('gender') == 'Female' ? true : false); ?>>Female</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            <?php echo form_error('gender', '<small class="text-danger pl-3">','</small>'); ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password:</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control <?php echo form_error('password') ? 'is-invalid' : ''; ?>" id="passwordInput" name="password" placeholder="Password">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="eyeIcon" onclick="togglePasswordVisibility()">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback">
                                 <?php echo form_error('password', '<small class="text-danger pl-3">','</small>'); ?>
-                                </div> 
                             </div>
-                            
                         </div>
-                        <button type="submit" class="btn text-white btn-login">D A F T A R</button>
-                        <p class="text-center mt-3">Udah punya akun? <a
-                                href="<?php echo base_url('chalaman/login'); ?>">Login sekarang</a></p>
-                    </form>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm_password" class="form-label">Confirm Password:</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control <?php echo form_error('confirm_password') ? 'is-invalid' : ''; ?>" id="passwordInput2" name="confirm_password" placeholder="Confirm Password">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="eyeIcon2" onclick="togglePasswordVisibility2()">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback">
+                                <?php echo form_error('confirm_password', '<small class="text-danger pl-3">','</small>'); ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="text-center mt-4">
+            <button type="submit" class="btn text-white btn-click">R E G I S T E R</button>
+            <p class="text-center mt-3">Already Have an Account? <a href="<?php echo base_url('chalaman/login'); ?>" class="form-label">Click Here</a></p>
+            </div>
+        </form>
     </div>
+</div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 
-    <script>
-        function togglePasswordVisibility() {
-            var passwordInput = document.getElementById("passwordInput");
-            var eyeIcon = document.getElementById("eyeIcon");
+<script>
+    //Function button lihat password
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("passwordInput");
+        var eyeIcon = document.getElementById("eyeIcon");
 
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                eyeIcon.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
-            } else {
-                passwordInput.type = "password";
-                eyeIcon.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
-            }
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
         }
-    </script>
-</body>
+    }
 
-</html>
+    function togglePasswordVisibility2() {
+        var passwordInput = document.getElementById("passwordInput2");
+        var eyeIcon = document.getElementById("eyeIcon2");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+        }
+    }
+
+</script>

@@ -4,8 +4,6 @@
 		public function __construct()
 		{
 			parent::__construct();
-			$this->load->model('mkarosel');
-			$this->load->model('mdataevent');
 			$this->load->model('memail');
 			$this->load->library('form_validation');
 		}
@@ -15,13 +13,23 @@
 			if ($this->session->userdata('role')=='admin') {
 				redirect('cdashboard/tampildata');
 			}
-			$data['karosel'] = $this->mkarosel->getGambarKarosel();
-			$data['event'] = $this->mdataevent->getEventIndex();
-			$data['kategori'] = $this->mdataevent->getEventKategori();
-			$this->load->view('index', $data);
+			$this->load->view('index');
 		}
 
-		function daftar()
+		function contactus(){
+			$this->load->view('contactus');
+		}
+
+		function institutions(){
+			$this->load->view('institutions');
+		}
+
+		function test_info(){
+			$this->load->view('test_info');
+		}
+
+		//PROSES LOGIN & SESSION
+		public function login()
 		{
 			if ($this->session->userdata('role')!=null) {
 				if ($this->session->userdata('role')=='admin') {
@@ -31,10 +39,11 @@
 				}
 				redirect('chalaman/index');
 			}
-			$this->load->view('/auth/daftar');	
+			$data['konten'] = $this->load->view('/auth/login',"", TRUE);
+			$this->load->view('/auth/login_page', $data);
 		}
 
-		function login()
+		public function lupa_pass()
 		{
 			if ($this->session->userdata('role')!=null) {
 				if ($this->session->userdata('role')=='admin') {
@@ -44,19 +53,39 @@
 				}
 				redirect('chalaman/index');
 			}
+			$data['konten'] = $this->load->view('/auth/lupa_pass',"", TRUE);
+			$this->load->view('/auth/login_page', $data);
+		}
 
-			$this->load->view('/auth/login');	
+		public function reset_pass()
+		{
+			if ($this->session->userdata('role')!=null) {
+				if ($this->session->userdata('role')=='admin') {
+					redirect('cdashboard/tampildata');
+				}elseif ($this->session->userdata('role')!='admin') {
+					redirect('chalaman/index');
+				}
+				redirect('chalaman/index');
+			}
+			$data['konten'] = $this->load->view('/auth/reset_pass',"", TRUE);
+			$this->load->view('/auth/login_page', $data);
 		}
 
 		function proseslogin()
 		{
-			$this->form_validation->set_rules('username','Username','required|trim',['required'=>'Username harus diisi!']);
-			$this->form_validation->set_rules('password','Password','required|trim',['required'=>'Password harus diisi!']);
-			
+			$this->form_validation->set_rules('email','Email','required|trim|valid_email[user.email]'
+			,['required'=>'Input Email!','valid_email'=>'Email Not Valid!']);
+			$this->form_validation->set_rules('password','Password','required|trim|min_length[5]',
+			['min_length'=>'Password Min 5 Number','required'=>'Input Password!']);
 
 			if($this->form_validation->run()==false){
-				$this->load->view('/auth/login');	
-				
+				if ($this->session->userdata('role') === 'admin'){
+					$data['konten']=$this->load->view('/admin/daftar_admin','',TRUE);
+					$this->load->view('/admin/vadmin',$data);	
+				}else{
+					$data['konten']=$this->load->view('/auth/login','',TRUE);
+					$this->load->view('/auth/login_page',$data);	
+				}
 			} else{
 				if ($this->session->userdata('role')!=null) {
 
@@ -69,7 +98,13 @@
 				
 		}
 
-		function lupaPass()
+		function logout()
+		{
+			$this->session->sess_destroy();
+			redirect('chalaman/login','refresh');	
+		}
+
+		function daftar()
 		{
 			if ($this->session->userdata('role')!=null) {
 				if ($this->session->userdata('role')=='admin') {
@@ -79,53 +114,16 @@
 				}
 				redirect('chalaman/index');
 			}
-			$this->load->view('/auth/lupa_pass');
-		}
-
-		function resetPass(){
-			$this->form_validation->set_rules('username','Username','required|trim',['required'=>'Username harus diisi!']);
-			$this->form_validation->set_rules('email','Email','required|trim|valid_email'
-			,['required'=>'Email harus diisi!','valid_email'=>'Email tidak Valid!',]);
-			$this->form_validation->set_rules('new_password','Password baru','required|trim|min_length[5]',
-			['min_length'=>'Password minimal 5 kata','required'=>'Password harus diisi!']);
-			$this->form_validation->set_rules('confirm_password','Password baru','required|trim|min_length[5]|matches[new_password]',
-			['min_length'=>'Password minimal 5 kata','required'=>'Konfirmasi password harus diisi!','matches'=>'password tidak sama']);
-			if($this->form_validation->run()==false){
-				$this->load->view('/auth/lupa_pass');	
-				
-			} else{
-				if ($this->session->userdata('role')!=null) {
-				
-					redirect('chalaman/index');
-				}
-				$this->load->model('mlupaPass');
-				$this->mlupaPass->resetPass();	
-			}
-			
-		}
-
-		function logout()
-		{
-			$this->session->sess_destroy();
-			redirect('chalaman/login','refresh');	
+			$data['konten'] = $this->load->view('/auth/daftar',"", TRUE);
+			$this->load->view('/auth/login_page', $data);
 		}
 
 		//Untuk mengirim notif ke semua user diteruskan ke MEmail
-		function mailing(){
-			$mailing = $this->db->query("SELECT * FROM user")->result();
-			foreach ($mailing as $data) {
-				$this->memail->send($data->email);
-			}
-		}
-
-		public function searchEvent() {
-			$query = $this->input->get('query');
-
-			$suggestions = $this->mdataevent->searchEvent($query);
-
-			$data['event'] = $suggestions;
-			$this->load->view('hasil_search', $data);
-		}
-
+		// function mailing(){
+		// 	$mailing = $this->db->query("SELECT * FROM user")->result();
+		// 	foreach ($mailing as $data) {
+		// 		$this->memail->send($data->email);
+		// 	}
+		// }
 	}
 ?>

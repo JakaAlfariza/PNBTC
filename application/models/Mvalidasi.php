@@ -8,7 +8,7 @@ class Mvalidasi extends CI_Model
 
         if (!$this->session->userdata('logged_in'))
         {
-            echo "<script>alert('Anda tidak dapat mengakses halaman ini..!');</script>";
+            echo "<script>alert('You can't access this page or your has session ended..!');</script>";
             redirect('chalaman/login', 'refresh');
         }
     }

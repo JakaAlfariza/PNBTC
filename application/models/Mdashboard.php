@@ -1,8 +1,8 @@
 <?php
 class Mdashboard extends CI_Model {
-    public function getEventCounts()
+    public function getSoalCounts()
     {
-        $query = $this->db->select('COUNT(*) as count')->from('event')->get();
+        $query = $this->db->select('COUNT(*) as count')->from('bank_soal')->get();
         return $query->row()->count;
     }
 

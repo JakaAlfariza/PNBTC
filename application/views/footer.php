@@ -1,31 +1,43 @@
-<style>
-    .footer {
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        bottom: 0;
-        width: 100%;
-    }
-</style>
-
-<div class="footer small" style="padding:10px;">
-    <div class="container">
-        <div class="row mt-3">
-            <div class="col-md-3 col-lg-3 col-xl-4 mb-0" style="text-align:left;">
-                <h6 class="text-uppercase fw-bold mb-1">Tentang PNBCC</h6>
-                <hr class="mt-0 d-inline-block mx-auto mb-1" style="width: 60px; background-color: #7c4dff; height: 2px" />
-                <p>
-                    PNBCC (Politeknik Negeri Bali Community Center) adalah  website yang berisikan kumpulan informasi kompetisi dan event, baik yang diselenggarakan oleh Unit Kegiatan Mahasiswa, event resmi dari Politeknik Negeri bali hingga event internasional
-                </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="stylesheet" type="text/css" href="<?= base_url('application/views/css/footer.css'); ?>">
+</head>
+<body>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="footer-content">
+                <div class="about d-none d-md-block">
+                    <h3>Politeknik Negeri Bali</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Kampus Politeknik Negeri Bali, Bukit Jimbaran, Kuta Selatan, Badung - Bali 80361, PO BOX 1064 Tuban</p>
+                    <p><i class="fas fa-phone"></i> +62 (0361)701981</p>
+                    <p><i class="fas fa-envelope"></i> poltek@pnb.ac.id</p>
+                </div>
+                <div class="img-center">
+                    <img src="<?= base_url('images/toeic_auth.png'); ?>" alt="Logo" class="img-fluid">
+                </div>
+                <div class="external-link d-none d-md-block">
+                    <h3>External Link</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.pnb.ac.id/" target="_blank">Politeknik Negeri Bali Website</a></li>
+                        <li><a href="https://sion.pnb.ac.id/" target="_blank">SION Politeknik Negeri Bali</a></li>
+                        <li><a href="https://elearning.pnb.ac.id/" target="_blank">E-Learning Politeknik Negeri Bali</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-4 col-lg-3 col-xl-3 mb-md-0 mb-0" style="text-align:left; margin-left:auto;">
-                <h6 class="text-uppercase fw-bold mb-1">Partner & Sponsorship</h6>
-                <hr class="mt-0 d-inline-block mx-auto mb-1" style="width: 60px; background-color: #7c4dff; height: 2px" />
+            <div class="row mt-4 no-gutters">
+                <div class="col text-center">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons ml-1">
+                        <a href="#"><i class="fa-brands fa-square-facebook" style="font-size:24px;"></i></a>
+                        <a href="#"><i class="fab fa-youtube customlogo " style="font-size:24px;"></i></a>
+                        <a href="#"><i class="fab fa-instagram customlogo" style="font-size:24px;"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin" style="font-size:24px;"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="text-center text-md-start mt-4">
-        <p>&copy; 2024 PNBCC TEAM</p>
-    </div>
-</div>
+    </footer>
+</body>
+</html>

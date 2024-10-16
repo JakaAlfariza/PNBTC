@@ -36,5 +36,27 @@ class Mkategori extends CI_Model
         echo "<script>alert('Kategori berhasil dihapus');</script>";
         redirect('ckategori/tampilkategori','refresh');	
     }
+
+    function updateKategori($id_kategori)
+    {
+        $nama_kategori = $this->input->post('nama_kategori', TRUE);
+        $data = array(
+            'nama_kategori' => $nama_kategori,
+        );
+
+        $this->db->where('id_kategori', $id_kategori);
+        $response = $this->db->update('kategori', $data);
+        echo "<script>alert('Nama kategori berhasil diubah');</script>";
+        redirect('Ckategori/tampilkategori','refresh');	
+    }
+
+    //Mengambil value untuk Edit event ajax
+    function getKategori($id_kategori) 
+    {
+        $this->db->select('*')->from('kategori')->where('id_kategori',$id_kategori);
+        $data = $this->db->get()->result();
+
+        echo json_encode($data);
+    }
 }
 ?>

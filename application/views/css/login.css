@@ -1,0 +1,173 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header-login h1 {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    font-size: 4em;
+    padding-top: 30px;
+}
+
+.card-body-p p {
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.card-body-p2 p {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    margin-top: -15px;
+    margin-bottom: 15px
+}
+
+.container-card {
+    max-width: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
+.btn-click {
+    width: 100%;
+    background-color: #355E3B;
+}
+
+.carousel-item {
+    position: relative;
+    height: 100vh;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.form-control,
+.input-group {
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    height: 18px;
+    margin-left: -15px;
+    margin-bottom: 5px;
+}
+
+.forget{
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+.mb-3{
+    max-height: 80px;
+}
+
+.form-control::placeholder,
+.input-group::placeholder,
+.text-center,
+.btn-home,
+.form-label{
+    font-size: 14px;
+}
+
+.card {
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+}
+
+#main-logo {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+/* Outline style for card body */
+.card-body {
+    border: 2px solid #355E3B; /* Green border */
+    border-radius: 10px;
+    padding: 1.25rem; /* Adjust padding as needed */
+    box-shadow: none; /* Remove default shadow */
+    margin-top: 20px;
+}
+
+/* Outline style for card header and footer if needed */
+.card-header, .card-footer {
+    border-bottom: 2px solid #355E3B; /* Green border */
+}
+
+.card-body a:focus {
+    color: #2a4d29; /* Darker green on hover/focus */
+    text-decoration: underline; /* Add underline on hover/focus */
+}
+
+.carousel-item {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item-active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.carousel-item-next {
+    transform: translateX(100%);
+}
+
+.carousel-item-prev {
+    transform: translateX(-100%);
+}
+
+.carousel-item-prev.carousel-item-left,
+.carousel-item-next.carousel-item-right {
+    opacity: 0;
+    transform: translateX(0);
+}
